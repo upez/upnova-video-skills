@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="handled"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="handled"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="handled"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="handled"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="handled"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="handled"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="handled"] .it { position: absolute; left: 120px; right: 120px; height: 150px; border-radius: 34px; background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; gap: 30px; padding-left: 30px; font-size: 60px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; }
+        [data-composition-id="handled"] .ck { position: relative; display: block; width: 90px; height: 90px; border-radius: 45px; border: 3px solid rgba(255, 255, 255, 0.35); flex-shrink: 0; overflow: hidden; }
+        [data-composition-id="handled"] .ck .fill { position: absolute; inset: 0; border-radius: 45px; background: #c5eea8; }
+        [data-composition-id="handled"] .ck svg { position: absolute; left: -3px; top: -3px; width: 90px; height: 90px; }
+      </style>
+      <div data-hf-id="hf-m4qw" id="handled-root" data-composition-id="handled" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-7uh9" class="screen" id="handled-screen">
+          <div data-hf-id="hf-oe02" class="slats" id="handled-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-5fyh" class="tag" id="handled-tag" style="top: 560px"><i data-hf-id="hf-wt6k"></i>All handled</div>
+          <div data-hf-id="hf-4600" class="it" id="handled-r0" style="top: 720px"><span data-hf-id="hf-ga0f" class="ck"><i data-hf-id="hf-zcp8" class="fill" id="handled-f0"></i><svg data-hf-id="hf-54cz" viewBox="0 0 90 90"><path data-hf-id="hf-dcx4" id="handled-k0" d="M 26 46 L 40 60 L 65 31" fill="none" stroke="#0b0d0a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" /></svg></span>Your data, studied</div>
+          <div data-hf-id="hf-oymt" class="it" id="handled-r1" style="top: 910px"><span data-hf-id="hf-h7m7" class="ck"><i data-hf-id="hf-04d1" class="fill" id="handled-f1"></i><svg data-hf-id="hf-tcc3" viewBox="0 0 90 90"><path data-hf-id="hf-lr73" id="handled-k1" d="M 26 46 L 40 60 L 65 31" fill="none" stroke="#0b0d0a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" /></svg></span>Your offers, built</div>
+          <div data-hf-id="hf-vpdo" class="it" id="handled-r2" style="top: 1100px"><span data-hf-id="hf-gtb6" class="ck"><i data-hf-id="hf-42h2" class="fill" id="handled-f2"></i><svg data-hf-id="hf-sy12" viewBox="0 0 90 90"><path data-hf-id="hf-bqi6" id="handled-k2" d="M 26 46 L 40 60 L 65 31" fill="none" stroke="#0b0d0a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" /></svg></span>Your tests, running</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // ALL HANDLED. "Like I said, we handle all of it. We got you.": the three steps tick off one by one.
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("handled-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: 2.93, ease: "none" }, 0);
+          rise($("tag"), 0.02, 0.5);
+          [0, 1, 2].forEach(function (i) {
+            rise($("r" + i), 0.1 + i * 0.12, 0.6);
+            var at = 0.75 + i * 0.45;
+            tl.fromTo($("f" + i), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "emilOut" }, at);
+            draw($("k" + i), at + 0.1, 0.35);
+          });
+          window.__timelines["handled"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

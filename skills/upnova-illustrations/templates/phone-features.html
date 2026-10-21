@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="upsell-wall"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="upsell-wall"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="upsell-wall"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="upsell-wall"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="upsell-wall"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="upsell-wall"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="upsell-wall"] .shot { position: absolute; inset: 0; overflow: hidden; background: #000; opacity: 0; }
+        [data-composition-id="upsell-wall"] .glow { position: absolute; left: -100px; right: -100px; top: 300px; height: 1400px; border-radius: 50%; background: radial-gradient(ellipse at 50% 50%, rgba(197, 238, 168, 0.22) 0%, rgba(197, 238, 168, 0) 65%); }
+        [data-composition-id="upsell-wall"] .stage { position: absolute; inset: 0; perspective: 1700px; perspective-origin: 50% 45%; }
+        [data-composition-id="upsell-wall"] .ph { position: absolute; left: 150px; top: 230px; width: 780px; height: 1180px; border-radius: 72px; overflow: hidden; background: #fff; box-shadow: 0 0 0 12px #1b1d1b, 0 60px 160px rgba(0, 0, 0, 0.7); }
+        [data-composition-id="upsell-wall"] .ph video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; display: block; }
+        [data-composition-id="upsell-wall"] .ph .soft { filter: blur(14px); transform: scale(1.04); -webkit-mask-image: radial-gradient(ellipse 70% 55% at 66% 62%, transparent 35%, #000 100%); mask-image: radial-gradient(ellipse 70% 55% at 66% 62%, transparent 35%, #000 100%); }
+        [data-composition-id="upsell-wall"] .band { position: absolute; left: 0; right: 0; top: 1280px; height: 640px; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.6) 100%); }
+        [data-composition-id="upsell-wall"] .tag { top: 70px; background: rgba(11, 13, 10, 0.72); }
+      </style>
+      <div data-hf-id="hf-ounc" id="upsell-wall-root" data-composition-id="upsell-wall" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-mkzu" class="shot" id="upsell-wall-s0">
+          <div data-hf-id="hf-hiy4" class="slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-2s7n" class="glow"></div>
+          <div data-hf-id="hf-tan6" class="stage" id="upsell-wall-z0">
+            <div data-hf-id="hf-0kg7" class="ph" id="upsell-wall-p0" style="left: 158px; width: 764px"><video data-hf-id="hf-l66y" id="upsell-wall-v0" class="clip" src="assets/upsells/phone-cross-sells.mp4" data-start="0" data-duration="0.95" data-media-start="0.5" data-track-index="0" muted playsinline></video><video data-hf-id="hf-qone" id="upsell-wall-b0" class="clip soft" style="-webkit-mask-image: radial-gradient(ellipse 80% 20% at 50% 17%, transparent 45%, #000 100%); mask-image: radial-gradient(ellipse 80% 20% at 50% 17%, transparent 45%, #000 100%)" src="assets/upsells/phone-cross-sells.mp4" data-start="0" data-duration="0.95" data-media-start="0.5" data-track-index="4" muted playsinline></video></div>
+          </div>
+          <div data-hf-id="hf-a71x" class="band"></div>
+          
+        </div>
+        <div data-hf-id="hf-qj3v" class="shot" id="upsell-wall-s1">
+          <div data-hf-id="hf-fjd0" class="slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-x5mb" class="glow"></div>
+          <div data-hf-id="hf-xa86" class="stage" id="upsell-wall-z1">
+            <div data-hf-id="hf-wmc6" class="ph" id="upsell-wall-p1" style="left: 243px; width: 594px"><video data-hf-id="hf-kcyn" id="upsell-wall-v1" class="clip" src="assets/upsells/phone-in-cart-upsells.mp4" data-start="0.95" data-duration="0.95" data-media-start="1.0" data-track-index="1" muted playsinline></video><video data-hf-id="hf-bj5u" id="upsell-wall-b1" class="clip soft" style="-webkit-mask-image: radial-gradient(ellipse 80% 18% at 50% 14%, transparent 45%, #000 100%); mask-image: radial-gradient(ellipse 80% 18% at 50% 14%, transparent 45%, #000 100%)" src="assets/upsells/phone-in-cart-upsells.mp4" data-start="0.95" data-duration="0.95" data-media-start="1.0" data-track-index="5" muted playsinline></video></div>
+          </div>
+          <div data-hf-id="hf-dvmx" class="band"></div>
+          
+        </div>
+        <div data-hf-id="hf-hv80" class="shot" id="upsell-wall-s2">
+          <div data-hf-id="hf-ecfx" class="slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-wrba" class="glow"></div>
+          <div data-hf-id="hf-xoj7" class="stage" id="upsell-wall-z2">
+            <div data-hf-id="hf-so85" class="ph" id="upsell-wall-p2" style="left: 264px; width: 552px"><video data-hf-id="hf-37lx" id="upsell-wall-v2" class="clip" src="assets/upsells/phone-bundle-builder.mp4" data-start="1.9" data-duration="0.9" data-media-start="0.5" data-track-index="2" muted playsinline></video><video data-hf-id="hf-ujpp" id="upsell-wall-b2" class="clip soft" style="-webkit-mask-image: radial-gradient(ellipse 80% 24% at 50% 66%, transparent 45%, #000 100%); mask-image: radial-gradient(ellipse 80% 24% at 50% 66%, transparent 45%, #000 100%)" src="assets/upsells/phone-bundle-builder.mp4" data-start="1.9" data-duration="0.9" data-media-start="0.5" data-track-index="6" muted playsinline></video></div>
+          </div>
+          <div data-hf-id="hf-f2k0" class="band"></div>
+          
+        </div>
+        <div data-hf-id="hf-imvt" class="shot" id="upsell-wall-s3">
+          <div data-hf-id="hf-eqqy" class="slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-wd09" class="glow"></div>
+          <div data-hf-id="hf-y2u8" class="stage" id="upsell-wall-z3">
+            <div data-hf-id="hf-rwkc" class="ph" id="upsell-wall-p3" style="left: 207px; width: 665px"><video data-hf-id="hf-6et6" id="upsell-wall-v3" class="clip" src="assets/upsells/phone-shopping-goals.mp4" data-start="2.8" data-duration="0.92" data-media-start="0.5" data-track-index="3" muted playsinline></video><video data-hf-id="hf-ylzt" id="upsell-wall-b3" class="clip soft" style="-webkit-mask-image: radial-gradient(ellipse 80% 32% at 50% 50%, transparent 45%, #000 100%); mask-image: radial-gradient(ellipse 80% 32% at 50% 50%, transparent 45%, #000 100%)" src="assets/upsells/phone-shopping-goals.mp4" data-start="2.8" data-duration="0.92" data-media-start="0.5" data-track-index="7" muted playsinline></video></div>
+          </div>
+          <div data-hf-id="hf-eo8z" class="band"></div>
+          
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // UPSELLS FULL SCREEN. "We get your customers to buy more. That's it.": four real Upnova upsells (order volume, free gift, cross-sells, product volume) (the Upnova website's
+          // phone captures) each filling the screen as a slow-turning tilted 3D layer with lens field blur (a blurred copy of the
+          // screen fades in away from the focus point), hard cuts between features.
+          var SHOTS = [[0, 0.95], [0.95, 1.9], [1.9, 2.8], [2.8, 3.72]];
+          // each shot turns the other way so the cuts alternate
+          var TURN = [[-20, -10], [18, 8], [-18, -8], [16, 6]];
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("upsell-wall-" + id); };
+          SHOTS.forEach(function (s, i) {
+            var d = s[1] - s[0];
+            tl.set($("s" + i), { opacity: 1 }, s[0]);
+            tl.fromTo($("p" + i), { rotationY: TURN[i][0], rotationX: 12, z: -60, y: 20 }, { rotationY: TURN[i][1], rotationX: 8, z: 40, y: 0, duration: d, ease: "none" }, s[0]);
+            if (i < SHOTS.length - 1) tl.set($("s" + i), { opacity: 0 }, s[1]);
+          });
+          // the shots are short, so each one holds zoomed in with its feature in the middle of the screen (540, 880):
+          // order volume's discount tiers, free gift's progress bar, the cross-sell row, the bundle choices.
+          // FOCUS = [feature point on the unzoomed screen (y), zoom]; the phones are 1180px tall from 230px.
+          var FOCUS = [[431, 1.55], [395, 1.6], [1009, 1.75], [820, 1.25]];
+          FOCUS.forEach(function (f, i) {
+            tl.set($("z" + i), { transformOrigin: "0px 0px", x: 540 - f[1] * 540, y: 880 - f[1] * f[0], scale: f[1] }, 0);
+          });
+          tl.fromTo($("s0"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.3, ease: "emilOut" }, 0);
+          window.__timelines["upsell-wall"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="aov-up"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="aov-up"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="aov-up"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="aov-up"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="aov-up"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="aov-up"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="aov-up"] .streak { position: absolute; left: -200px; right: -200px; top: 0; height: 1400px; background: url("assets/backgrounds/green-streak.jpg") 50% 50% / cover no-repeat; opacity: 0.55; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); }
+        [data-composition-id="aov-up"] .head { position: absolute; left: 0; right: 0; top: 280px; height: 220px; display: flex; justify-content: center; align-items: baseline; gap: 26px; white-space: nowrap; }
+        [data-composition-id="aov-up"] .head .gl { display: block; font-size: 220px; line-height: 220px; flex-shrink: 0; }
+        [data-composition-id="aov-up"] .head b { display: block; font-size: 64px; font-weight: 600; letter-spacing: -0.03em; flex-shrink: 0; }
+        [data-composition-id="aov-up"] svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        [data-composition-id="aov-up"] .dot { position: absolute; left: 916px; top: 556px; width: 48px; height: 48px; border-radius: 24px; background: #c5eea8; box-shadow: 0 0 0 12px rgba(197, 238, 168, 0.22); }
+      </style>
+      <div data-hf-id="hf-cico" id="aov-up-root" data-composition-id="aov-up" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-o0nv" class="screen" id="aov-up-screen">
+          <div data-hf-id="hf-gjpb" class="streak" id="aov-up-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-pt0v" class="head" id="aov-up-head"><span data-hf-id="hf-cgfr" class="gl" id="aov-up-n">AOV</span><b data-hf-id="hf-mg0g">keeps going up</b></div>
+          <svg data-hf-id="hf-u6jg" viewBox="0 0 1080 1920">
+            <path data-hf-id="hf-javt" d="M 110 1040 L 970 1040" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="none" />
+            <path data-hf-id="hf-dbw3" id="aov-up-line" d="M 110 990 C 230 975, 290 930, 380 900 C 470 870, 520 880, 600 800 C 680 720, 760 730, 830 660 C 880 615, 910 600, 940 580" fill="none" stroke="#c5eea8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div data-hf-id="hf-frdp" class="dot" id="aov-up-dot"></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // AOV KEEPS GOING UP. "So your AOV keeps going up": a green line climbs to a dot on the green light streak.
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("aov-up-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: 2.64, ease: "none" }, 0);
+          rise($("head"), 0.02, 0.6);
+          sheen($("n"), 0.2);
+          draw($("line"), 0.3, 1.5);
+          tl.fromTo($("dot"), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "emilOut" }, 1.7);
+          window.__timelines["aov-up"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

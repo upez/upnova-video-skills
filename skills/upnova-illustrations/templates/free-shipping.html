@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="free-shipping"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #151715; }
+        [data-composition-id="free-shipping"] .screen { position: absolute; inset: 0; overflow: hidden; background: #f6f7f5; }
+        [data-composition-id="free-shipping"] .pixels { position: absolute; left: -120px; top: -120px; width: 1320px; height: 2160px; background: url("assets/backgrounds/green-pixels.jpg") 50% 50% / cover no-repeat; }
+        [data-composition-id="free-shipping"] .headline { position: absolute; left: 90px; top: 875px; height: 170px; font-size: 170px; line-height: 170px; font-weight: 700; letter-spacing: -0.045em; text-transform: uppercase; white-space: nowrap; }
+      </style>
+      <div data-hf-id="hf-tkt0" id="free-shipping-root" data-composition-id="free-shipping" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-qh0c" class="screen" id="free-shipping-screen">
+          <div data-hf-id="hf-fs01" class="pixels" data-layout-allow-overflow id="free-shipping-pixels"></div>
+          <div data-hf-id="hf-9a97" class="headline" id="free-shipping-head">Unlocked.</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // UNLOCKED. A one-word slam on the green pixel backdrop, for the moment an offer or tier unlocks.
+          var D = 4.5;
+          var B = { head: 0.4 };
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("free-shipping-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+          tl.fromTo($("pixels"), { x: -40, y: 30, scale: 1.04 }, { x: 40, y: -30, scale: 1, duration: D, ease: "none" }, 0);
+          tl.fromTo($("head"), { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }, B.head);
+          tl.to($("head"), { opacity: 0, filter: "blur(16px)", duration: 0.3, ease: "emilOut" }, D - 0.5);
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["free-shipping"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

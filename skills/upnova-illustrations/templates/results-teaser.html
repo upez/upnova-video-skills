@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="results-teaser"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="results-teaser"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="results-teaser"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="results-teaser"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="results-teaser"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="results-teaser"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="results-teaser"] .row { position: absolute; left: 0; right: 0; height: 270px; display: flex; flex-direction: column; align-items: center; white-space: nowrap; }
+        [data-composition-id="results-teaser"] .line { display: flex; align-items: baseline; gap: 22px; height: 190px; }
+        [data-composition-id="results-teaser"] .num { display: block; font-size: 168px; line-height: 190px; flex-shrink: 0; }
+        [data-composition-id="results-teaser"] .lab { display: block; font-size: 60px; font-weight: 600; letter-spacing: -0.03em; flex-shrink: 0; }
+        [data-composition-id="results-teaser"] .gstage { position: absolute; inset: 0; perspective: 2200px; perspective-origin: 50% 45%; }
+        [data-composition-id="results-teaser"] .grid { position: absolute; left: -150px; top: -260px; width: 1380px; height: 2440px; transform-style: preserve-3d; }
+        [data-composition-id="results-teaser"] .col { position: absolute; top: 0; width: 420px; height: 2440px; }
+        [data-composition-id="results-teaser"] .tile { position: absolute; left: 0; width: 420px; height: 525px; border-radius: 32px; overflow: hidden; background: #151715; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+        [data-composition-id="results-teaser"] .tile video { position: absolute; left: 0; top: 0; width: 420px; height: 525px; object-fit: cover; display: block; }
+        [data-composition-id="results-teaser"] .dim { position: absolute; inset: 0; background: rgba(4, 6, 4, 0.72); }
+        [data-composition-id="results-teaser"] .low { position: absolute; left: 0; right: 0; bottom: 0; height: 1000px; background: linear-gradient(0deg, rgba(4, 6, 4, 0.85) 0%, rgba(4, 6, 4, 0.55) 55%, rgba(4, 6, 4, 0) 100%); }
+        [data-composition-id="results-teaser"] .logo { display: block; flex-shrink: 0; margin-top: 4px; width: 300px; height: 60px; background-position: 50% 50%; background-size: contain; background-repeat: no-repeat; filter: brightness(0) invert(1); opacity: 0.92; }
+      </style>
+      <div data-hf-id="hf-8yme" id="results-teaser-root" data-composition-id="results-teaser" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-tbdi" class="screen" id="results-teaser-screen">
+          <div data-hf-id="hf-zslr" class="gstage">
+            <div data-hf-id="hf-dngx" class="grid" id="results-teaser-grid" data-layout-allow-overflow="">
+              <div data-hf-id="hf-uw06" class="col" id="results-teaser-col0" style="left: 0px" data-layout-allow-overflow="">
+                <div data-hf-id="hf-gqpl" class="tile" style="top: 0px"><video data-hf-id="hf-8zyw" id="results-teaser-v0" class="clip" src="assets/testimonials/grid/g0.mp4" data-start="0" data-duration="4.15" data-track-index="0" muted playsinline></video></div>
+                <div data-hf-id="hf-e0bu" class="tile" style="top: 605px"><video data-hf-id="hf-38sr" id="results-teaser-v1" class="clip" src="assets/testimonials/grid/g1.mp4" data-start="0" data-duration="4.15" data-track-index="1" muted playsinline></video></div>
+                <div data-hf-id="hf-arnh" class="tile" style="top: 1210px"><video data-hf-id="hf-d2cm" id="results-teaser-v2" class="clip" src="assets/testimonials/grid/g2.mp4" data-start="0" data-duration="4.15" data-track-index="2" muted playsinline></video></div>
+                <div data-hf-id="hf-29hy" class="tile" style="top: 1815px"><video data-hf-id="hf-dq8h" id="results-teaser-v3" class="clip" src="assets/testimonials/grid/g3.mp4" data-start="0" data-duration="4.15" data-track-index="3" muted playsinline></video></div>
+              </div>
+              <div data-hf-id="hf-0bar" class="col" id="results-teaser-col1" style="left: 480px" data-layout-allow-overflow="">
+                <div data-hf-id="hf-kzyl" class="tile" style="top: 0px"><video data-hf-id="hf-qxgc" id="results-teaser-v4" class="clip" src="assets/testimonials/grid/g4.mp4" data-start="0" data-duration="4.15" data-track-index="4" muted playsinline></video></div>
+                <div data-hf-id="hf-54oe" class="tile" style="top: 605px"><video data-hf-id="hf-3lav" id="results-teaser-v5" class="clip" src="assets/testimonials/grid/g5.mp4" data-start="0" data-duration="4.15" data-track-index="5" muted playsinline></video></div>
+                <div data-hf-id="hf-j1jl" class="tile" style="top: 1210px"><video data-hf-id="hf-1zfu" id="results-teaser-v6" class="clip" src="assets/testimonials/grid/g6.mp4" data-start="0" data-duration="4.15" data-track-index="6" muted playsinline></video></div>
+                <div data-hf-id="hf-2gsa" class="tile" style="top: 1815px"><video data-hf-id="hf-hkpp" id="results-teaser-v7" class="clip" src="assets/testimonials/grid/g7.mp4" data-start="0" data-duration="4.15" data-track-index="7" muted playsinline></video></div>
+              </div>
+              <div data-hf-id="hf-wh4b" class="col" id="results-teaser-col2" style="left: 960px" data-layout-allow-overflow="">
+                <div data-hf-id="hf-m6vo" class="tile" style="top: 0px"><video data-hf-id="hf-w9rk" id="results-teaser-v8" class="clip" src="assets/testimonials/grid/g8.mp4" data-start="0" data-duration="4.15" data-track-index="8" muted playsinline></video></div>
+                <div data-hf-id="hf-5izf" class="tile" style="top: 605px"><video data-hf-id="hf-y9k3" id="results-teaser-v9" class="clip" src="assets/testimonials/grid/g9.mp4" data-start="0" data-duration="4.15" data-track-index="9" muted playsinline></video></div>
+                <div data-hf-id="hf-k8go" class="tile" style="top: 1210px"><video data-hf-id="hf-lcxp" id="results-teaser-v10" class="clip" src="assets/testimonials/grid/g10.mp4" data-start="0" data-duration="4.15" data-track-index="10" muted playsinline></video></div>
+                <div data-hf-id="hf-2v3b" class="tile" style="top: 1815px"><video data-hf-id="hf-jawo" id="results-teaser-v11" class="clip" src="assets/testimonials/grid/g11.mp4" data-start="0" data-duration="4.15" data-track-index="11" muted playsinline></video></div>
+              </div>
+            </div>
+          </div>
+          <div data-hf-id="hf-t16i" class="low" id="results-teaser-low"></div>
+          <div data-hf-id="hf-y24q" class="dim" id="results-teaser-dim"></div>
+                    <div data-hf-id="hf-nuzw" class="tag" id="results-teaser-tag" style="top: 250px"><i data-hf-id="hf-wt6k"></i>Real results</div>
+          <div data-hf-id="hf-o47x" class="row" id="results-teaser-r0" style="top: 370px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-2o20" class="num gl" id="results-teaser-n0">+40%</span><span data-hf-id="hf-ydq4" class="lab">AOV</span></span><span data-hf-id="hf-6z1e" class="logo" role="img" aria-label="RedSpec" style="background-image: url('assets/testimonials/quotes/redspec-logo.webp')"></span></div>
+          <div data-hf-id="hf-qhwz" class="row" id="results-teaser-r1" style="top: 670px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-xdyw" class="num gl" id="results-teaser-n1">+30%</span><span data-hf-id="hf-gqba" class="lab">sales</span></span><span data-hf-id="hf-ilx2" class="logo" role="img" aria-label="Bluecorn" style="background-image: url('assets/brand/bluecorn-wordmark-white.png')"></span></div>
+          <div data-hf-id="hf-88hd" class="row" id="results-teaser-r2" style="top: 970px"><span data-hf-id="hf-thi2" class="line"><span data-hf-id="hf-yj6n" class="num gl" id="results-teaser-n2">+30%</span><span data-hf-id="hf-vyui" class="lab">revenue</span></span><span data-hf-id="hf-fi2l" class="logo" role="img" aria-label="Devon & Lang" style="background-image: url('assets/brand/devonlang-logo.png'); width: 380px; height: 60px"></span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // RESULTS TEASER. "you'll hear straight from the founders about what result they got": a sneak peek of 12 founder
+          // video testimonials (the Upnova website's review clips) on a 3D tilted 3x3 grid, the columns scrolling in opposite
+          // directions; on "about what result they got" the grid dims and three real results rise in with each brand's logo.
+          var D = 4.15, R = 2.18;
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("results-teaser-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          // the tilted grid: lands from slightly flatter, then holds its tilt while the columns scroll
+          tl.fromTo($("grid"), { opacity: 0, rotationX: 14, rotationZ: -6, scale: 1.08 }, { opacity: 1, rotationX: 26, rotationZ: -12, scale: 1, duration: 1.1, ease: "emilOut" }, 0);
+          tl.fromTo([$("col0"), $("col2")], { y: -520 }, { y: 0, duration: D, ease: "none" }, 0);
+          tl.fromTo($("col1"), { y: 0 }, { y: -520, duration: D, ease: "none" }, 0);
+          // results over the dimmed grid
+          tl.fromTo($("dim"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "emilOut" }, R - 0.1);
+          rise($("tag"), R + 0.02, 0.5);
+          [0, 1, 2].forEach(function (i) { rise($("r" + i), R + 0.15 + i * 0.22, 0.7); sheen($("n" + i), R + 0.3 + i * 0.22); });
+          window.__timelines["results-teaser"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="revenue-climb"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="revenue-climb"] .screen { position: absolute; inset: 0; overflow: hidden; background: #050605; }
+        [data-composition-id="revenue-climb"] .streak { position: absolute; left: -400px; top: 380px; width: 1880px; height: 2120px; background: url("assets/backgrounds/green-streak.jpg") 50% 50% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%); }
+        [data-composition-id="revenue-climb"] .tag { position: absolute; left: 0; right: 0; top: 520px; height: 64px; display: flex; justify-content: center; }
+        [data-composition-id="revenue-climb"] .tag span { height: 64px; padding: 0 28px 0 22px; border-radius: 32px; border: 2px solid rgba(255, 255, 255, 0.35); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="revenue-climb"] .tag i { display: block; width: 14px; height: 14px; border-radius: 7px; background: #c5eea8; box-shadow: 0 0 14px #c5eea8; flex-shrink: 0; }
+        [data-composition-id="revenue-climb"] .num-row { position: absolute; left: 60px; right: 60px; top: 620px; height: 290px; display: flex; justify-content: center; }
+        [data-composition-id="revenue-climb"] .num { display: block; font-size: 270px; line-height: 290px; font-weight: 700; letter-spacing: -0.045em; white-space: nowrap; }
+        [data-composition-id="revenue-climb"] .lead { position: absolute; left: 108px; right: 108px; top: 930px; height: 66px; text-align: center; font-size: 56px; line-height: 66px; font-weight: 400; letter-spacing: -0.02em; color: rgba(255, 255, 255, 0.75); white-space: nowrap; }
+      </style>
+      <div data-hf-id="hf-rv01" id="revenue-climb-root" data-composition-id="revenue-climb" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-rv02" class="screen" id="revenue-climb-screen">
+          <div data-hf-id="hf-rv03" class="streak" data-layout-allow-overflow id="revenue-climb-streak"></div>
+          <div data-hf-id="hf-rv04" class="tag" id="revenue-climb-tag"><span data-hf-id="hf-rv05"><i data-hf-id="hf-rv06"></i>Live on 600+ stores</span></div>
+          <div data-hf-id="hf-aaf3" class="num-row"><span data-hf-id="hf-hhak" class="num" id="revenue-climb-num">$0M+</span></div>
+          <div data-hf-id="hf-ge64" class="lead" id="revenue-climb-lead">in sales for Shopify brands</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // REVENUE CLIMB. A big money counter while the green light streak (from the Upnova backgrounds) sweeps up from below.
+          var D = 4.5;
+          var VALUE = 60, PREFIX = "$", SUFFIX = "M+";
+          var B = { streak: 0, tag: 0.2, number: 0.35, lead: 1.0 };
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("revenue-climb-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+
+          // the streak rises into frame and keeps drifting, like light catching
+          tl.fromTo($("streak"), { opacity: 0, x: -100, scale: 1.08 }, { opacity: 1, x: 0, scale: 1, duration: 2.2, ease: "emilOut" }, B.streak);
+          tl.to($("streak"), { x: 60, duration: D - 2.2, ease: "none" }, B.streak + 2.2);
+
+          tl.fromTo($("tag"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "emilOut" }, B.tag);
+          tl.fromTo($("num"), { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "emilOut" }, B.number);
+          var c = { v: 0 };
+          tl.fromTo(c, { v: 0 }, { v: VALUE, duration: 1.8, ease: "emilInOut",
+            onUpdate: function () { $("num").textContent = PREFIX + Math.round(c.v) + SUFFIX; } }, B.number);
+          tl.fromTo($("lead"), { opacity: 0, y: 24, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "emilOut" }, B.lead);
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["revenue-climb"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

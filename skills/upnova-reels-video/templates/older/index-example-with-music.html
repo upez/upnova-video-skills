@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      code,
+      pre,
+      .monospace {
+        font-family: "JetBrains Mono", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-f2r2" id="root" data-composition-id="main" data-start="0" data-duration="128.83" data-width="1080" data-height="1920">
+      <video data-hf-id="hf-uwsg" id="clip-1006" data-label="1006" data-hf-starter="" class="clip" src="1006.mp4" playsinline data-start="0" data-duration="128.83" data-track-index="0" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover" data-has-audio="true"></video>
+      <div data-hf-id="hf-2ev0" id="captions" class="clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-label="Captions" data-start="0" data-duration="128.83" data-track-index="1" data-track-kind="captions" data-width="1080" data-height="1920" style="position: absolute; inset: 0"></div>
+      <div data-hf-id="hf-s9k9" id="hook" class="clip" data-composition-id="hook" data-composition-src="compositions/hook.html" data-label="Hook claims" data-start="0" data-duration="20.2" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="position: absolute; inset: 0"></div>
+      <div data-hf-id="hf-dozl" id="claims-end" class="clip" data-composition-id="claims-end" data-composition-src="compositions/claims-end.html" data-label="Closing claims" data-start="121" data-duration="7.83" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="position: absolute; inset: 0"></div>
+      
+      <audio data-hf-id="hf-rza7" id="sfx-boom-guarantee" src="assets/Low cinematic boom.mp3" data-label="Boom: Guaranteed" data-start="121.14" data-duration="2.04" data-track-index="5" data-volume="0.3"></audio>
+      
+      <audio data-hf-id="hf-nmld" id="sfx-boom-30" src="assets/Low cinematic boom.mp3" data-label="Boom: 10–30%" data-start="3.06" data-duration="2.04" data-track-index="2" data-volume="0.32"></audio>
+      <audio data-hf-id="hf-stul" id="sfx-air-serious" src="assets/Fast airy whoosh.mp3" data-label="Air: I'm serious" data-start="5.29" data-duration="1.42" data-track-index="2" data-volume="0.22"></audio>
+      <audio data-hf-id="hf-dc9k" id="sfx-swell-60m" src="assets/Cinematic whoosh impact.mp3" data-label="Whoosh hit: $60 million" data-start="6.98" data-duration="3.93" data-track-index="2" data-volume="0.28"></audio>
+      <audio data-hf-id="hf-e7p7" id="sfx-air-minutes" src="assets/Fast airy whoosh.mp3" data-label="Air: three minutes" data-start="12.33" data-duration="1.42" data-track-index="2" data-volume="0.2"></audio>
+      <audio data-hf-id="hf-alc8" id="sfx-tick-minutes" src="assets/Clock ticking.mp3" data-label="Ticking: get it done" data-start="13.3" data-duration="3.4" data-track-index="5" data-volume="0.28" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0},{&quot;t&quot;:0.4,&quot;v&quot;:1},{&quot;t&quot;:2.6,&quot;v&quot;:1},{&quot;t&quot;:3.4,&quot;v&quot;:0}]}]}"></audio>
+      <audio data-hf-id="hf-gv9k" id="sfx-air-notdays" src="assets/Fast airy whoosh.mp3" data-label="Air: minutes, not days" data-start="17.69" data-duration="1.42" data-track-index="2" data-volume="0.2"></audio>
+      <audio data-hf-id="hf-ya8w" id="sfx-whoosh-cut" src="assets/Short synth whoosh.mp3" data-label="Whoosh: into the demo" data-start="19.86" data-duration="1.29" data-track-index="2" data-volume="0.4"></audio>
+      <audio data-hf-id="hf-1mlp" id="sfx-whoosh-offers" src="assets/Short synth whoosh.mp3" data-label="Whoosh: Amazing" data-start="42.86" data-duration="1.29" data-track-index="2" data-volume="0.3"></audio>
+      <audio data-hf-id="hf-zk5x" id="sfx-hit-notatall" src="assets/Heavy cinematic impact.mp3" data-label="Hit: Not at all" data-start="53.15" data-duration="5.39" data-track-index="2" data-volume="0.022387"></audio>
+      <audio data-hf-id="hf-djw8" id="sfx-rise-takeoff" src="assets/Synthetic Sweeping Riser.mp3" data-label="Rise: AOV takes off" data-start="118.38" data-duration="4.97" data-track-index="2" data-volume="0.027542"></audio>
+      <audio data-hf-id="hf-8lzs" id="sfx-swell-end" src="assets/Cinematic whoosh impact.mp3" data-label="Whoosh hit: install Upnova" data-start="123.75" data-duration="3.93" data-track-index="2" data-volume="0.051286"></audio>
+
+      <!--
+        Add your clips here. Example:
+        <div id="title" class="clip" data-start="0" data-duration="5" data-track-index="1"
+             style="font-size: 64px; color: #fff; padding: 40px">
+          Hello World
+        </div>
+      -->
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Example: tl.from("#title", { opacity: 0, y: -50, duration: 1 }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

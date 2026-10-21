@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="three-steps"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="three-steps"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="three-steps"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="three-steps"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="three-steps"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="three-steps"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="three-steps"] .head { position: absolute; left: 0; right: 0; top: 530px; height: 230px; display: flex; justify-content: center; align-items: baseline; gap: 30px; white-space: nowrap; }
+        [data-composition-id="three-steps"] .head .gl { display: block; font-size: 240px; line-height: 230px; flex-shrink: 0; }
+        [data-composition-id="three-steps"] .head b { display: block; font-size: 150px; line-height: 230px; font-weight: 700; letter-spacing: -0.05em; flex-shrink: 0; }
+        [data-composition-id="three-steps"] .st { position: absolute; left: 130px; right: 130px; height: 150px; border-radius: 34px; background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; gap: 30px; padding-left: 30px; font-size: 60px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; }
+        [data-composition-id="three-steps"] .st b { display: block; width: 90px; height: 90px; border-radius: 45px; background: #c5eea8; color: #0b0d0a; text-align: center; font-size: 56px; line-height: 90px; font-weight: 700; flex-shrink: 0; letter-spacing: 0; }
+      </style>
+      <div data-hf-id="hf-zc74" id="three-steps-root" data-composition-id="three-steps" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-ov2h" class="screen" id="three-steps-screen">
+          <div data-hf-id="hf-snj2" class="slats" id="three-steps-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-jro5" class="head" id="three-steps-head"><span data-hf-id="hf-v6ue" class="gl" id="three-steps-n">3</span><b data-hf-id="hf-jdpq">STEPS.</b></div>
+          <div data-hf-id="hf-32jg" class="st" id="three-steps-s0" style="top: 840px"><b data-hf-id="hf-t4n0">1</b>Dig into your data</div>
+          <div data-hf-id="hf-rcd2" class="st" id="three-steps-s1" style="top: 1020px"><b data-hf-id="hf-rxpx">2</b>Build the offers</div>
+          <div data-hf-id="hf-lwx0" class="st" id="three-steps-s2" style="top: 1200px"><b data-hf-id="hf-sc0y">3</b>Keep optimizing</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // THREE STEPS. "And it's just three steps": the three steps rise in on "three steps" (+1.24s).
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("three-steps-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: 2.36, ease: "none" }, 0);
+          rise($("head"), 0.02, 0.7);
+          sheen($("n"), 0.2);
+          // The steps glide in one after another, starting on "just" so all three are up on "three" (+1.24s) and can be read.
+          // (The pixelated reveal read as a glitch, so it is gone.)
+          [0, 1, 2].forEach(function (i) { rise($("s" + i), 0.5 + i * 0.22, 0.6); });
+
+          // Step 1 carries on into the next part: it lifts and shrinks onto the "Step 1" tag's place while the rest fades away.
+          tl.to([$("head"), $("s1"), $("s2")], { opacity: 0, filter: "blur(8px)", duration: 0.32, ease: "emilOut" }, 1.92);
+          tl.to($("s0"), { y: -753, scale: 0.56, duration: 0.44, ease: "emilInOut" }, 1.92);
+          tl.to($("s0"), { opacity: 0, filter: "blur(4px)", duration: 0.16, ease: "emilOut" }, 2.2);
+          window.__timelines["three-steps"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

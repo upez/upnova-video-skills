@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="offer-morph"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; --sale: #b8323a; }
+        [data-composition-id="offer-morph"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="offer-morph"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 860px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; }
+        [data-composition-id="offer-morph"] .num { position: absolute; left: 108px; top: 400px; height: 50px; font-size: 40px; line-height: 50px; font-weight: 500; letter-spacing: 0.08em; color: #c5eea8; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .ttl { position: absolute; left: 100px; top: 466px; height: 110px; font-size: 100px; line-height: 110px; font-weight: 700; letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .segs { position: absolute; left: 108px; width: 864px; top: 610px; height: 10px; display: flex; gap: 12px; }
+        [data-composition-id="offer-morph"] .seg { position: relative; flex: 1; height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.16); overflow: hidden; }
+        [data-composition-id="offer-morph"] .seg i { position: absolute; inset: 0; background: #c5eea8; transform-origin: 0% 50%; }
+        [data-composition-id="offer-morph"] .card { position: absolute; left: 90px; top: 700px; width: 900px; height: 440px; border-radius: 44px; background: #f7f6f3; color: #1a1a1a; box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6); overflow: hidden; }
+        [data-composition-id="offer-morph"] .st { position: absolute; left: 50px; right: 50px; top: 46px; height: 560px; }
+        [data-composition-id="offer-morph"] .h { position: absolute; left: 0; top: 0; height: 50px; font-size: 38px; line-height: 50px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .ph { position: absolute; border-radius: 20px; background-size: cover; background-position: 50% 50%; }
+        [data-composition-id="offer-morph"] .t { position: absolute; height: 50px; font-size: 38px; line-height: 50px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .m { position: absolute; height: 44px; font-size: 32px; line-height: 44px; color: #6b6b6b; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .red { color: var(--sale); }
+        [data-composition-id="offer-morph"] .pill { position: absolute; height: 52px; padding: 0 20px; border-radius: 12px; background: var(--sale); color: #fff; font-size: 28px; line-height: 52px; font-weight: 600; white-space: nowrap; }
+        [data-composition-id="offer-morph"] .bar { position: absolute; left: 0; right: 0; height: 18px; border-radius: 9px; background: #e7e5e0; overflow: hidden; }
+        [data-composition-id="offer-morph"] .bar i { position: absolute; inset: 0; background: #1a1a1a; transform-origin: 0% 50%; }
+        [data-composition-id="offer-morph"] .plus { position: absolute; width: 60px; height: 60px; font-size: 56px; line-height: 60px; text-align: center; color: #9a9a9a; }
+        [data-composition-id="offer-morph"] .opt { position: absolute; left: 0; right: 0; height: 130px; border-radius: 24px; border: 3px solid #e2e0db; background: #fff; }
+        [data-composition-id="offer-morph"] .opt.on { border-color: #1a1a1a; }
+        [data-composition-id="offer-morph"] .btn { position: absolute; left: 0; right: 0; height: 96px; border-radius: 48px; background: #1a1a1a; color: #fff; font-size: 38px; line-height: 96px; text-align: center; font-weight: 500; white-space: nowrap; }
+      </style>
+      <div data-hf-id="hf-om01" id="offer-morph-root" data-composition-id="offer-morph" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-om02" class="screen" id="offer-morph-screen">
+          <div data-hf-id="hf-om03" class="slats" data-layout-allow-overflow id="offer-morph-slats"></div>
+          <div data-hf-id="hf-om04" class="num" id="offer-morph-n0">01 / 04</div>
+          <div data-hf-id="hf-om05" class="num" id="offer-morph-n1">02 / 04</div>
+          <div data-hf-id="hf-om06" class="num" id="offer-morph-n2">03 / 04</div>
+          <div data-hf-id="hf-om07" class="num" id="offer-morph-n3">04 / 04</div>
+          <div data-hf-id="hf-om08" class="ttl" id="offer-morph-t0">Free gift</div>
+          <div data-hf-id="hf-om09" class="ttl" id="offer-morph-t1">Bundles</div>
+          <div data-hf-id="hf-om10" class="ttl" id="offer-morph-t2">Buy X get Y</div>
+          <div data-hf-id="hf-om11" class="ttl" id="offer-morph-t3">Volume deals</div>
+          <div data-hf-id="hf-om12" class="segs" id="offer-morph-segs">
+            <div data-hf-id="hf-om13" class="seg"><i data-hf-id="hf-om14" id="offer-morph-g0"></i></div>
+            <div data-hf-id="hf-om15" class="seg"><i data-hf-id="hf-om16" id="offer-morph-g1"></i></div>
+            <div data-hf-id="hf-om17" class="seg"><i data-hf-id="hf-om18" id="offer-morph-g2"></i></div>
+            <div data-hf-id="hf-om19" class="seg"><i data-hf-id="hf-om20" id="offer-morph-g3"></i></div>
+          </div>
+          <div data-hf-id="hf-om21" class="card" id="offer-morph-card">
+            <!-- 1: free gift with purchase -->
+            <div data-hf-id="hf-om22" class="st" id="offer-morph-s0">
+              <div data-hf-id="hf-om23" class="h">Spend $75, get a free gift</div>
+              <div data-hf-id="hf-om24" class="ph" style="left: 0; top: 80px; width: 160px; height: 160px; background-image: url('assets/products/hat-clip.jpg')"></div>
+              <div data-hf-id="hf-om25" class="t" style="left: 190px; top: 96px">HAT Clip</div>
+              <div data-hf-id="hf-om26" class="m" style="left: 190px; top: 150px"><s data-hf-id="hf-om27">$29.95</s> <b data-hf-id="hf-om28" class="red">FREE</b></div>
+              <div data-hf-id="hf-om29" class="pill" style="right: 0; top: 100px">Gift</div>
+              <div data-hf-id="hf-om30" class="bar" style="top: 290px"><i data-hf-id="hf-om31" id="offer-morph-giftbar"></i></div>
+              <div data-hf-id="hf-om32" class="m" style="left: 0; top: 326px">$12 away from your free gift</div>
+            </div>
+            <!-- 2: bundle builder -->
+            <div data-hf-id="hf-om33" class="st" id="offer-morph-s1">
+              <div data-hf-id="hf-om34" class="h">Complete the set, save 20%</div>
+              <div data-hf-id="hf-om35" class="ph" id="offer-morph-b0" style="left: 0; top: 80px; width: 220px; height: 220px; background-image: url('assets/products/hat-clip.jpg')"></div>
+              <div data-hf-id="hf-om36" class="plus" style="left: 230px; top: 160px">+</div>
+              <div data-hf-id="hf-om37" class="ph" id="offer-morph-b1" style="left: 300px; top: 80px; width: 220px; height: 220px; background-image: url('assets/products/link.jpg')"></div>
+              <div data-hf-id="hf-om38" class="plus" style="left: 530px; top: 160px">+</div>
+              <div data-hf-id="hf-om39" class="ph" id="offer-morph-b2" style="left: 600px; top: 80px; width: 200px; height: 220px; background-image: url('assets/products/flex-clip.jpg')"></div>
+              <div data-hf-id="hf-om40" class="t" style="left: 0; top: 330px"><span data-hf-id="hf-om41" class="red">$63.70</span> <s data-hf-id="hf-om42" style="color: #9a9a9a">$79.70</s></div>
+              <div data-hf-id="hf-om43" class="pill" style="right: 0; top: 328px">Save 20%</div>
+              <div data-hf-id="hf-om44" class="btn" style="top: 410px">Add bundle to cart</div>
+            </div>
+            <!-- 3: buy X get Y -->
+            <div data-hf-id="hf-om45" class="st" id="offer-morph-s2">
+              <div data-hf-id="hf-om46" class="h">Buy 2 LINK, get 1 FLEX free</div>
+              <div data-hf-id="hf-om47" class="ph" style="left: 0; top: 80px; width: 340px; height: 230px; background-image: url('assets/products/link.jpg')"></div>
+              <div data-hf-id="hf-om48" class="m" style="left: 16px; top: 96px; color: #fff; font-weight: 600">× 2</div>
+              <div data-hf-id="hf-om49" class="plus" id="offer-morph-arrow" style="left: 370px; top: 165px">→</div>
+              <div data-hf-id="hf-om50" class="ph" id="offer-morph-yph" style="left: 460px; top: 80px; width: 340px; height: 230px; background-image: url('assets/products/flex-clip.jpg')"></div>
+              <div data-hf-id="hf-om51" class="pill" id="offer-morph-free" style="left: 476px; top: 96px">FREE</div>
+              <div data-hf-id="hf-om52" class="btn" style="top: 340px">Claim free FLEX Clip</div>
+            </div>
+            <!-- 4: volume / quantity breaks -->
+            <div data-hf-id="hf-om53" class="st" id="offer-morph-s3">
+              <div data-hf-id="hf-om54" class="h">Buy more, save more</div>
+              <div data-hf-id="hf-om55" class="opt" style="top: 76px">
+                <div data-hf-id="hf-om56" class="ph" style="left: 20px; top: 15px; width: 94px; height: 94px; background-image: url('assets/products/link.jpg')"></div>
+                <div data-hf-id="hf-om57" class="t" style="left: 140px; top: 38px">1 Clip</div>
+                <div data-hf-id="hf-om58" class="t" style="right: 30px; top: 38px">$25.46</div>
+              </div>
+              <div data-hf-id="hf-om59" class="opt" id="offer-morph-o2" style="top: 226px; height: 170px">
+                <div data-hf-id="hf-om60" class="ph" style="left: 20px; top: 38px; width: 94px; height: 94px; background-image: url('assets/products/link.jpg')"></div>
+                <div data-hf-id="hf-om61" class="pill" style="left: 140px; top: 22px">Most Popular</div>
+                <div data-hf-id="hf-om62" class="pill" style="left: 390px; top: 22px">Save $15</div>
+                <div data-hf-id="hf-om63" class="t" style="left: 140px; top: 94px">3 Clips</div>
+                <div data-hf-id="hf-om64" class="t red" style="right: 30px; top: 60px">$61.35</div>
+                <div data-hf-id="hf-om65" class="m" style="right: 30px; top: 108px"><s data-hf-id="hf-om66">$76.38</s></div>
+              </div>
+              <div data-hf-id="hf-om67" class="btn" style="top: 426px">Add to cart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // OFFER MORPH (Figma "feature morph: FG -> BB -> BXGY -> PV"). One widget card changes shape through the four Upnova offers.
+          // Each offer gets STEP seconds: its number, title and progress segment swap while the card resizes to fit it.
+          var D = 6;
+          var START = 0.35, STEP = 1.35;
+          var HEIGHTS = [440, 610, 530, 620]; // the card's height for each offer
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("offer-morph-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+          tl.fromTo($("slats"), { x: -60 }, { x: 60, duration: D, ease: "none" }, 0);
+          tl.fromTo($("segs"), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "emilOut" }, 0.15);
+          tl.fromTo($("card"), { opacity: 0, y: 160, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "emilOut" }, 0.1);
+
+          for (var i = 0; i < 4; i++) {
+            var at = START + i * STEP;
+            var last = i === 3;
+            // the number and title rise in, the segment fills over the offer's time
+            tl.fromTo($("n" + i), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "emilOut" }, at);
+            tl.fromTo($("t" + i), { opacity: 0, y: 40, filter: "blur(14px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "emilOut" }, at);
+            tl.fromTo($("g" + i), { scaleX: 0 }, { scaleX: 1, duration: STEP, ease: "none" }, at);
+            // the card resizes to this offer, and its content cross-fades in
+            if (i > 0) tl.to($("card"), { height: HEIGHTS[i], duration: 0.55, ease: "emilInOut" }, at - 0.1);
+            else tl.set($("card"), { height: HEIGHTS[0] }, 0);
+            tl.fromTo($("s" + i), { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, at + 0.1);
+            if (!last) {
+              var out = at + STEP - 0.2;
+              tl.to([$("n" + i), $("t" + i)], { opacity: 0, y: -20, filter: "blur(10px)", duration: 0.25, ease: "emilOut" }, out);
+              tl.to($("s" + i), { opacity: 0, y: -24, filter: "blur(10px)", duration: 0.25, ease: "emilOut" }, out);
+            }
+          }
+          // one small side effect per offer
+          tl.fromTo($("giftbar"), { scaleX: 0.2 }, { scaleX: 0.84, duration: 0.9, ease: "emilOut" }, START + 0.3);
+          tl.fromTo([$("b0"), $("b1"), $("b2")], { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.45, ease: "emilOut", stagger: 0.1 }, START + STEP + 0.2);
+          tl.fromTo($("arrow"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "emilOut" }, START + 2 * STEP + 0.3);
+          tl.fromTo($("free"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.45, ease: "emilOut" }, START + 2 * STEP + 0.5);
+          tl.fromTo($("o2"), { borderColor: "#e2e0db" }, { borderColor: "#1a1a1a", duration: 0.3, ease: "emilOut" }, START + 3 * STEP + 0.5);
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["offer-morph"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

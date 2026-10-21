@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond.ttf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="caption-guide"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; letter-spacing: -1px; }
+        [data-composition-id="caption-guide"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="caption-guide"] .screen video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; }
+        [data-composition-id="caption-guide"] .topshade { position: absolute; left: 0; right: 0; top: 0; height: 760px; background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%); }
+
+        /* step tracker */
+        [data-composition-id="caption-guide"] .guide { position: absolute; left: 60px; right: 60px; top: 290px; height: 300px; border-radius: 36px; background: rgba(8, 10, 8, 0.78); border: 2px solid rgba(255, 255, 255, 0.12); }
+        [data-composition-id="caption-guide"] .steps { position: absolute; left: 30px; right: 30px; top: 28px; height: 64px; display: flex; gap: 14px; }
+        [data-composition-id="caption-guide"] .step { position: relative; flex: 1; height: 64px; border-radius: 32px; display: flex; align-items: center; gap: 12px; padding-left: 10px; font-size: 32px; font-weight: 500; letter-spacing: -0.5px; white-space: nowrap; color: rgba(255, 255, 255, 0.45); }
+        [data-composition-id="caption-guide"] .step b { display: block; width: 44px; height: 44px; border-radius: 22px; background: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.7); text-align: center; font-size: 26px; line-height: 44px; font-weight: 700; flex-shrink: 0; letter-spacing: 0; }
+        [data-composition-id="caption-guide"] .segs { position: absolute; left: 30px; right: 30px; top: 112px; height: 8px; display: flex; gap: 14px; }
+        [data-composition-id="caption-guide"] .seg { position: relative; flex: 1; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.14); overflow: hidden; }
+        [data-composition-id="caption-guide"] .seg i { position: absolute; inset: 0; background: #c5eea8; transform-origin: 0% 50%; }
+        [data-composition-id="caption-guide"] .note { position: absolute; left: 34px; right: 34px; top: 146px; height: 120px; font-size: 40px; line-height: 56px; font-weight: 400; letter-spacing: -0.5px; color: rgba(255, 255, 255, 0.92); opacity: 0; }
+        [data-composition-id="caption-guide"] .note em { font-style: normal; color: #c5eea8; font-weight: 500; }
+
+        /* steps 1 and 2: the working panel */
+        [data-composition-id="caption-guide"] .panel { position: absolute; left: 60px; right: 60px; top: 1180px; height: 470px; border-radius: 36px; background: rgba(8, 10, 8, 0.84); border: 2px solid rgba(255, 255, 255, 0.12); }
+        [data-composition-id="caption-guide"] .ptitle { position: absolute; left: 36px; top: 26px; height: 40px; font-size: 28px; line-height: 40px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); white-space: nowrap; opacity: 0; }
+        [data-composition-id="caption-guide"] .chips { position: absolute; left: 30px; right: 30px; top: 84px; height: 360px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 12px; }
+        [data-composition-id="caption-guide"] .chip { height: 74px; padding: 0 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.1); display: flex; align-items: baseline; gap: 8px; font-size: 40px; line-height: 74px; font-weight: 500; white-space: nowrap; opacity: 0; }
+        [data-composition-id="caption-guide"] .chip small { font-size: 22px; font-weight: 400; color: #c5eea8; letter-spacing: 0; }
+        [data-composition-id="caption-guide"] .phrases { position: absolute; left: 30px; right: 30px; top: 84px; height: 360px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 16px; }
+        [data-composition-id="caption-guide"] .phrase { height: 96px; padding: 0 28px; border-radius: 22px; background: rgba(255, 255, 255, 0.1); font-size: 48px; line-height: 96px; font-weight: 500; white-space: nowrap; opacity: 0; }
+
+        /* step 3: the finished captions, house style */
+        [data-composition-id="caption-guide"] .caps { position: absolute; left: 60px; right: 60px; top: 1110px; height: 260px; }
+        [data-composition-id="caption-guide"] .cap { position: absolute; left: 0; right: 0; top: 0; height: 260px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 92px; line-height: 108px; font-weight: 700; letter-spacing: -0.08em; white-space: nowrap; opacity: 0; }
+        [data-composition-id="caption-guide"] .cap span { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45); }
+        [data-composition-id="caption-guide"] .cap .hi { font-family: "Apple Garamond", serif; font-weight: 700; font-size: 1.2em; letter-spacing: -0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+      </style>
+      <div data-hf-id="hf-cg01" id="caption-guide-root" data-composition-id="caption-guide" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-cg02" class="screen" id="caption-guide-screen">
+          <video data-hf-id="hf-cg03" id="caption-guide-video" class="clip" src="assets/guides/caption-example.mp4" data-start="0" data-duration="14.08" data-track-index="1" data-has-audio="true" playsinline></video>
+          <div data-hf-id="hf-cg04" class="topshade"></div>
+          <div data-hf-id="hf-cg05" class="guide" id="caption-guide-guide">
+            <div data-hf-id="hf-cg06" class="steps">
+              <div data-hf-id="hf-cg07" class="step" id="caption-guide-st0"><b data-hf-id="hf-cg08">1</b>Transcribe</div>
+              <div data-hf-id="hf-cg09" class="step" id="caption-guide-st1"><b data-hf-id="hf-cg10">2</b>Group</div>
+              <div data-hf-id="hf-cg11" class="step" id="caption-guide-st2"><b data-hf-id="hf-cg12">3</b>Style + sync</div>
+            </div>
+            <div data-hf-id="hf-cg13" class="segs">
+              <div data-hf-id="hf-cg14" class="seg"><i data-hf-id="hf-cg15" id="caption-guide-g0"></i></div>
+              <div data-hf-id="hf-cg16" class="seg"><i data-hf-id="hf-cg17" id="caption-guide-g1"></i></div>
+              <div data-hf-id="hf-cg18" class="seg"><i data-hf-id="hf-cg19" id="caption-guide-g2"></i></div>
+            </div>
+            <div data-hf-id="hf-cg20" class="note" id="caption-guide-n0" data-layout-allow-overlap="">Get every word with its start time, then <em data-hf-id="hf-4lco">check it against the audio</em>.</div>
+            <div data-hf-id="hf-cg21" class="note" id="caption-guide-n1" data-layout-allow-overlap="">Show <em data-hf-id="hf-tqs5">3–4 words at a time</em>. Never split a name or an offer.</div>
+            <div data-hf-id="hf-cg22" class="note" id="caption-guide-n2" data-layout-allow-overlap="">Inter Bold, very tight, below the middle. Key words in <em data-hf-id="hf-dze8">glass green Garamond</em>.</div>
+          </div>
+          <div data-hf-id="hf-cg23" class="panel" id="caption-guide-panel">
+            <div data-hf-id="hf-cg24" class="ptitle" id="caption-guide-pt0" data-layout-allow-overlap="">Words + start times</div>
+            <div data-hf-id="hf-cg25" class="ptitle" id="caption-guide-pt1" data-layout-allow-overlap="">Phrases, shown all at once</div>
+            <div data-hf-id="hf-cg26" class="chips" id="caption-guide-chips"></div>
+            <div data-hf-id="hf-cg27" class="phrases" id="caption-guide-phrases"></div>
+          </div>
+          <div data-hf-id="hf-cg28" class="caps" id="caption-guide-caps"></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // HOW TO ADD CAPTIONS. A 3-step guide played over a real talking-head clip:
+          // 1 Transcribe (words pop in with their start times), 2 Group (3-4 word phrases light up as spoken),
+          // 3 Style + sync (the finished house-style captions). Times are seconds in the clip, checked against its pauses.
+          var D = 14.08;
+          var STEPS = [0, 4.6, 9.9];
+          var WORDS = [["And", 0.23], ["at", 0.28], ["the", 0.33], ["end", 0.45], ["of", 0.62], ["this,", 0.73], ["you'll", 1.36], ["hear", 1.43], ["straight", 1.64], ["from", 2.19], ["the", 2.24], ["founders", 2.47], ["about", 3.02], ["what", 3.28], ["result", 3.56], ["they", 4.13], ["got.", 4.32]];
+          var PHRASES = [["Here's the deal.", 5.39, 6.42], ["We do one thing,", 6.42, 7.71], ["and we do it", 7.71, 8.58], ["really well.", 8.58, 9.9]];
+          // final captions: [start, end, html]. Wrap key words in <span class="hi">.
+          var CAPS = [[10.22, 11.70, "We get your customers"], [11.70, 13.48, "to <span class=\"hi\">buy more.</span>"], [13.48, 14.0, "That's it."]];
+
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("caption-guide-" + id); };
+
+          // build the chips, phrases and captions
+          WORDS.forEach(function (w, i) {
+            var c = document.createElement("div");
+            c.className = "chip"; c.id = "caption-guide-w" + i;
+            c.innerHTML = w[0] + "<small>" + w[1].toFixed(2) + "s</small>";
+            $("chips").appendChild(c);
+          });
+          PHRASES.forEach(function (p, i) {
+            var c = document.createElement("div");
+            c.className = "phrase"; c.id = "caption-guide-p" + i; c.textContent = p[0];
+            $("phrases").appendChild(c);
+          });
+          CAPS.forEach(function (g, i) {
+            var c = document.createElement("div");
+            c.className = "cap"; c.id = "caption-guide-c" + i;
+            c.setAttribute("data-layout-allow-overlap", "");
+            c.innerHTML = "<div><span>" + g[2].replace(/<span class="hi">(.*?)<\/span>/g, "</span><span class=\"hi\">$1</span><span>") + "</span></div>";
+            $("caps").appendChild(c);
+          });
+
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "emilOut" }, 0);
+          tl.fromTo($("guide"), { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.6, ease: "emilOut" }, 0.05);
+
+          // tracker: the active step lights up, its segment fills over the step, its note swaps in
+          STEPS.forEach(function (at, i) {
+            var end = i < 2 ? STEPS[i + 1] : D;
+            tl.fromTo($("st" + i), { color: "rgba(255,255,255,0.45)" }, { color: "#ffffff", duration: 0.25 }, at + 0.05);
+            tl.fromTo($("st" + i).querySelector("b"), { backgroundColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.7)" }, { backgroundColor: "#c5eea8", color: "#0b0d0a", duration: 0.25 }, at + 0.05);
+            tl.fromTo($("g" + i), { scaleX: 0 }, { scaleX: 1, duration: end - at, ease: "none" }, at);
+            tl.fromTo($("n" + i), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "emilOut" }, at + 0.1);
+            if (i < 2) {
+              tl.to($("n" + i), { opacity: 0, y: -10, duration: 0.2, ease: "emilOut" }, end - 0.2);
+              tl.to($("st" + i), { color: "rgba(255,255,255,0.6)", duration: 0.25 }, end);
+            }
+          });
+
+          // step 1: each word pops in with its time when it is spoken
+          tl.fromTo($("panel"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "emilOut" }, 0.05);
+          tl.fromTo($("pt0"), { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.15);
+          WORDS.forEach(function (w, i) {
+            tl.fromTo($("w" + i), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, ease: "emilOut" }, w[1]);
+          });
+          tl.to([$("chips"), $("pt0")], { opacity: 0, duration: 0.25, ease: "emilOut" }, STEPS[1] - 0.15);
+
+          // step 2: the phrases sit dim, each lights up green while it is spoken
+          tl.fromTo($("pt1"), { opacity: 0 }, { opacity: 1, duration: 0.3 }, STEPS[1] + 0.1);
+          tl.fromTo(PHRASES.map(function (p, i) { return $("p" + i); }), { opacity: 0, y: 16 }, { opacity: 0.45, y: 0, duration: 0.4, ease: "emilOut", stagger: 0.06 }, STEPS[1] + 0.1);
+          PHRASES.forEach(function (p, i) {
+            tl.to($("p" + i), { opacity: 1, backgroundColor: "#c5eea8", color: "#0b0d0a", duration: 0.15, ease: "emilOut" }, p[1]);
+            tl.to($("p" + i), { opacity: 0.45, backgroundColor: "rgba(255,255,255,0.1)", color: "#ffffff", duration: 0.2, ease: "emilOut" }, p[2] - 0.05);
+          });
+          tl.to($("panel"), { opacity: 0, y: 30, duration: 0.3, ease: "emilOut" }, STEPS[2] - 0.2);
+
+          // step 3: house-style captions, hard cuts: each phrase switches on at its first word and off when the next starts.
+          // No fade, slide or blur between phrases.
+          // emphasis words: a light sheen sweeps across the glass once when the phrase appears
+          function sheen(el, at) {
+            el.querySelectorAll(".hi").forEach(function (h) {
+              tl.fromTo(h, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at + 0.05);
+            });
+          }
+          CAPS.forEach(function (g, i) {
+            tl.set($("c" + i), { opacity: 1 }, g[0]);
+            sheen($("c" + i), g[0]);
+            tl.set($("c" + i), { opacity: 0 }, g[1]);
+          });
+
+          tl.to($("screen"), { opacity: 0, duration: 0.25, ease: "emilOut" }, D - 0.25);
+          window.__timelines["caption-guide"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

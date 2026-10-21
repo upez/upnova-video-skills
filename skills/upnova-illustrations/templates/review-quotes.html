@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="review-quotes"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="review-quotes"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="review-quotes"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="review-quotes"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="review-quotes"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="review-quotes"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="review-quotes"] .card { position: absolute; inset: 0; overflow: hidden; background: #000; opacity: 0; }
+        [data-composition-id="review-quotes"] .photo { position: absolute; left: 0; top: 0; width: 1080px; height: 1080px; background-size: cover; background-repeat: no-repeat; }
+        [data-composition-id="review-quotes"] .fade { position: absolute; left: 0; right: 0; top: 0; height: 1180px; background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0.25) 58%, #000 92%); }
+        [data-composition-id="review-quotes"] .logo { position: absolute; left: 0; right: 0; margin: 0 auto; top: 820px; width: 520px; height: 110px; background-position: center; background-size: contain; background-repeat: no-repeat; filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5)); }
+        [data-composition-id="review-quotes"] .stat { position: absolute; left: 60px; right: 60px; top: 990px; height: 230px; display: flex; justify-content: center; align-items: baseline; gap: 24px; white-space: nowrap; }
+        [data-composition-id="review-quotes"] .num { display: block; font-size: 220px; line-height: 230px; flex-shrink: 0; }
+        [data-composition-id="review-quotes"] .lab { display: block; font-size: 64px; font-weight: 600; letter-spacing: -0.03em; flex-shrink: 0; }
+        [data-composition-id="review-quotes"] .q { position: absolute; left: 90px; right: 90px; top: 1270px; height: 300px; text-align: center; font-size: 58px; line-height: 74px; font-weight: 500; letter-spacing: -0.03em; color: rgba(255, 255, 255, 0.94); }
+        [data-composition-id="review-quotes"] .src { position: absolute; left: 0; right: 0; top: 1610px; height: 70px; display: flex; justify-content: center; align-items: center; gap: 20px; font-size: 56px; line-height: 70px; font-weight: 500; letter-spacing: -0.02em; color: rgba(255, 255, 255, 0.7); white-space: nowrap; }
+        [data-composition-id="review-quotes"] .stars { color: #c5eea8; letter-spacing: 0.04em; }
+      </style>
+      <div data-hf-id="hf-n2jk" id="review-quotes-root" data-composition-id="review-quotes" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-u0s2" class="card" id="review-quotes-c0">
+          <div data-hf-id="hf-86jn" class="photo" id="review-quotes-p0" data-layout-allow-overflow="" style="background-image: url('assets/testimonials/quotes/dailysale-photo.jpg'); background-position: 30% 50%"></div>
+          <div data-hf-id="hf-8ps2" class="fade"></div>
+          <div data-hf-id="hf-pyyj" class="logo" id="review-quotes-l0" role="img" aria-label="DailySale" style="background-image: url('assets/testimonials/quotes/dailysale-logo.png')"></div>
+          <div data-hf-id="hf-y45y" class="stat" id="review-quotes-s0"><span data-hf-id="hf-zkcl" class="num gl" id="review-quotes-n0">+30%</span><span data-hf-id="hf-ydq4" class="lab">conversions</span></div>
+          <div data-hf-id="hf-x0us" class="q" id="review-quotes-q0">“Our average order value has been going up every month. We've seen a 30% boost in conversions.”</div>
+          <div data-hf-id="hf-2u7n" class="src" id="review-quotes-r0"><span data-hf-id="hf-wmgr" class="stars">★★★★★</span>Shopify App Store</div>
+        </div>
+        <div data-hf-id="hf-06hv" class="card" id="review-quotes-c1">
+          <div data-hf-id="hf-2pjy" class="photo" id="review-quotes-p1" data-layout-allow-overflow="" style="background-image: url('assets/testimonials/quotes/redspec-photo.webp'); background-position: 50% 50%"></div>
+          <div data-hf-id="hf-fl5y" class="fade"></div>
+          <div data-hf-id="hf-6edb" class="logo" id="review-quotes-l1" role="img" aria-label="RedSpec" style="background-image: url('assets/testimonials/quotes/redspec-logo.webp')"></div>
+          <div data-hf-id="hf-229z" class="stat" id="review-quotes-s1"><span data-hf-id="hf-fy0u" class="num gl" id="review-quotes-n1">+40%</span><span data-hf-id="hf-uhdg" class="lab">AOV</span></div>
+          <div data-hf-id="hf-up48" class="q" id="review-quotes-q1">“Amazing app, and amazing team. Increased our AOV by about 40% within 30 days.”</div>
+          <div data-hf-id="hf-iga0" class="src" id="review-quotes-r1"><span data-hf-id="hf-b1q3" class="stars">★★★★★</span>Shopify App Store</div>
+        </div>
+        <div data-hf-id="hf-pb08" class="card" id="review-quotes-c2">
+          <div data-hf-id="hf-9yyc" class="photo" id="review-quotes-p2" data-layout-allow-overflow="" style="background-image: url('assets/testimonials/quotes/heritage-photo.png'); background-position: 50% 40%"></div>
+          <div data-hf-id="hf-fzgz" class="fade"></div>
+          <div data-hf-id="hf-m6kz" class="logo" id="review-quotes-l2" role="img" aria-label="Heritage Ring" style="background-image: url('assets/testimonials/quotes/heritage-logo.png')"></div>
+          <div data-hf-id="hf-tee4" class="stat" id="review-quotes-s2"><span data-hf-id="hf-ewin" class="num gl" id="review-quotes-n2" style="font-size: 170px">$89 → $130</span><span data-hf-id="hf-tagd" class="lab">AOV</span></div>
+          <div data-hf-id="hf-p2qn" class="q" id="review-quotes-q2">“Such a great app. It increased my AOV from $89 to $130.”</div>
+          <div data-hf-id="hf-vq8x" class="src" id="review-quotes-r2"><span data-hf-id="hf-anf2" class="stars">★★★★★</span>Shopify App Store</div>
+        </div>
+        <div data-hf-id="hf-hes6" class="card" id="review-quotes-c3">
+          <div data-hf-id="hf-3czi" class="photo" id="review-quotes-p3" data-layout-allow-overflow="" style="background-image: url('assets/testimonials/quotes/phyba-photo.jpg'); background-position: 50% 30%"></div>
+          <div data-hf-id="hf-dlmt" class="fade"></div>
+          <div data-hf-id="hf-zcsb" class="logo" id="review-quotes-l3" role="img" aria-label="Phyba" style="background-image: url('assets/testimonials/quotes/phyba-logo.png')"></div>
+          <div data-hf-id="hf-aq5u" class="stat" id="review-quotes-s3"><span data-hf-id="hf-q9yw" class="num gl" id="review-quotes-n3">+25%</span><span data-hf-id="hf-tore" class="lab">AOV</span></div>
+          <div data-hf-id="hf-ls4k" class="q" id="review-quotes-q3">“We're consistently up 25% in AOV with every order since downloading the app.”</div>
+          <div data-hf-id="hf-e2lb" class="src" id="review-quotes-r3"><span data-hf-id="hf-9ut0" class="stars">★★★★★</span>Shopify App Store</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // REVIEW QUOTES (comment 9). Four more testimonials after the founder videos: the brand's photo, its logo, the result counting up and the review in their words.
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("review-quotes-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          // four founders' written reviews (Shopify App Store, from the Upnova website's testimonials), hard cut every 3.2s
+          var STEP = 3.2;
+          var VALS = [{ value: 30, pre: "+", suf: "%" }, { value: 40, pre: "+", suf: "%" }, { value: 0, pre: "", suf: "" }, { value: 25, pre: "+", suf: "%" }];
+          for (var i = 0; i < VALS.length; i++) {
+            var at = i * STEP;
+            tl.set($("c" + i), { opacity: 1 }, at);
+            tl.fromTo($("p" + i), { scale: 1 }, { scale: 1.06, duration: STEP, ease: "none" }, at);
+            lift($("l" + i), at + 0.05, 0.5);
+            rise($("s" + i), at + 0.2, 0.7);
+            sheen($("n" + i), at + 0.5);
+            rise($("q" + i), at + 0.4, 0.6);
+            rise($("r" + i), at + 0.6, 0.5);
+            (function (i, v) {
+              if (!v.value) return;
+              var c = { v: 0 };
+              tl.fromTo(c, { v: 0 }, { v: v.value, duration: 0.9, ease: "emilOut", onUpdate: function () { $("n" + i).textContent = v.pre + Math.round(c.v) + v.suf; } }, at + 0.2);
+            })(i, VALS[i]);
+            if (i < VALS.length - 1) tl.set($("c" + i), { opacity: 0 }, at + STEP);
+          }
+          window.__timelines["review-quotes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

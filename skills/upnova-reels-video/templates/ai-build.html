@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="ai-build"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+          font-family: "Inter", sans-serif;
+          color: #fff;
+          letter-spacing: -1px;
+        }
+        [data-composition-id="ai-build"] .screen {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0b0d0a;
+        }
+        [data-composition-id="ai-build"] .glow {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 70% 32% at 50% 8%, rgba(197, 238, 168, 0.22), rgba(197, 238, 168, 0) 70%),
+            radial-gradient(ellipse 80% 30% at 50% 100%, rgba(197, 238, 168, 0.1), rgba(197, 238, 168, 0) 70%);
+        }
+        [data-composition-id="ai-build"] .dots {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px);
+          background-size: 44px 44px;
+        }
+        [data-composition-id="ai-build"] .grain {
+          position: absolute;
+          inset: 0;
+          background: url("assets/brand/grain-overlay.png");
+          background-size: 540px;
+          opacity: 0.08;
+        }
+
+        /* logo lockup */
+        [data-composition-id="ai-build"] .brand {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 200px;
+          height: 112px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 26px;
+        }
+        [data-composition-id="ai-build"] .mark {
+          width: 112px;
+          height: 112px;
+          display: block;
+        }
+        [data-composition-id="ai-build"] .wordmark {
+          width: 520px;
+          height: 105px;
+          display: block;
+          filter: brightness(0) invert(1);
+        }
+        [data-composition-id="ai-build"] .tagline {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 350px;
+          height: 60px;
+          text-align: center;
+          font-size: 46px;
+          font-weight: 400;
+          line-height: 60px;
+          color: rgba(255, 255, 255, 0.82);
+          white-space: nowrap;
+        }
+        [data-composition-id="ai-build"] .ai {
+          display: inline-block;
+          font-weight: 500;
+          color: #c5eea8;
+        }
+
+        /* prompt bar */
+        [data-composition-id="ai-build"] .prompt {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 470px;
+          height: 120px;
+          border-radius: 60px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(197, 238, 168, 0.45);
+          box-shadow: 0 0 60px rgba(197, 238, 168, 0.12);
+          display: flex;
+          align-items: center;
+          padding: 0 22px 0 36px;
+          gap: 20px;
+        }
+        [data-composition-id="ai-build"] .spark {
+          width: 60px;
+          height: 60px;
+          display: block;
+          flex-shrink: 0;
+        }
+        [data-composition-id="ai-build"] .typed {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          height: 60px;
+          font-size: 38px;
+          font-weight: 400;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        [data-composition-id="ai-build"] .placeholder {
+          color: rgba(255, 255, 255, 0.35);
+        }
+        [data-composition-id="ai-build"] .caret {
+          display: inline-block;
+          width: 3px;
+          height: 44px;
+          margin-left: 4px;
+          border-radius: 2px;
+          background: #c5eea8;
+        }
+        [data-composition-id="ai-build"] .send {
+          width: 76px;
+          height: 76px;
+          flex-shrink: 0;
+          border-radius: 38px;
+          background: #c5eea8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        [data-composition-id="ai-build"] .send svg {
+          width: 38px;
+          height: 38px;
+        }
+
+        /* the system being built */
+        [data-composition-id="ai-build"] .spine {
+          position: absolute;
+          left: 188px;
+          top: 590px;
+          width: 3px;
+          height: 830px;
+          border-radius: 2px;
+          background: linear-gradient(180deg, rgba(197, 238, 168, 0.9), rgba(197, 238, 168, 0.15));
+          transform-origin: 50% 0%;
+        }
+        [data-composition-id="ai-build"] .offer {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          height: 136px;
+          border-radius: 30px;
+          background: rgba(20, 24, 18, 0.92);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+        }
+        [data-composition-id="ai-build"] .lit {
+          position: absolute;
+          inset: 0;
+          border-radius: 28px;
+          border: 2px solid rgba(197, 238, 168, 0.7);
+          background: linear-gradient(90deg, rgba(197, 238, 168, 0.12), rgba(197, 238, 168, 0.02));
+          opacity: 0;
+        }
+        [data-composition-id="ai-build"] .row {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          padding: 0 28px 0 28px;
+          gap: 28px;
+        }
+        [data-composition-id="ai-build"] .tile {
+          width: 106px;
+          height: 86px;
+          flex-shrink: 0;
+          border-radius: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        [data-composition-id="ai-build"] .skel .tile {
+          width: 106px;
+          background: rgba(255, 255, 255, 0.08);
+        }
+        [data-composition-id="ai-build"] .bars {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        [data-composition-id="ai-build"] .bar {
+          height: 18px;
+          border-radius: 9px;
+          background: rgba(255, 255, 255, 0.09);
+        }
+        [data-composition-id="ai-build"] .real {
+          opacity: 0;
+        }
+        [data-composition-id="ai-build"] .real .tile {
+          background: #c5eea8;
+        }
+        [data-composition-id="ai-build"] .real .tile svg {
+          width: 46px;
+          height: 46px;
+        }
+        [data-composition-id="ai-build"] .name {
+          flex: 1;
+          font-size: 46px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        [data-composition-id="ai-build"] .live {
+          flex-shrink: 0;
+          height: 54px;
+          padding: 0 20px 0 14px;
+          border-radius: 27px;
+          background: rgba(197, 238, 168, 0.16);
+          color: #c5eea8;
+          font-size: 30px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        [data-composition-id="ai-build"] .live svg {
+          width: 30px;
+          height: 30px;
+        }
+        [data-composition-id="ai-build"] .sweep {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 260px;
+          background: linear-gradient(180deg, rgba(197, 238, 168, 0), rgba(197, 238, 168, 0.16), rgba(197, 238, 168, 0));
+        }
+
+        /* based on your data */
+        [data-composition-id="ai-build"] .data {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 1560px;
+          height: 100px;
+          display: flex;
+          justify-content: center;
+        }
+        [data-composition-id="ai-build"] .chip {
+          height: 100px;
+          padding: 0 40px 0 30px;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.06);
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          font-size: 40px;
+          font-weight: 400;
+          white-space: nowrap;
+        }
+        [data-composition-id="ai-build"] .mini {
+          display: flex;
+          align-items: flex-end;
+          gap: 7px;
+          height: 46px;
+        }
+        [data-composition-id="ai-build"] .mini i {
+          display: block;
+          width: 11px;
+          border-radius: 3px;
+          background: #c5eea8;
+          transform-origin: 50% 100%;
+        }
+      </style>
+
+      <div data-hf-id="hf-1qou" id="ai-build-root" data-composition-id="ai-build" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-ec6w" class="screen" id="ai-build-screen">
+          <div data-hf-id="hf-2s7n" class="glow"></div>
+          <div data-hf-id="hf-zx1w" class="dots"></div>
+          <div data-hf-id="hf-h60x" class="grain"></div>
+
+          <div data-hf-id="hf-a6hs" class="brand" id="ai-build-brand">
+            <div data-hf-id="hf-hxyt" id="ai-build-word"><img data-hf-id="hf-rccy" class="wordmark" src="assets/brand/upnova-wordmark.svg" alt="Upnova"></div>
+          </div>
+          <div data-hf-id="hf-nzhb" class="tagline" id="ai-build-tag">now powered by <span data-hf-id="hf-so69" class="ai" id="ai-build-ai">AI</span></div>
+
+          <div data-hf-id="hf-3nsc" class="prompt" id="ai-build-prompt">
+            <img data-hf-id="hf-bgvq" class="spark" id="ai-build-spark" src="assets/brand/upnova-mark.svg" alt="">
+            <div data-hf-id="hf-jzro" class="typed"><span data-hf-id="hf-o78m" class="placeholder" id="ai-build-ph">Ask Upnova…</span><span data-hf-id="hf-9fk5" id="ai-build-text"></span><span data-hf-id="hf-ob4r" class="caret" id="ai-build-caret"></span></div>
+            <div data-hf-id="hf-mctw" class="send" id="ai-build-send"><svg data-hf-id="hf-1lug" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-frf7" d="M12 19V5M6 11l6-6 6 6" /></svg></div>
+          </div>
+
+          <div data-hf-id="hf-vc4g" class="spine" id="ai-build-spine"></div>
+
+          <div data-hf-id="hf-66k5" class="offer" id="ai-build-o0" style="top: 690px">
+            <div data-hf-id="hf-nnnc" class="lit" id="ai-build-o0-lit"></div>
+            <div data-hf-id="hf-m9vi" class="row skel" id="ai-build-o0-skel"><div data-hf-id="hf-f6ek" class="tile"></div><div data-hf-id="hf-umx2" class="bars"><div data-hf-id="hf-82ks" class="bar" style="width: 380px"></div><div data-hf-id="hf-ucqv" class="bar" style="width: 220px"></div></div></div>
+            <div data-hf-id="hf-g09u" class="row real" id="ai-build-o0-real">
+              <div data-hf-id="hf-8r7o" class="tile"><svg data-hf-id="hf-m5p6" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2" stroke-linejoin="round"><rect data-hf-id="hf-f2yr" x="2.5" y="12.5" width="8.5" height="8.5" rx="1.8" /><rect data-hf-id="hf-miz4" x="13" y="12.5" width="8.5" height="8.5" rx="1.8" /><rect data-hf-id="hf-uydi" x="7.75" y="3" width="8.5" height="8.5" rx="1.8" /></svg></div>
+              <div data-hf-id="hf-6iru" class="name">Bundle builder</div>
+              <div data-hf-id="hf-3o58" class="live" id="ai-build-o0-live"><svg data-hf-id="hf-svph" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-s5bw" d="M5 12.5l4.5 4.5L19 7.5" /></svg>Live</div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-2vvi" class="offer" id="ai-build-o1" style="top: 856px">
+            <div data-hf-id="hf-7295" class="lit" id="ai-build-o1-lit"></div>
+            <div data-hf-id="hf-329p" class="row skel" id="ai-build-o1-skel"><div data-hf-id="hf-7kal" class="tile"></div><div data-hf-id="hf-rgy2" class="bars"><div data-hf-id="hf-kfnb" class="bar" style="width: 440px"></div><div data-hf-id="hf-bi23" class="bar" style="width: 260px"></div></div></div>
+            <div data-hf-id="hf-65bx" class="row real" id="ai-build-o1-real">
+              <div data-hf-id="hf-7ylm" class="tile"><svg data-hf-id="hf-bm6g" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect data-hf-id="hf-rn4g" x="3" y="8.5" width="18" height="4.5" rx="1.2" /><path data-hf-id="hf-o5tu" d="M5 13v8h14v-8M12 8.5V21M12 8.5C10.5 5 6.5 4.5 6.5 6.8 6.5 8.2 9 8.5 12 8.5zM12 8.5c1.5-3.5 5.5-4 5.5-1.7 0 1.4-2.5 1.7-5.5 1.7z" /></svg></div>
+              <div data-hf-id="hf-ymik" class="name">Free gift with purchase</div>
+              <div data-hf-id="hf-xazr" class="live" id="ai-build-o1-live"><svg data-hf-id="hf-p23d" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-ceb8" d="M5 12.5l4.5 4.5L19 7.5" /></svg>Live</div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-w2t5" class="offer" id="ai-build-o2" style="top: 1022px">
+            <div data-hf-id="hf-l11e" class="lit" id="ai-build-o2-lit"></div>
+            <div data-hf-id="hf-ulao" class="row skel" id="ai-build-o2-skel"><div data-hf-id="hf-9y4r" class="tile"></div><div data-hf-id="hf-rv93" class="bars"><div data-hf-id="hf-f7u0" class="bar" style="width: 340px"></div><div data-hf-id="hf-7hbx" class="bar" style="width: 200px"></div></div></div>
+            <div data-hf-id="hf-lqb0" class="row real" id="ai-build-o2-real">
+              <div data-hf-id="hf-acfs" class="tile"><svg data-hf-id="hf-7t6o" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-e0v5" d="M2.5 4h2.6l2.4 11h11.2l2.3-8H6.3" /><circle data-hf-id="hf-5blc" cx="9.5" cy="19.5" r="1.6" /><circle data-hf-id="hf-mcf2" cx="17" cy="19.5" r="1.6" /></svg></div>
+              <div data-hf-id="hf-1v43" class="name">Order volume</div>
+              <div data-hf-id="hf-j73y" class="live" id="ai-build-o2-live"><svg data-hf-id="hf-q90g" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-b7e5" d="M5 12.5l4.5 4.5L19 7.5" /></svg>Live</div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-h6i5" class="offer" id="ai-build-o3" style="top: 1188px">
+            <div data-hf-id="hf-99wj" class="lit" id="ai-build-o3-lit"></div>
+            <div data-hf-id="hf-hu7r" class="row skel" id="ai-build-o3-skel"><div data-hf-id="hf-95ip" class="tile"></div><div data-hf-id="hf-s9k4" class="bars"><div data-hf-id="hf-r6fv" class="bar" style="width: 400px"></div><div data-hf-id="hf-iflt" class="bar" style="width: 240px"></div></div></div>
+            <div data-hf-id="hf-anzj" class="row real" id="ai-build-o3-real">
+              <div data-hf-id="hf-9jtq" class="tile"><svg data-hf-id="hf-6m9l" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-l31l" d="M12 3l9 4.8-9 4.8-9-4.8z" /><path data-hf-id="hf-hoaq" d="M3 12.2l9 4.8 9-4.8M3 16.6l9 4.8 9-4.8" /></svg></div>
+              <div data-hf-id="hf-mcrm" class="name">Product volume</div>
+              <div data-hf-id="hf-yy3l" class="live" id="ai-build-o3-live"><svg data-hf-id="hf-pupf" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-blp6" d="M5 12.5l4.5 4.5L19 7.5" /></svg>Live</div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-3mcr" class="offer" id="ai-build-o4" style="top: 1354px">
+            <div data-hf-id="hf-ap2k" class="lit" id="ai-build-o4-lit"></div>
+            <div data-hf-id="hf-tllm" class="row skel" id="ai-build-o4-skel"><div data-hf-id="hf-bjcv" class="tile"></div><div data-hf-id="hf-snv5" class="bars"><div data-hf-id="hf-kkse" class="bar" style="width: 360px"></div><div data-hf-id="hf-po4a" class="bar" style="width: 210px"></div></div></div>
+            <div data-hf-id="hf-aige" class="row real" id="ai-build-o4-real">
+              <div data-hf-id="hf-bxnw" class="tile"><svg data-hf-id="hf-70km" viewBox="0 0 24 24" fill="none" stroke="#0b0d0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-8hg4" d="M3 12V3.5h8.5L21 13l-8 8z" /><circle data-hf-id="hf-5ts3" cx="7.6" cy="7.6" r="1.6" /></svg></div>
+              <div data-hf-id="hf-539m" class="name">Buy X, get Y</div>
+              <div data-hf-id="hf-l8aw" class="live" id="ai-build-o4-live"><svg data-hf-id="hf-nv6a" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-dl8b" d="M5 12.5l4.5 4.5L19 7.5" /></svg>Live</div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-48hs" class="sweep" id="ai-build-sweep"></div>
+
+          <div data-hf-id="hf-ibww" class="data" id="ai-build-data">
+            <div data-hf-id="hf-sqmm" class="chip">
+              <div data-hf-id="hf-x34l" class="mini"><i data-hf-id="hf-lgd9" id="ai-build-b0" style="height: 18px"></i><i data-hf-id="hf-vu7g" id="ai-build-b1" style="height: 30px"></i><i data-hf-id="hf-o9qi" id="ai-build-b2" style="height: 24px"></i><i data-hf-id="hf-81u9" id="ai-build-b3" style="height: 46px"></i></div>
+              <div data-hf-id="hf-sxgg">Built from <span data-hf-id="hf-nfj7" class="ai">your store data</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("ai-build-" + id); };
+          // Spoken times in the full video, turned into this section's local time (it starts at 60.21s).
+          var T = function (abs) { return abs - 60.21; };
+          function rise(el, at, dur) {
+            tl.fromTo(el, { opacity: 0, y: 36, scale: 1.04, filter: "blur(14px)" },
+              { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: dur || 0.9, ease: "emilOut" }, at);
+          }
+
+          // Screen opens as a circle from the middle, over the camera shot ("Upnova")
+          tl.fromTo($("screen"), { clipPath: "circle(0% at 50% 50%)" },
+            { clipPath: "circle(75% at 50% 50%)", duration: 0.6, ease: "emilInOut" }, 0);
+
+          // Logo rises in out of a blur
+          tl.fromTo($("word"), { opacity: 0, y: 30, scale: 0.9, filter: "blur(14px)" },
+            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }, 0.25);
+
+          // "which is now powered by AI"
+          rise($("tag"), T(61.1), 0.8);
+          tl.fromTo($("ai"), { textShadow: "0 0 0px rgba(197,238,168,0)" },
+            { textShadow: "0 0 24px rgba(197,238,168,0.7)", duration: 0.5, ease: "emilOut" }, T(62.22));
+
+          // Prompt bar arrives, then types along with "build your entire upsell system"
+          rise($("prompt"), T(61.85), 0.8);
+          tl.fromTo($("spark"), { rotation: 0 }, { rotation: 360, duration: 0.6, ease: "emilInOut" }, T(62.2));
+          tl.fromTo($("caret"), { opacity: 1 }, { opacity: 0.15, duration: 0.25, ease: "steps(1)", yoyo: true, repeat: 11 }, T(61.9));
+          tl.set($("ph"), { display: "none" }, T(62.64));
+          var msg = "Build my entire upsell system";
+          var typed = { n: 0 };
+          tl.fromTo(typed, { n: 0 }, {
+            n: msg.length, duration: 1.85, ease: "none",
+            onUpdate: function () { $("text").textContent = msg.slice(0, Math.round(typed.n)); }
+          }, T(62.66));
+
+          // Send is pressed, the line runs down and five empty slots appear
+          tl.fromTo($("send"), { scale: 1 }, { scale: 0.97, duration: 0.08, ease: "emilOut" }, T(64.66));
+          tl.to($("send"), { scale: 1, duration: 0.16, ease: "emilOut" }, T(64.74));
+          tl.fromTo($("spine"), { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "emilInOut" }, T(64.7));
+          for (var i = 0; i < 5; i++) {
+            tl.fromTo($("o" + i), { opacity: 0, y: 30, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "emilOut" }, T(64.72) + i * 0.07);
+          }
+
+          // "in one go": every offer fills in at once, with a light sweep down the stack
+          for (var j = 0; j < 5; j++) {
+            var at = T(65.1) + j * 0.03;
+            tl.to($("o" + j + "-skel"), { opacity: 0, duration: 0.18, ease: "emilOut" }, at);
+            tl.fromTo($("o" + j + "-real"), { opacity: 0, x: -24, filter: "blur(10px)" },
+              { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, at);
+            tl.fromTo($("o" + j + "-lit"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "emilOut" }, at);
+            // each one goes live, one after another
+            tl.fromTo($("o" + j + "-live"), { opacity: 0, scale: 0.95 },
+              { opacity: 1, scale: 1, duration: 0.4, ease: "emilOut" }, T(65.4) + j * 0.1);
+          }
+          tl.fromTo($("sweep"), { y: 560, opacity: 0 }, { y: 1300, opacity: 1, duration: 0.55, ease: "emilInOut" }, T(65.08));
+          tl.to($("sweep"), { opacity: 0, duration: 0.2 }, T(65.5));
+          tl.fromTo($("prompt"), { borderColor: "rgba(197,238,168,0.45)" }, { borderColor: "rgba(197,238,168,1)", duration: 0.3, ease: "emilOut" }, T(65.1));
+
+          // "based on your data"
+          rise($("data"), T(65.3), 0.7);
+          for (var k = 0; k < 4; k++) {
+            tl.fromTo($("b" + k), { scaleY: 0.1 }, { scaleY: 1, duration: 0.45, ease: "emilOut" }, T(65.5) + k * 0.08);
+          }
+
+          // Hand back to the camera
+          tl.to($("screen"), { opacity: 0, scale: 1.04, duration: 0.3, ease: "emilOut" }, T(66.26));
+
+          window.__timelines["ai-build"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

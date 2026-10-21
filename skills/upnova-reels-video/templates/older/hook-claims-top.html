@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style data-hf-studio-fonts="true">
+@font-face { font-family: "Inter Tight"; src: url("../assets/fonts/Inter Tight/InterTight-Variable.ttf"); font-weight: 100 900; font-style: normal; font-display: swap; }
+</style>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+          font-family: "Inter", sans-serif;
+          color: #fff;
+        }
+        [data-composition-id="hook"] .scrim {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 820px;
+          background: linear-gradient(180deg, rgba(6, 8, 5, 0.72) 0%, rgba(6, 8, 5, 0.5) 45%, rgba(6, 8, 5, 0) 100%);
+        }
+        [data-composition-id="hook"] .stage {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 112px;
+          height: 380px;
+        }
+        [data-composition-id="hook"] .card {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        [data-composition-id="hook"] .card > * {
+          flex-shrink: 0;
+        }
+        [data-composition-id="hook"] .slot {
+          position: relative;
+          width: 100%;
+        }
+        [data-composition-id="hook"] .alt {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          white-space: nowrap;
+        }
+        [data-composition-id="hook"] .eyebrow {
+          height: 56px;
+          font-size: 40px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 56px;
+          color: rgba(255, 255, 255, 0.78);
+        }
+        [data-composition-id="hook"] .sub {
+          height: 62px;
+          font-size: 46px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 62px;
+        }
+        [data-composition-id="hook"] .big {
+          font-size: 168px;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: -6px;
+          white-space: nowrap;
+          padding: 0.04em 0 0.08em;
+        }
+        [data-composition-id="hook"] .grad {
+          background: linear-gradient(180deg, #ffffff 10%, #c4eda7 95%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        [data-composition-id="hook"] .green {
+          color: #c4eda7;
+        }
+        [data-composition-id="hook"] .part {
+          display: inline-block;
+        }
+        [data-composition-id="hook"] .stats {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 56px;
+          margin-top: 10px;
+        }
+        [data-composition-id="hook"] .stat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        [data-composition-id="hook"] .stat .big {
+          font-size: 132px;
+          letter-spacing: -5px;
+        }
+        [data-composition-id="hook"] .stat .label {
+          font-size: 38px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          color: rgba(255, 255, 255, 0.82);
+          margin-top: 4px;
+        }
+        [data-composition-id="hook"] .divider {
+          width: 2px;
+          height: 170px;
+          margin-top: 14px;
+          background: linear-gradient(180deg, rgba(196, 237, 167, 0), rgba(196, 237, 167, 0.8), rgba(196, 237, 167, 0));
+          transform-origin: 50% 50%;
+        }
+        [data-composition-id="hook"] .track {
+          width: 520px;
+          height: 4px;
+          border-radius: 2px;
+          margin: 6px auto 14px;
+          background: rgba(255, 255, 255, 0.18);
+          overflow: hidden;
+        }
+        [data-composition-id="hook"] .fill {
+          width: 100%;
+          height: 100%;
+          background: #c4eda7;
+          transform-origin: 0% 50%;
+        }
+        [data-composition-id="hook"] .serious {
+          font-size: 132px;
+          font-weight: 500;
+          letter-spacing: -5px;
+        }
+        [data-composition-id="hook"] .days {
+          position: relative;
+          display: inline-block;
+        }
+        [data-composition-id="hook"] .strike {
+          position: absolute;
+          left: -4%;
+          right: -4%;
+          top: 54%;
+          height: 8px;
+          border-radius: 4px;
+          background: #c4eda7;
+          transform-origin: 0% 50%;
+        }
+      </style>
+
+      <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-p95g" class="scrim" id="hook-scrim"></div>
+        <div data-hf-id="hf-bg1s" class="stage" id="hook-stage">
+
+          <div data-hf-id="hf-d5vq" class="card" id="hook-c1">
+            <div data-hf-id="hf-173p" class="slot eyebrow">
+              <div data-hf-id="hf-ojn3" class="alt" id="hook-c1-e1">What I'm about to show you</div>
+              <div style="font-size: 42px; font-family: Inter Tight" data-hf-id="hf-6fp7" class="alt" id="hook-c1-e2">will boost your average value</div>
+            </div>
+            <div data-hf-id="hf-axjv" class="big" id="hook-c1-big"><span data-hf-id="hf-8jyu" class="part grad" id="hook-c1-from">10</span><span data-hf-id="hf-n40o" class="part grad" id="hook-c1-to">–<span data-hf-id="hf-7wzy" id="hook-c1-num">10</span>%</span></div>
+            <div data-hf-id="hf-kumy" class="slot sub">
+              <div data-hf-id="hf-o3zp" class="alt" id="hook-c1-s1">more.</div>
+              <div data-hf-id="hf-du88" class="alt" id="hook-c1-s2">Or else you <span data-hf-id="hf-e30w" class="green">don't pay.</span></div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-97rp" class="card" id="hook-c2">
+            <div data-hf-id="hf-gevn" class="serious" id="hook-c2-t">I'm serious.</div>
+          </div>
+
+          <div data-hf-id="hf-8g3w" class="card" id="hook-c3">
+            <div data-hf-id="hf-j889" class="slot eyebrow"><div data-hf-id="hf-tvcw" class="alt" id="hook-c3-e">This has worked for over</div></div>
+            <div data-hf-id="hf-rhep" class="stats">
+              <div data-hf-id="hf-2xoe" class="stat" id="hook-c3-a">
+                <div data-hf-id="hf-5def" class="big grad"><span data-hf-id="hf-tzz0" id="hook-c3-n1">0</span>+</div>
+                <div data-hf-id="hf-i9xu" class="label" id="hook-c3-l1">stores</div>
+              </div>
+              <div data-hf-id="hf-0vbt" class="divider" id="hook-c3-div"></div>
+              <div data-hf-id="hf-yzkd" class="stat" id="hook-c3-b">
+                <div data-hf-id="hf-qs26" class="big grad">$<span data-hf-id="hf-f6a5" id="hook-c3-n2">0</span>M+</div>
+                <div data-hf-id="hf-0bt5" class="label" id="hook-c3-l2">in upsell revenue</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-vxlf" class="card" id="hook-c4">
+            <div data-hf-id="hf-kf5c" class="slot eyebrow"><div data-hf-id="hf-0rrc" class="alt" id="hook-c4-e">All it takes is</div></div>
+            <div data-hf-id="hf-vf1u" class="big"><span data-hf-id="hf-ddwk" class="part grad" id="hook-c4-3">3</span> <span data-hf-id="hf-99kx" class="part grad" id="hook-c4-min">minutes</span></div>
+            <div data-hf-id="hf-xyb0" class="track" id="hook-c4-track"><div data-hf-id="hf-k9ve" class="fill" id="hook-c4-fill"></div></div>
+            <div data-hf-id="hf-61by" class="slot sub">
+              <div data-hf-id="hf-6znp" class="alt" id="hook-c4-s1">to get your stuff done</div>
+              <div data-hf-id="hf-ln8q" class="alt" id="hook-c4-s2">from A to Z,</div>
+              <div data-hf-id="hf-gb4w" class="alt" id="hook-c4-s3">and boost your <span data-hf-id="hf-81ee" class="green">AOV.</span></div>
+            </div>
+          </div>
+
+          <div data-hf-id="hf-rzhe" class="card" id="hook-c5">
+            <div data-hf-id="hf-k0ub" class="slot eyebrow"><div data-hf-id="hf-14nd" class="alt" id="hook-c5-e">I mean</div></div>
+            <div data-hf-id="hf-1x3u" class="big" id="hook-c5-min">Minutes,</div>
+            <div data-hf-id="hf-livu" class="serious green" id="hook-c5-not" style="font-size: 104px; letter-spacing: -4px">not <span data-hf-id="hf-148v" class="days">days.<span data-hf-id="hf-6x7g" class="strike" id="hook-c5-strike"></span></span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("hook-" + id); };
+
+          // Apple-style reveal: rises out of a soft blur and settles to size.
+          function rise(el, at, dur) {
+            tl.fromTo(el, { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" },
+              { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: dur || 1.0, ease: "expo.out" }, at);
+          }
+          function fade(el, at, dur) {
+            tl.to(el, { opacity: 0, y: -20, filter: "blur(10px)", duration: dur || 0.35, ease: "power2.in" }, at);
+          }
+          function card(id, start, end) {
+            var el = $(id);
+            tl.set(el, { opacity: 1, visibility: "visible", y: 0 }, start);
+            tl.to(el, { opacity: 0, y: -24, duration: 0.4, ease: "power2.in" }, end - 0.4);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, end);
+          }
+          function count(el, from, to, at, dur) {
+            var o = { v: from };
+            tl.fromTo(o, { v: from }, {
+              v: to, duration: dur, ease: "power3.out",
+              onUpdate: function () { el.textContent = Math.round(o.v); }
+            }, at);
+          }
+
+          // Light scrim over the wall so the type reads, gone by the cut to the demo
+          tl.fromTo($("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+          tl.to($("scrim"), { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.75);
+
+          // 1. "...boost your average value from 10% to 30% more, or else you don't pay."
+          card("c1", 0.1, 5.7);
+          rise($("c1-e1"), 0.12, 0.9);
+          fade($("c1-e1"), 1.0, 0.25);
+          rise($("c1-e2"), 1.12, 0.9);
+          rise($("c1-from"), 2.82, 0.8);
+          rise($("c1-to"), 3.08, 0.8);
+          count($("c1-num"), 10, 30, 3.08, 0.75);
+          rise($("c1-s1"), 3.82, 0.6);
+          fade($("c1-s1"), 4.38, 0.2);
+          rise($("c1-s2"), 4.5, 0.9);
+
+          // 2. "I'm serious."
+          card("c2", 5.72, 6.42);
+          tl.fromTo($("c2-t"), { opacity: 0, scale: 1.12, filter: "blur(18px)" },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 5.72);
+
+          // 3. "worked for over 600 stores and generated over $60 million in upsell revenue."
+          card("c3", 6.44, 11.35);
+          rise($("c3-e"), 6.44, 0.9);
+          rise($("c3-a"), 7.45, 0.9);
+          count($("c3-n1"), 0, 600, 7.45, 0.9);
+          tl.fromTo($("c3-l1"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 8.0);
+          tl.fromTo($("c3-div"), { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.7, ease: "expo.out" }, 9.1);
+          rise($("c3-b"), 9.3, 0.9);
+          count($("c3-n2"), 0, 60, 9.3, 1.0);
+          tl.fromTo($("c3-l2"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 10.75);
+
+          // 4. "All it takes is three minutes to get your stuff done from A to Z, and boost your AOV."
+          card("c4", 11.35, 17.66);
+          rise($("c4-e"), 11.6, 0.9);
+          rise($("c4-3"), 12.74, 0.9);
+          rise($("c4-min"), 13.22, 0.9);
+          tl.fromTo($("c4-track"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 13.3);
+          tl.fromTo($("c4-fill"), { scaleX: 0 }, { scaleX: 1, duration: 3.6, ease: "power1.inOut" }, 13.4);
+          rise($("c4-s1"), 13.92, 0.8);
+          fade($("c4-s1"), 15.35, 0.25);
+          rise($("c4-s2"), 15.62, 0.7);
+          fade($("c4-s2"), 16.38, 0.2);
+          rise($("c4-s3"), 16.6, 0.8);
+
+          // 5. "I mean minutes, not days."
+          card("c5", 17.68, 20.2);
+          rise($("c5-e"), 17.68, 0.7);
+          rise($("c5-min"), 18.14, 1.0);
+          rise($("c5-not"), 19.04, 0.7);
+          tl.fromTo($("c5-strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.inOut" }, 19.45);
+
+          window.__timelines["hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

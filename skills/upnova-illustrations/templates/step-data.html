@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="step-data"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="step-data"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="step-data"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="step-data"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="step-data"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="step-data"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="step-data"] .stage { position: absolute; inset: 0; perspective: 1800px; perspective-origin: 50% 40%; }
+        [data-composition-id="step-data"] .paper { position: absolute; left: 40px; top: 260px; width: 1000px; height: 1400px; border-radius: 18px; background: #fbfbf8; color: #151715; box-shadow: 0 50px 140px rgba(0, 0, 0, 0.7); overflow: hidden; }
+        [data-composition-id="step-data"] .paper .t { position: absolute; white-space: nowrap; }
+        [data-composition-id="step-data"] .h1 { left: 60px; top: 56px; font-size: 44px; font-weight: 700; letter-spacing: -0.03em; }
+        [data-composition-id="step-data"] .h2 { left: 60px; top: 116px; font-size: 24px; font-weight: 500; color: #6b6f69; }
+        [data-composition-id="step-data"] .brand { position: absolute; right: 60px; top: 66px; width: 170px; height: 38px; background: url("assets/brand/upnova-wordmark.svg") 100% 50% / contain no-repeat; }
+        [data-composition-id="step-data"] .rule { position: absolute; left: 60px; right: 60px; height: 2px; background: #e4e6e1; }
+        [data-composition-id="step-data"] .kpi { position: absolute; top: 196px; width: 204px; height: 196px; border-radius: 18px; background: #f0f2ec; }
+        [data-composition-id="step-data"] .kpi .k { position: absolute; left: 20px; top: 20px; font-size: 20px; font-weight: 600; color: #6b6f69; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; }
+        [data-composition-id="step-data"] .kpi .v { position: absolute; left: 18px; top: 60px; font-size: 56px; font-weight: 700; letter-spacing: -0.05em; white-space: nowrap; }
+        [data-composition-id="step-data"] .kpi .d { position: absolute; left: 20px; top: 138px; height: 36px; padding: 0 12px; border-radius: 18px; background: #151715; color: #c5eea8; font-size: 20px; font-weight: 600; line-height: 36px; white-space: nowrap; }
+        [data-composition-id="step-data"] .kpi.on { background: #151715; color: #fff; }
+        [data-composition-id="step-data"] .kpi.on .k { color: #c5eea8; }
+        [data-composition-id="step-data"] .kpi.on .d { background: #c5eea8; color: #151715; }
+        [data-composition-id="step-data"] .sec { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; color: #151715; }
+        [data-composition-id="step-data"] .lbl { font-size: 18px; font-weight: 500; color: #6b6f69; }
+        [data-composition-id="step-data"] .bar { position: absolute; left: 190px; height: 34px; border-radius: 8px; background: #74c84b; transform-origin: 0% 50%; }
+        [data-composition-id="step-data"] .bar.b2 { background: #a6dd84; }
+        [data-composition-id="step-data"] .bar.b3 { background: #c5eea8; }
+        [data-composition-id="step-data"] .col { position: absolute; bottom: 0; width: 56px; border-radius: 8px 8px 0 0; background: #c5eea8; transform-origin: 50% 100%; }
+        [data-composition-id="step-data"] .col.top { background: #74c84b; }
+        [data-composition-id="step-data"] .chart { position: absolute; overflow: visible; }
+        [data-composition-id="step-data"] .dot { display: inline-block; width: 16px; height: 16px; border-radius: 4px; margin-right: 10px; vertical-align: -1px; }
+        [data-composition-id="step-data"] .tag { top: 120px; background: rgba(11, 13, 10, 0.78); }
+        [data-composition-id="step-data"] .band { position: absolute; left: 0; right: 0; top: 1280px; height: 640px; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.6) 100%); }
+      </style>
+      <div data-hf-id="hf-qym8" id="step-data-root" data-composition-id="step-data" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-trj6" class="screen" id="step-data-screen">
+          <div data-hf-id="hf-0mrv" class="slats" id="step-data-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-tan6" class="stage">
+            <div data-hf-id="hf-flz4" class="paper" id="step-data-paper" data-layout-allow-overlap="">
+              <div data-hf-id="hf-wyae" data-layout-allow-overlap="" class="t h1" style="left: 60px; top: 56px">Store performance report</div>
+              <div data-hf-id="hf-4f40" data-layout-allow-overlap="" class="t h2" style="left: 60px; top: 116px">Last 90 days · Shopify · Sample store</div>
+              <div data-hf-id="hf-vh99" class="brand" role="img" aria-label="Upnova"></div>
+              <div data-hf-id="hf-5flz" class="rule" style="top: 170px"></div>
+              <div data-hf-id="hf-0eqh" class="kpi on" id="step-data-k0" style="left: 60px"><div data-hf-id="hf-rukz" class="k">CVR</div><div data-hf-id="hf-jlg3" class="v" id="step-data-kv0">3.4%</div><div data-hf-id="hf-ro4w" class="d">▲ +0.6 pts</div></div><div data-hf-id="hf-86g2" class="kpi on" id="step-data-k1" style="left: 284px"><div data-hf-id="hf-c4jc" class="k">AOV</div><div data-hf-id="hf-jqn1" class="v" id="step-data-kv1">$72.80</div><div data-hf-id="hf-i0wu" class="d">▲ +$8.10</div></div><div data-hf-id="hf-siht" class="kpi" id="step-data-k2" style="left: 508px"><div data-hf-id="hf-duu1" class="k">Revenue</div><div data-hf-id="hf-cylm" class="v" id="step-data-kv2">$486k</div><div data-hf-id="hf-x3vt" class="d">▲ +18%</div></div><div data-hf-id="hf-d6nh" class="kpi" id="step-data-k3" style="left: 732px"><div data-hf-id="hf-ocne" class="k">Orders</div><div data-hf-id="hf-057i" class="v" id="step-data-kv3">6,684</div><div data-hf-id="hf-j1px" class="d">▲ +9%</div></div>
+              <div data-hf-id="hf-6btg" data-layout-allow-overlap="" class="t sec" style="left: 60px; top: 428px">Revenue</div><div data-hf-id="hf-lo8v" data-layout-allow-overlap="" class="t lbl" style="left: 200px; top: 432px">daily, last 90 days</div>
+              <svg data-hf-id="hf-cckl" class="chart" style="left: 60px; top: 470px" width="880" height="230" viewBox="0 0 880 230"><path data-hf-id="hf-5ugz" d="M0,220 L0.0,141.6 L29.3,125.3 L58.7,119.8 L88.0,127.4 L117.3,141.3 L146.7,150.8 L176.0,148.7 L205.3,137.3 L234.7,125.4 L264.0,122.2 L293.3,129.4 L322.7,140.3 L352.0,144.4 L381.3,135.5 L410.7,116.9 L440.0,98.5 L469.3,90.2 L498.7,94.4 L528.0,104.5 L557.3,110.3 L586.7,105.5 L616.0,92.7 L645.3,81.4 L674.7,80.3 L704.0,90.7 L733.3,105.1 L762.7,112.7 L792.0,107.0 L821.3,91.1 L850.7,74.6 L880.0,67.2 L880,220 Z" fill="rgba(197, 238, 168, 0.45)" id="step-data-area" /><polyline data-hf-id="hf-dabh" id="step-data-line" points="0.0,141.6 29.3,125.3 58.7,119.8 88.0,127.4 117.3,141.3 146.7,150.8 176.0,148.7 205.3,137.3 234.7,125.4 264.0,122.2 293.3,129.4 322.7,140.3 352.0,144.4 381.3,135.5 410.7,116.9 440.0,98.5 469.3,90.2 498.7,94.4 528.0,104.5 557.3,110.3 586.7,105.5 616.0,92.7 645.3,81.4 674.7,80.3 704.0,90.7 733.3,105.1 762.7,112.7 792.0,107.0 821.3,91.1 850.7,74.6 880.0,67.2" fill="none" stroke="#74c84b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" /><line data-hf-id="hf-4k62" x1="0" y1="220" x2="880" y2="220" stroke="#e4e6e1" stroke-width="2" /></svg>
+              <div data-hf-id="hf-1bzs" class="rule" style="top: 726px"></div>
+              <div data-hf-id="hf-ljw2" data-layout-allow-overlap="" class="t sec" style="left: 60px; top: 752px">Best sellers</div>
+              <div data-hf-id="hf-vzse" data-layout-allow-overlap="" class="t lbl" style="left: 60px; top: 800px; width: 124px; overflow: hidden; text-overflow: ellipsis; font-size: 17px; line-height: 34px">Linen Shirt</div><div data-hf-id="hf-rxeq" class="bar" id="step-data-bb0" style="top: 800px; width: 250px"></div><div data-hf-id="hf-mu1s" data-layout-allow-overlap="" class="t lbl" style="left: 450px; top: 800px; line-height: 34px; color: #151715; font-weight: 700">$84k</div><div data-hf-id="hf-sher" data-layout-allow-overlap="" class="t lbl" style="left: 60px; top: 850px; width: 124px; overflow: hidden; text-overflow: ellipsis; font-size: 17px; line-height: 34px">Everyday Tee 3-pack</div><div data-hf-id="hf-21va" class="bar b2" id="step-data-bb1" style="top: 850px; width: 205px"></div><div data-hf-id="hf-kya4" data-layout-allow-overlap="" class="t lbl" style="left: 405px; top: 850px; line-height: 34px; color: #151715; font-weight: 700">$69k</div><div data-hf-id="hf-oeir" data-layout-allow-overlap="" class="t lbl" style="left: 60px; top: 900px; width: 124px; overflow: hidden; text-overflow: ellipsis; font-size: 17px; line-height: 34px">Travel Pants</div><div data-hf-id="hf-bj2g" class="bar b2" id="step-data-bb2" style="top: 900px; width: 165px"></div><div data-hf-id="hf-auu4" data-layout-allow-overlap="" class="t lbl" style="left: 365px; top: 900px; line-height: 34px; color: #151715; font-weight: 700">$55k</div><div data-hf-id="hf-hafp" data-layout-allow-overlap="" class="t lbl" style="left: 60px; top: 950px; width: 124px; overflow: hidden; text-overflow: ellipsis; font-size: 17px; line-height: 34px">Merino Socks</div><div data-hf-id="hf-zlgg" class="bar b3" id="step-data-bb3" style="top: 950px; width: 120px"></div><div data-hf-id="hf-lrr8" data-layout-allow-overlap="" class="t lbl" style="left: 320px; top: 950px; line-height: 34px; color: #151715; font-weight: 700">$40k</div><div data-hf-id="hf-tqgb" data-layout-allow-overlap="" class="t lbl" style="left: 60px; top: 1000px; width: 124px; overflow: hidden; text-overflow: ellipsis; font-size: 17px; line-height: 34px">Gift Card</div><div data-hf-id="hf-mg0r" class="bar b3" id="step-data-bb4" style="top: 1000px; width: 75px"></div><div data-hf-id="hf-7gdr" data-layout-allow-overlap="" class="t lbl" style="left: 275px; top: 1000px; line-height: 34px; color: #151715; font-weight: 700">$25k</div>
+              <div data-hf-id="hf-kr81" data-layout-allow-overlap="" class="t sec" style="left: 560px; top: 752px">Sales by price</div>
+              <div data-hf-id="hf-90z9" style="position: absolute; left: 560px; top: 830px; width: 400px; height: 210px"><div data-hf-id="hf-vejl" class="col" id="step-data-pc0" style="left: 0px; height: 74px"></div><div data-hf-id="hf-11mg" class="col" id="step-data-pc1" style="left: 82px; height: 151px"></div><div data-hf-id="hf-fjuf" class="col top" id="step-data-pc2" style="left: 164px; height: 210px"></div><div data-hf-id="hf-y1bw" class="col" id="step-data-pc3" style="left: 246px; height: 122px"></div><div data-hf-id="hf-8xag" class="col" id="step-data-pc4" style="left: 328px; height: 63px"></div></div>
+              <div data-hf-id="hf-s9qx" data-layout-allow-overlap="" class="t lbl" style="left: 554px; top: 1046px; font-size: 16px">$0-25</div><div data-hf-id="hf-3h37" data-layout-allow-overlap="" class="t lbl" style="left: 636px; top: 1046px; font-size: 16px">$25-50</div><div data-hf-id="hf-sz0z" data-layout-allow-overlap="" class="t lbl" style="left: 718px; top: 1046px; font-size: 16px">$50-75</div><div data-hf-id="hf-zcxj" data-layout-allow-overlap="" class="t lbl" style="left: 800px; top: 1046px; font-size: 16px">$75-100</div><div data-hf-id="hf-y68z" data-layout-allow-overlap="" class="t lbl" style="left: 882px; top: 1046px; font-size: 16px">$100+</div>
+              <div data-hf-id="hf-3oid" class="rule" style="top: 1090px"></div>
+              <div data-hf-id="hf-tp0c" data-layout-allow-overlap="" class="t sec" style="left: 60px; top: 1112px">Sales by category</div>
+              <svg data-hf-id="hf-zbnb" class="chart" style="left: 90px; top: 1140px" width="260" height="260" viewBox="0 0 260 260"><circle data-hf-id="hf-tfiw" id="step-data-ca0" cx="130" cy="130" r="90" fill="none" stroke="#74c84b" stroke-width="44" stroke-dasharray="237.5 565.5" stroke-dashoffset="0.0" transform="rotate(-90 130 130)" /><circle data-hf-id="hf-cw1a" id="step-data-ca1" cx="130" cy="130" r="90" fill="none" stroke="#a6dd84" stroke-width="44" stroke-dasharray="130.1 565.5" stroke-dashoffset="-237.5" transform="rotate(-90 130 130)" /><circle data-hf-id="hf-hld9" id="step-data-ca2" cx="130" cy="130" r="90" fill="none" stroke="#c5eea8" stroke-width="44" stroke-dasharray="107.4 565.5" stroke-dashoffset="-367.6" transform="rotate(-90 130 130)" /><circle data-hf-id="hf-tbtm" id="step-data-ca3" cx="130" cy="130" r="90" fill="none" stroke="#b4b8b1" stroke-width="44" stroke-dasharray="90.5 565.5" stroke-dashoffset="-475.0" transform="rotate(-90 130 130)" /></svg>
+              <div data-hf-id="hf-c1mr" data-layout-allow-overlap="" class="t lbl" style="left: 400px; top: 1150px; font-size: 22px"><span data-hf-id="hf-bsfl" class="dot" style="background: #74c84b"></span>Apparel<b data-hf-id="hf-14x3" style="color: #151715; margin-left: 12px">42%</b></div><div data-hf-id="hf-pbzv" data-layout-allow-overlap="" class="t lbl" style="left: 400px; top: 1198px; font-size: 22px"><span data-hf-id="hf-teau" class="dot" style="background: #a6dd84"></span>Bundles<b data-hf-id="hf-231o" style="color: #151715; margin-left: 12px">23%</b></div><div data-hf-id="hf-bvra" data-layout-allow-overlap="" class="t lbl" style="left: 400px; top: 1246px; font-size: 22px"><span data-hf-id="hf-ssia" class="dot" style="background: #c5eea8"></span>Accessories<b data-hf-id="hf-i36f" style="color: #151715; margin-left: 12px">19%</b></div><div data-hf-id="hf-4444" data-layout-allow-overlap="" class="t lbl" style="left: 400px; top: 1294px; font-size: 22px"><span data-hf-id="hf-j140" class="dot" style="background: #b4b8b1"></span>Footwear<b data-hf-id="hf-nfzk" style="color: #151715; margin-left: 12px">16%</b></div>
+            </div>
+          </div>
+          <div data-hf-id="hf-ku8u" class="band" id="step-data-band"></div>
+          <div data-hf-id="hf-55lr" class="tag" id="step-data-t0"><i data-hf-id="hf-wt6k"></i>Step 1 · Your data</div>
+          <div data-hf-id="hf-6bdw" class="tag" id="step-data-t1"><i data-hf-id="hf-zeb8"></i>Your sales history</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // STEP 1, YOUR DATA. A store analytics report on paper (conversion rate, AOV, revenue, best sellers, sales by price
+          // and by category). It lands flat, then a 3D camera tilts and glides across it, stopping on each part as it fills in:
+          // "we dig into your data" (the KPIs), "you don't need to reinvent anything" (revenue), "your sales history already
+          // shows what makes people spend more" (best sellers, prices, categories).
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("step-data-" + id); };
+          var D = 6.77;
+          // focus a point of the paper (paper px) at screen point (540, 680), scale S, with a tilt
+          function cam(px, py, S, rx, ry) { return { x: -S * (px - 500), y: (680 - 960) - S * (py - 700), scale: S, rotationX: rx, rotationY: ry }; }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: D, ease: "none" }, 0);
+          tl.fromTo($("t0"), { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "emilOut" }, 0);
+          tl.to($("t0"), { opacity: 0, duration: 0.2, ease: "emilOut" }, 3.55);
+          tl.fromTo($("t1"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "emilOut" }, 3.72);
+          // 1 flat: the whole report rises in
+          tl.fromTo($("paper"), { opacity: 0, x: 0, y: 70, scale: 0.94, rotationX: 0, rotationY: 0 }, { opacity: 1, x: 0, y: 0, scale: 0.94, rotationX: 0, rotationY: 0, duration: 0.7, ease: "emilOut" }, 0.02);
+          tl.fromTo($("band"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "emilOut" }, 0.6);
+          // 2 the camera tilts in on conversion rate and AOV
+          tl.to($("paper"), Object.assign(cam(498, 300, 1.08, 12, -4), { duration: 1.0, ease: "emilInOut" }), 0.75);
+          tl.to($("paper"), Object.assign(cam(498, 300, 1.12, 10, -2), { duration: 0.9, ease: "none" }), 1.75);
+          // 3 glide to the revenue chart while the line draws
+          tl.to($("paper"), Object.assign(cam(520, 590, 1.55, 16, 14), { duration: 0.95, ease: "emilInOut" }), 2.65);
+          var line = $("line"), len = 1200;
+          tl.fromTo(line, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.1, ease: "emilInOut" }, 2.75);
+          tl.fromTo($("area"), { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "emilOut" }, 3.2);
+          // 4 best sellers, the bars grow
+          tl.to($("paper"), Object.assign(cam(290, 900, 1.9, 12, -16), { duration: 0.9, ease: "emilInOut" }), 3.7);
+          [0, 1, 2, 3, 4].forEach(function (i) { tl.fromTo($("bb" + i), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "emilOut" }, 3.95 + i * 0.07); });
+          // 5 sales by price, the columns rise
+          tl.to($("paper"), Object.assign(cam(740, 920, 1.9, 12, 16), { duration: 0.85, ease: "emilInOut" }), 4.75);
+          [0, 1, 2, 3, 4].forEach(function (i) { tl.fromTo($("pc" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "emilOut" }, 4.95 + i * 0.06); });
+          // 6 sales by category, the donut fills
+          var catCam = cam(380, 1262, 1.6, 8, -6); catCam.y += 240; // closer, and in the middle of the screen
+          tl.to($("paper"), Object.assign(catCam, { duration: 0.85, ease: "emilInOut" }), 5.7);
+          [0, 1, 2, 3].forEach(function (i) { tl.fromTo($("ca" + i), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "emilOut" }, 5.95 + i * 0.1); });
+          window.__timelines["step-data"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

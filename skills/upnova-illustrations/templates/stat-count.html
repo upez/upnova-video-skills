@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="stat-count"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="stat-count"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="stat-count"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 860px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; }
+        [data-composition-id="stat-count"] .tag { position: absolute; left: 108px; top: 470px; height: 64px; padding: 0 28px 0 22px; border-radius: 32px; border: 2px solid rgba(255, 255, 255, 0.35); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="stat-count"] .tag i { display: block; width: 14px; height: 14px; border-radius: 7px; background: #c5eea8; box-shadow: 0 0 14px #c5eea8; flex-shrink: 0; }
+        [data-composition-id="stat-count"] .num { position: absolute; left: 96px; top: 560px; height: 280px; font-size: 270px; line-height: 280px; font-weight: 700; letter-spacing: -0.045em; white-space: nowrap; }
+        [data-composition-id="stat-count"] .sub { position: absolute; left: 108px; top: 860px; height: 66px; font-size: 56px; line-height: 66px; font-weight: 400; letter-spacing: -0.02em; color: rgba(255, 255, 255, 0.72); white-space: nowrap; }
+        [data-composition-id="stat-count"] svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+      </style>
+      <div data-hf-id="hf-kpb4" id="stat-count-root" data-composition-id="stat-count" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-b84b" class="screen" id="stat-count-screen">
+          <div data-hf-id="hf-s1sl" class="slats" data-layout-allow-overflow id="stat-count-slats"></div>
+          <svg data-hf-id="hf-s1sv" viewBox="0 0 1080 1920">
+            <path data-hf-id="hf-s1pa" id="stat-count-curve" d="M 110 1330 C 380 1310, 470 1250, 560 1110 S 790 900, 980 880" fill="none" stroke="#c5eea8" stroke-width="22" stroke-linecap="round" />
+            <circle data-hf-id="hf-s1r0" id="stat-count-r0" cx="980" cy="880" r="18" fill="none" stroke="#c5eea8" stroke-width="4" />
+            <circle data-hf-id="hf-s1r1" id="stat-count-r1" cx="980" cy="880" r="18" fill="none" stroke="#c5eea8" stroke-width="4" />
+            <circle data-hf-id="hf-s1dt" id="stat-count-dot" cx="980" cy="880" r="22" fill="#c5eea8" />
+          </svg>
+          <div data-hf-id="hf-k3m5" class="tag" id="stat-count-tag"><i data-hf-id="hf-s1tg"></i>Average order value</div>
+          <div data-hf-id="hf-leuw" class="num" id="stat-count-num">+0%</div>
+          <div data-hf-id="hf-0m6n" class="sub" id="stat-count-sub">in the first 30 days</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // STAT COUNT-UP (Figma "AOV increase"). Change the tag, VALUE and the line under it; retime with B (seconds in this section).
+          var D = 4.5;
+          var VALUE = 15, PREFIX = "+", SUFFIX = "%";
+          var B = { tag: 0.2, number: 0.35, curve: 0.5, sub: 1.2, dot: 1.75 };
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("stat-count-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+          // the light slats drift slowly the whole time
+          tl.fromTo($("slats"), { x: -60, opacity: 0.6 }, { x: 40, opacity: 1, duration: D, ease: "none" }, 0);
+
+          tl.fromTo($("tag"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "emilOut" }, B.tag);
+          tl.fromTo($("num"), { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "emilOut" }, B.number);
+          var c = { v: 0 };
+          tl.fromTo(c, { v: 0 }, { v: VALUE, duration: 1.3, ease: "emilOut",
+            onUpdate: function () { $("num").textContent = PREFIX + Math.round(c.v) + SUFFIX; } }, B.number);
+
+          // the green S-curve draws up and to the right while the number counts
+          var path = $("curve");
+          var len = path.getTotalLength();
+          tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.3, ease: "emilInOut" }, B.curve);
+          tl.fromTo($("sub"), { opacity: 0, y: 24, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "emilOut" }, B.sub);
+
+          tl.fromTo($("dot"), { opacity: 0, attr: { r: 14 } }, { opacity: 1, attr: { r: 22 }, duration: 0.5, ease: "emilOut" }, B.dot);
+          ["r0", "r1"].forEach(function (id, i) {
+            tl.fromTo($(id), { attr: { r: 18 }, opacity: 0.9 }, { attr: { r: 100 }, opacity: 0, duration: 1.1, ease: "emilOut" }, B.dot + i * 0.25);
+          });
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["stat-count"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

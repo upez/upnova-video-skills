@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        [data-composition-id="logo-wall"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        [data-composition-id="logo-wall"] .dim {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(6, 8, 5, 0.62) 0, rgba(6, 8, 5, 0.62) 1100px, rgba(6, 8, 5, 0) 1260px);
+        }
+        [data-composition-id="logo-wall"] .row {
+          position: absolute;
+          left: 0;
+          height: 80px;
+          width: 5040px;
+          display: flex;
+          align-items: center;
+          gap: 60px;
+        }
+        [data-composition-id="logo-wall"] .row img {
+          display: block;
+          width: 220px;
+          height: 72px;
+          flex-shrink: 0;
+          object-fit: contain;
+          filter: brightness(0) invert(1);
+          opacity: 0.85;
+        }
+      </style>
+
+      <div data-hf-id="hf-3l74" id="logo-wall-root" data-composition-id="logo-wall" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-q447" class="dim" id="logo-wall-dim"></div>
+      </div>
+
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // Brand logos from the Upnova homepage drift in rows behind the presenter.
+          var root = document.getElementById("logo-wall-root");
+          var tl = gsap.timeline({ paused: true });
+          var DUR = 2.6;
+          var ROWS = 7;
+
+          for (var r = 0; r < ROWS; r++) {
+            var row = document.createElement("div");
+            row.className = "row";
+            row.setAttribute("data-layout-allow-overflow", "");
+            row.id = "logo-wall-row-" + r;
+            row.style.top = (130 + r * 150) + "px";
+            for (var i = 0; i < 18; i++) {
+              var img = document.createElement("img");
+              img.src = "assets/logos/logo-" + (((i + r * 5) % 18) + 1) + ".webp";
+              img.alt = "";
+              row.appendChild(img);
+            }
+            root.appendChild(row);
+
+            var dir = r % 2 === 0 ? -1 : 1;
+            var x0 = -600 - (r % 3) * 140;
+            tl.fromTo(row, { x: x0 }, { x: x0 + dir * 320, duration: DUR, ease: "none" }, 0);
+            tl.fromTo(row, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "emilOut" }, 0.15 + r * 0.06);
+            tl.to(row, { opacity: 0, duration: 0.35, ease: "emilOut" }, DUR - 0.4);
+          }
+
+          tl.fromTo("#logo-wall-dim", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "emilOut" }, 0);
+          tl.to("#logo-wall-dim", { opacity: 0, duration: 0.4, ease: "emilOut" }, DUR - 0.4);
+
+          window.__timelines["logo-wall"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

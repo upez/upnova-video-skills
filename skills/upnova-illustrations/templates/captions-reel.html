@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="captions"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        [data-composition-id="captions"] .cg {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 1110px;
+          height: 260px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-content: center;
+          align-items: baseline;
+          column-gap: 0.22em;
+          row-gap: 0.06em;
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 92px;
+          line-height: 1.15;
+          letter-spacing: -0.08em;
+          color: #fff;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        /* over a full-screen scene the caption sits at the bottom, clear of what the scene shows */
+        [data-composition-id="captions"] .cg.low {
+          top: 1460px;
+          height: 230px;
+        }
+        /* a whole sentence held on one screen (the closing line) */
+        [data-composition-id="captions"] .cg.full {
+          top: 1050px;
+          height: 400px;
+          font-size: 86px;
+        }
+        [data-composition-id="captions"] .w {
+          display: inline-block;
+          position: relative;
+          white-space: nowrap;
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45);
+        }
+        /* emphasis: glossy glass-green Apple Garamond Bold */
+        [data-composition-id="captions"] .w.hi,
+        [data-composition-id="captions"] .w.mark {
+          font-family: "Apple Garamond", serif;
+          font-weight: 700;
+          font-size: 1.2em;
+          letter-spacing: -0.06em;
+          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%),
+            linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
+          background-size: 260% 100%, 100% 100%;
+          background-position: 130% 0, 0 0;
+          background-repeat: no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          text-shadow: none;
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+        }
+        [data-composition-id="captions"] .w.offer {
+          color: #0b0d0a;
+          text-shadow: none;
+          letter-spacing: -0.04em;
+          isolation: isolate;
+          padding: 0.02em 0.3em 0.06em;
+        }
+        [data-composition-id="captions"] .w.offer .bg {
+          position: absolute;
+          inset: 0;
+          border-radius: 0.5em;
+          background: #c5eea8;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+        [data-composition-id="captions"] .w.offer .tx {
+          position: relative;
+        }
+        /* the Upnova logo, rising in where the name is said */
+        [data-composition-id="captions"] .w.logo {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.16em;
+          height: 0.9em;
+          transform: translateY(0.16em);
+        }
+        [data-composition-id="captions"] .w.logo .lg {
+          display: flex;
+          align-items: center;
+          gap: 0.16em;
+          height: 100%;
+          opacity: 0;
+        }
+        [data-composition-id="captions"] .w.logo .mk {
+          width: 0.9em;
+          height: 0.9em;
+          flex-shrink: 0;
+          background: url("assets/brand/upnova-mark.svg") center / contain no-repeat;
+          filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+        }
+        [data-composition-id="captions"] .w.logo .wm {
+          width: 4.46em;
+          height: 0.9em;
+          flex-shrink: 0;
+          background: url("assets/brand/upnova-wordmark.svg") center / contain no-repeat;
+          filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+        }
+      </style>
+
+      <div data-hf-id="hf-hpcu" id="captions-root" data-composition-id="captions" data-width="1080" data-height="1920"></div>
+
+      <script>
+        (function () {
+          // Spoken phrases of 3-4 words shown together: {s: start, e: end, w: [[text, style]]}. Style is "", "hi" (brand green),
+          // "mark" (green, slightly larger) or "offer" (an offer name shown as one green pill, never split).
+          var GROUPS = [{"s":0.15,"e":1.65,"w":[["Running",""],["a",""],["clothing",""],["brand?",""]]},{"s":1.65,"e":3.0,"w":[["Okay,",""],["listen.",""]]},{"s":12.31,"e":12.85,"w":[["Simple.","mark"]]},{"s":12.85,"e":13.81,"w":[["I'm",""],["Son",""],["Chu,",""]]},{"s":13.81,"e":14.93,"w":[["founder",""],["of",""],["Upnova","logo"]]},{"s":14.93,"e":15.78,"w":[["We've",""],["worked",""],["with",""]]},{"s":15.78,"e":17.12,"w":[["over",""],["600","mark"],["brands","mark"],["and",""]]},{"s":17.12,"e":18.11,"w":[["we've",""],["generated",""],["more",""]]},{"s":18.11,"e":19.59,"w":[["than",""],["$60","mark"],["million","mark"],["in",""]]},{"s":19.59,"e":20.27,"w":[["upsell","hi"],["revenue.","hi"]]},{"s":20.27,"e":21.24,"w":[["Fashion",""],["brands",""]]},{"s":21.24,"e":22.49,"w":[["like",""],["Leelo",""],["Active,",""]]},{"s":22.49,"e":23.89,"w":[["Stantt",""],["and",""],["Billy",""],["Bones",""],["Club",""]]},{"s":23.89,"e":25.15,"w":[["run",""],["their",""],["stores",""],["with",""],["us.",""]]},{"s":25.15,"e":25.8,"w":[["And",""],["at",""],["the",""],["end",""]]},{"s":25.8,"e":26.73,"w":[["of",""],["this",""],["you'll",""],["hear",""]]},{"s":26.73,"e":27.98,"w":[["straight",""],["from",""],["the",""],["founders","hi"]]},{"s":27.98,"e":29.12,"w":[["about",""],["what",""],["result",""],["they",""]]},{"s":29.12,"e":30.53,"w":[["got.",""],["Here's",""],["the",""],["deal.",""]]},{"s":30.53,"e":31.93,"w":[["We",""],["do",""],["one",""],["thing,",""]]},{"s":31.93,"e":32.63,"w":[["and",""],["we",""],["do",""]]},{"s":32.63,"e":34.27,"w":[["it",""],["really",""],["well.",""]]},{"s":34.27,"e":35.04,"w":[["We",""],["get",""],["your",""]]},{"s":35.04,"e":36.95,"w":[["customers",""],["to",""],["buy","hi"],["more.","hi"]]},{"s":36.95,"e":37.99,"w":[["That's",""],["it.",""]]},{"s":37.99,"e":39.23,"w":[["And",""],["it's",""],["just",""]]},{"s":39.23,"e":40.35,"w":[["three",""],["steps.",""]]},{"s":40.35,"e":41.06,"w":[["One,",""],["we",""],["dig",""],["into",""]]},{"s":41.06,"e":41.93,"w":[["your",""],["data.",""]]},{"s":41.93,"e":42.76,"w":[["You",""],["don't",""],["need",""]]},{"s":42.76,"e":44.07,"w":[["to",""],["reinvent",""],["anything.",""]]},{"s":44.07,"e":45.88,"w":[["Your",""],["sales",""],["history",""],["already",""]]},{"s":45.88,"e":47.12,"w":[["shows",""],["what",""],["makes",""],["people",""]]},{"s":47.12,"e":47.84,"w":[["spend",""],["more.",""],["Two,",""]]},{"s":47.84,"e":49.14,"w":[["we",""],["build",""],["the",""],["offers.",""]]},{"s":49.14,"e":50.13,"w":[["They're",""],["based",""],["on",""]]},{"s":50.13,"e":50.84,"w":[["your",""],["data,",""]]},{"s":50.84,"e":51.93,"w":[["they",""],["live",""],["right",""]]},{"s":51.93,"e":52.97,"w":[["inside",""],["your",""],["store,",""]]},{"s":52.97,"e":53.82,"w":[["and",""],["they",""],["make",""]]},{"s":53.82,"e":55.05,"w":[["the",""],["upsell","hi"],["obvious.","hi"]]},{"s":55.05,"e":56.04,"w":[["We",""],["do",""],["all",""],["of",""]]},{"s":56.04,"e":57.39,"w":[["it",""],["for",""],["you.",""]]},{"s":57.73,"e":59.37,"w":[["Three,",""],["we",""],["keep",""],["optimizing.",""]]},{"s":59.37,"e":60.77,"w":[["We",""],["watch",""],["the",""],["numbers,",""]]},{"s":60.77,"e":61.77,"w":[["run",""],["A/B",""],["tests,",""]]},{"s":61.77,"e":62.81,"w":[["and",""],["keep",""],["improving",""]]},{"s":62.81,"e":63.45,"w":[["every",""],["offer.",""]]},{"s":63.45,"e":64.29,"w":[["So",""],["your",""],["AOV","mark"]]},{"s":64.29,"e":65.45,"w":[["keeps",""],["going",""],["up.",""]]},{"s":65.45,"e":66.52,"w":[["Like",""],["I",""],["said,",""]]},{"s":66.52,"e":67.63,"w":[["we",""],["handle",""],["all",""]]},{"s":67.63,"e":68.23,"w":[["of",""],["it.",""]]},{"s":68.23,"e":69.45,"w":[["We",""],["got",""],["you.",""]]},{"s":69.45,"e":70.41,"w":[["So",""],["here's",""],["what",""]]},{"s":70.41,"e":71.53,"w":[["you",""],["do",""],["next.",""]]},{"s":71.53,"e":72.04,"w":[["Book",""],["a",""],["free",""]]},{"s":72.04,"e":73.51,"w":[["upsell","hi"],["strategy",""],["call.",""]]},{"s":73.51,"e":74.67,"w":[["We'll",""],["talk",""],["about",""],["what",""]]},{"s":74.67,"e":75.86,"w":[["fits",""],["your",""],["brand",""],["and",""]]},{"s":75.86,"e":76.69,"w":[["how",""],["we",""],["lift",""],["your",""]]},{"s":76.69,"e":77.73,"w":[["AOV.","mark"],["Then",""],["we",""],["take",""]]},{"s":77.73,"e":79.03,"w":[["it",""],["from",""],["there.",""]]},{"s":79.03,"e":79.9,"w":[["Book",""],["it",""],["now.",""]]},{"s":79.9,"e":82.8,"full":1,"w":[["Every",""],["day",""],["you",""],["wait",""],["is",""],["margin",""],["you're",""],["leaving",""],["on",""],["the",""],["table.",""]]}];
+          var root = document.querySelector('[data-composition-id="captions"]');
+          var tl = gsap.timeline({ paused: true });
+          var fit = window.__hyperframes && window.__hyperframes.fitTextFontSize;
+
+          GROUPS.forEach(function (g, gi) {
+            var el = document.createElement("div");
+            el.className = "cg";
+            el.id = "captions-cg-" + gi;
+            g.w.forEach(function (w, wi) {
+              var span = document.createElement("span");
+              span.className = "w" + (w[1] ? " " + w[1] : "");
+              span.id = "captions-w-" + gi + "-" + wi;
+              if (w[1] === "logo") {
+                var lg = document.createElement("span");
+                lg.className = "lg";
+                lg.id = "captions-logo-" + gi;
+                lg.setAttribute("role", "img");
+                lg.setAttribute("aria-label", "Upnova");
+                var mk = document.createElement("span");
+                mk.className = "mk";
+                var wm = document.createElement("span");
+                wm.className = "wm";
+                lg.appendChild(wm);
+                span.appendChild(lg);
+              } else if (w[1] === "offer") {
+                var bg = document.createElement("span");
+                bg.className = "bg";
+                var tx = document.createElement("span");
+                tx.className = "tx";
+                tx.textContent = w[0];
+                span.appendChild(bg);
+                span.appendChild(tx);
+              } else {
+                span.textContent = w[0];
+              }
+              el.appendChild(span);
+            });
+            if (g.full) el.classList.add("full");
+            else if (fit) {
+              var text = g.w.map(function (w) { return w[0]; }).join(" ");
+              var r = fit(text, { fontFamily: "Inter", fontWeight: 700, maxWidth: 960, baseFontSize: 92, minFontSize: 70, step: 2 });
+              if (r && r.fontSize) el.style.fontSize = r.fontSize + "px";
+            }
+            root.appendChild(el);
+          });
+
+          // full-screen scenes: a phrase whose middle falls inside one sits at the bottom of the screen
+          // (seconds in the reel: 3D results, upsell phones, 3 steps, step 1, build offers, A/B test, AOV up, all handled, book a call, AOV lift, closing)
+          var RANGES = [[25.8, 29.95], [34.27, 37.99], [37.99, 40.35], [40.35, 47.12], [47.12, 55.05], [59.37, 62.81], [62.81, 65.45], [66.52, 69.45], [71.53, 74.67], [74.67, 77.73], [79.03, 82.8]];
+          GROUPS.forEach(function (g, gi) {
+            var mid = (g.s + g.e) / 2;
+            if (RANGES.some(function (r) { return mid >= r[0] && mid < r[1]; })) document.getElementById("captions-cg-" + gi).classList.add("low");
+          });
+          GROUPS.forEach(function (g, gi) {
+            var el = document.getElementById("captions-cg-" + gi);
+            // hard cuts: no fade, slide, scale or blur between phrases (Son, 2026-10-19)
+            tl.set(el, { opacity: 1, visibility: "visible" }, g.s);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, g.e);
+            // the glass emphasis words get one light sheen sweep when the phrase appears
+            el.querySelectorAll(".w.hi, .w.mark").forEach(function (h) {
+              tl.fromTo(h, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "power2.inOut" }, g.s + 0.05);
+            });
+          });
+
+          // the Upnova logo rises in on the spoken name (14.39s), the rest of the phrase is already on screen
+          GROUPS.forEach(function (g, gi) {
+            var lg = document.getElementById("captions-logo-" + gi);
+            if (!lg) return;
+            tl.fromTo(lg, { opacity: 0, y: 24, scale: 0.94, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 14.39);
+          });
+
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

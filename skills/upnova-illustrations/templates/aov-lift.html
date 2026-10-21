@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="aov-lift"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="aov-lift"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="aov-lift"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="aov-lift"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="aov-lift"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="aov-lift"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="aov-lift"] .bar { position: absolute; bottom: 880px; width: 300px; border-radius: 30px 30px 0 0; transform-origin: 50% 100%; }
+        [data-composition-id="aov-lift"] .lab { position: absolute; top: 1280px; width: 400px; height: 70px; text-align: center; font-size: 56px; line-height: 70px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; }
+        [data-composition-id="aov-lift"] .base { position: absolute; left: 110px; right: 110px; top: 1260px; height: 4px; background: rgba(255, 255, 255, 0.25); }
+        [data-composition-id="aov-lift"] .gain { position: absolute; left: 560px; width: 400px; top: 540px; height: 170px; display: flex; justify-content: center; align-items: baseline; gap: 16px; white-space: nowrap; }
+        [data-composition-id="aov-lift"] .gain .gl { display: block; font-size: 150px; line-height: 170px; flex-shrink: 0; }
+        [data-composition-id="aov-lift"] .gain b { display: block; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; flex-shrink: 0; }
+      </style>
+      <div data-hf-id="hf-282w" id="aov-lift-root" data-composition-id="aov-lift" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-y6sj" class="screen" id="aov-lift-screen">
+          <div data-hf-id="hf-iulw" class="slats" id="aov-lift-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-jiml" class="tag" id="aov-lift-tag" style="top: 490px"><i data-hf-id="hf-wt6k"></i>Your AOV</div>
+          <div data-hf-id="hf-wlbs" class="bar" id="aov-lift-b0" style="left: 170px; height: 400px; bottom: auto; top: 860px; background: #b4b8b1"></div>
+          <div data-hf-id="hf-31m6" class="bar" id="aov-lift-b1" style="left: 610px; height: 630px; bottom: auto; top: 630px; background: linear-gradient(180deg, #dcf7c9 0%, #8fd86a 55%, #74c84b 100%)"></div>
+          <div data-hf-id="hf-9327" class="base"></div>
+          <div data-hf-id="hf-mzx3" class="lab" id="aov-lift-l0" style="left: 120px">Before</div>
+          <div data-hf-id="hf-kzd8" class="lab" id="aov-lift-l1" style="left: 560px">With Upnova</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // AOV LIFT. "what fits your brand and how we lift your AOV": before and with-Upnova bars, the green one rises on "lift your AOV".
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("aov-lift-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: 3.06, ease: "none" }, 0);
+          rise($("tag"), 0.02, 0.5);
+          tl.fromTo($("b0"), { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "emilInOut" }, 0.2);
+          rise($("l0"), 0.2, 0.5);
+          tl.fromTo($("b1"), { scaleY: 0 }, { scaleY: 0.7, duration: 0.8, ease: "emilInOut" }, 0.5);
+          rise($("l1"), 0.5, 0.5);
+          // "how we lift your AOV" (+2.0s): the green bar grows past the grey one
+          tl.to($("b1"), { scaleY: 1, duration: 0.9, ease: "emilInOut" }, 1.95);
+          window.__timelines["aov-lift"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

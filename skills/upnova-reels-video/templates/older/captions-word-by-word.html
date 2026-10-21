@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        [data-composition-id="captions"] .cg {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 1110px;
+          height: 260px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-content: center;
+          column-gap: 0.24em;
+          row-gap: 0.06em;
+          font-family: "Inter", sans-serif;
+          font-weight: 500;
+          font-size: 76px;
+          line-height: 1.1;
+          letter-spacing: -1px;
+          color: #fff;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        [data-composition-id="captions"] .w {
+          display: inline-block;
+          position: relative;
+          white-space: nowrap;
+          -webkit-text-stroke: 6px #0b0d0a;
+          paint-order: stroke fill;
+          text-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+        }
+        [data-composition-id="captions"] .w.hi,
+        [data-composition-id="captions"] .w.mark {
+          color: #c4eda7;
+        }
+        [data-composition-id="captions"] .w.offer {
+          color: #0b0d0a;
+          -webkit-text-stroke: 0;
+          text-shadow: none;
+          isolation: isolate;
+          padding: 0.02em 0.3em 0.06em;
+        }
+        [data-composition-id="captions"] .w.offer .bg {
+          position: absolute;
+          inset: 0;
+          border-radius: 0.5em;
+          background: #c4eda7;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+        [data-composition-id="captions"] .w.offer .tx {
+          position: relative;
+        }
+      </style>
+
+      <div data-hf-id="hf-ov84" id="root" data-composition-id="captions" data-width="1080" data-height="1920"></div>
+
+      <script>
+        (function () {
+          // Spoken word groups between the opening and closing claims: [text, start, style]. Style is "", "hi" (brand green),
+          // "mark" (brand green, bigger pop) or "offer" (an offer name shown as one green pill, never split).
+          var GROUPS = [{"s":20.22,"e":21.38,"w":[["What's",20.22,""],["happening",20.45,""],["here",21.01,""],["on",21.26,""]]},{"s":21.38,"e":22.36,"w":[["my",21.38,""],["Shopify",21.54,"hi"],["store",21.93,""],["is",22.24,""]]},{"s":22.36,"e":23.59,"w":[["an",22.36,""],["AI",22.48,"hi"],["agent",22.68,"hi"],["built",22.96,""]]},{"s":23.59,"e":25.21,"w":[["by",23.59,""],["Upnova",23.79,"hi"],["that",24.7,""],["study",24.85,""]]},{"s":25.21,"e":27.28,"w":[["your",25.21,""],["customer",25.5,""],["shopping",26.08,""],["behavior",26.66,""]]},{"s":27.28,"e":27.99,"w":[["and",27.28,""],["then",27.44,""],["it",27.7,""],["will",27.83,""]]},{"s":27.99,"e":29.73,"w":[["figure",27.99,""],["out",28.27,""],["what",28.48,""],["upsell",29.04,"hi"]]},{"s":29.73,"e":30.76,"w":[["offers",29.73,""],["would",30.06,""],["work",30.27,""],["for",30.55,""]]},{"s":30.76,"e":32.38,"w":[["your",30.76,""],["store",31.04,""],["and",31.38,""],["incentivize",31.62,""]]},{"s":32.38,"e":33.63,"w":[["your",32.38,""],["customers",32.59,""],["to",33.23,""],["buy",33.43,""]]},{"s":33.63,"e":34.29,"w":[["more.",33.63,""]]},{"s":34.29,"e":35.08,"w":[["So",34.29,""],["you",34.33,""],["can",34.58,""],["see",34.83,""]]},{"s":35.08,"e":36.44,"w":[["that",35.08,""],["I",35.42,""],["already",35.5,""],["have",36.1,""]]},{"s":36.44,"e":39.02,"w":[["five",36.44,"mark"],["ready-to-go",36.78,""],["offers",37.7,""],["here.",38.21,""]]},{"s":39.02,"e":39.72,"w":[["Let's",39.02,""],["click",39.2,""],["and",39.53,""]]},{"s":39.72,"e":41.0,"w":[["see",39.72,""],["them.",39.91,""]]},{"s":43.2,"e":44.33,"w":[["Amazing.",43.2,"hi"],["First,",44.14,""]]},{"s":44.33,"e":44.65,"w":[["we",44.33,""],["have",44.42,""],["a",44.61,""]]},{"s":44.65,"e":45.7,"w":[["bundle builder",44.65,"offer"],["offer,",45.28,""]]},{"s":45.7,"e":46.17,"w":[["we",45.7,""],["have",45.82,""],["a",46.1,""]]},{"s":46.17,"e":47.68,"w":[["free gift with purchase",46.17,"offer"],["offer,",47.3,""]]},{"s":47.68,"e":48.73,"w":[["a",47.68,""],["product volume",47.82,"offer"]]},{"s":48.73,"e":49.38,"w":[["offer,",48.73,""]]},{"s":49.38,"e":50.05,"w":[["an",49.38,""],["order volume",49.4,"offer"]]},{"s":50.05,"e":50.54,"w":[["offer,",50.05,""]]},{"s":50.54,"e":50.84,"w":[["and",50.54,""],["a",50.75,""]]},{"s":50.84,"e":52.62,"w":[["buy X, get Y",50.84,"offer"],["offer.",52.04,""]]},{"s":52.62,"e":52.91,"w":[["Now,",52.62,""]]},{"s":52.91,"e":53.61,"w":[["are",52.91,""],["these",53.17,""]]},{"s":53.61,"e":55.18,"w":[["generic",53.61,"hi"],["offers?",54.22,""]]},{"s":55.18,"e":56.22,"w":[["Not",55.18,"hi"],["at",55.32,"hi"],["all.",55.5,"hi"]]},{"s":56.22,"e":57.28,"w":[["Each",56.22,""],["of",56.36,""],["these",56.5,""],["offers",56.87,""]]},{"s":57.28,"e":58.56,"w":[["come",57.28,""],["with",57.54,""],["the",57.78,""],["rationales",57.97,"hi"]]},{"s":58.56,"e":59.9,"w":[["and",58.56,""],["the",58.94,""],["data",59.22,"hi"],["why",59.82,""]]},{"s":59.9,"e":60.98,"w":[["the",59.9,""],["AI",60.12,"hi"],["agents",60.26,"hi"],["pick",60.69,""]]},{"s":60.98,"e":62.46,"w":[["this",60.98,""],["offer",61.27,""],["for",61.63,""],["you.",61.85,""]]},{"s":62.46,"e":62.94,"w":[["Here",62.46,""],["I",62.57,""],["have",62.63,""],["a",62.88,""]]},{"s":62.94,"e":64.5,"w":[["bundle builder",62.94,"offer"],["offer",63.78,""],["buy",64.08,""],["two",64.25,""]]},{"s":64.5,"e":65.68,"w":[["for",64.5,""],["15%",64.75,"mark"],["off,",65.36,""]]},{"s":65.68,"e":66.86,"w":[["three",65.68,""],["for",65.87,""],["20%",66.03,"mark"],["off,",66.56,""]]},{"s":66.86,"e":67.82,"w":[["because",66.86,""],["majority",67.17,""],["of",67.69,""]]},{"s":67.82,"e":68.72,"w":[["my",67.82,""],["customers",67.95,""],["buy",68.53,""]]},{"s":68.72,"e":69.6,"w":[["one",68.72,""],["product.",68.91,""]]},{"s":69.6,"e":70.96,"w":[["And",69.6,""],["this",70.11,""],["bundle",70.62,""],["is",70.78,""]]},{"s":70.96,"e":72.07,"w":[["ready",70.96,""],["to",71.41,""],["go.",71.59,""]]},{"s":72.07,"e":73.47,"w":[["All",72.07,""],["the",72.78,""],["fonts",72.84,""]]},{"s":73.47,"e":75.37,"w":[["is",73.47,""],["selected",73.72,""],["based",74.74,""]]},{"s":75.37,"e":76.7,"w":[["on",75.37,""],["my",75.62,""],["brand.",75.91,"hi"]]},{"s":76.7,"e":77.87,"w":[["And",76.7,""],["even",76.79,""],["this",77.1,""],["page,",77.41,""]]},{"s":77.87,"e":79.44,"w":[["all",77.87,""],["the",78.1,""],["interactions,",78.33,""]]},{"s":79.44,"e":79.74,"w":[["how",79.44,""],["the",79.59,""]]},{"s":79.74,"e":80.62,"w":[["product",79.74,""],["looks,",80.1,""]]},{"s":80.62,"e":81.6,"w":[["everything",80.62,""],["is",81.15,""],["set",81.28,""],["up",81.48,""]]},{"s":81.6,"e":82.78,"w":[["to",81.6,""],["be",81.74,""],["made",81.94,""],["premium.",82.18,"hi"]]},{"s":82.78,"e":83.51,"w":[["And",82.78,""],["the",82.84,""],["cart",83.04,""],["has",83.31,""]]},{"s":83.51,"e":84.58,"w":[["a",83.51,""],["progress",83.57,"hi"],["bar",84.1,"hi"],["that",84.34,""]]},{"s":84.58,"e":86.52,"w":[["incentivize",84.58,""],["your",85.32,""],["customers",85.59,""],["to",86.35,""]]},{"s":86.52,"e":87.66,"w":[["buy",86.52,""],["more.",87.15,""]]},{"s":87.66,"e":88.31,"w":[["And",87.66,""],["it's",87.7,""],["done",87.94,""],["in",88.18,""]]},{"s":88.31,"e":89.36,"w":[["a",88.31,""],["very",88.36,""],["subtle",88.6,"hi"],["way.",88.98,""]]},{"s":89.36,"e":89.7,"w":[["It",89.36,""],["tells",89.5,""],["the",89.6,""]]},{"s":89.7,"e":90.24,"w":[["customers",89.7,""],["that,",90.01,""]]},{"s":90.24,"e":90.56,"w":[["hey,",90.24,""]]},{"s":90.56,"e":91.51,"w":[["you're",90.56,""],["just",90.73,""],["one",91.06,""],["item",91.12,""]]},{"s":91.51,"e":92.72,"w":[["away",91.51,""],["from",91.84,""],["the",92.22,""],["next",92.4,""]]},{"s":92.72,"e":94.13,"w":[["sweet",92.72,""],["discount.",93.12,"hi"]]},{"s":94.13,"e":94.4,"w":[["And",94.13,""],["even",94.17,""]]},{"s":94.4,"e":94.76,"w":[["for",94.4,""],["the",94.57,""]]},{"s":94.76,"e":96.09,"w":[["free gift with purchase",94.76,"offer"],["offer,",95.7,""]]},{"s":96.09,"e":96.74,"w":[["and",96.09,""],["then",96.17,""],["we",96.32,""],["have",96.46,""]]},{"s":96.74,"e":98.22,"w":[["a",96.74,""],["product volume",96.86,"offer"],["offer,",97.72,""]]},{"s":98.22,"e":99.92,"w":[["which",98.22,""],["is",98.52,""],["integrated",98.69,"hi"],["very",99.57,""]]},{"s":99.92,"e":101.41,"w":[["nicely",99.92,""],["with",100.45,""],["the",100.8,""],["size",101.06,""]]},{"s":101.41,"e":102.94,"w":[["variants",101.41,""],["here.",102.12,""]]},{"s":102.94,"e":104.13,"w":[["And",102.94,""],["then",103.11,""],["we",103.56,""],["have",103.72,""]]},{"s":104.13,"e":105.98,"w":[["a",104.13,""],["buy X, get Y",104.26,"offer"],["offer,",105.495,""]]},{"s":105.98,"e":107.13,"w":[["where",105.98,""],["the",106.27,""],["price,",106.53,""]]},{"s":107.13,"e":108.7,"w":[["the",107.13,""],["discounted",107.39,""],["price",108.26,""]]},{"s":108.7,"e":109.97,"w":[["is",108.7,""],["previewed",108.86,"hi"],["right",109.68,""]]},{"s":109.97,"e":110.78,"w":[["in",109.97,""],["the",110.16,""],["cart,",110.35,"hi"]]},{"s":110.78,"e":111.89,"w":[["which",110.78,""],["is",110.95,""],["something",111.07,""],["that",111.64,""]]},{"s":111.89,"e":112.64,"w":[["a",111.89,""],["lot",111.95,""],["of",112.14,""],["brands",112.34,""]]},{"s":112.64,"e":113.71,"w":[["forget",112.64,""],["to",113.02,""],["do",113.14,""],["this.",113.26,""]]},{"s":113.71,"e":114.18,"w":[["So",113.71,""],["all",113.9,""],["of",114.06,""]]},{"s":114.18,"e":115.04,"w":[["these",114.18,""],["offers",114.52,""],["are",114.86,""]]},{"s":115.04,"e":115.98,"w":[["ready",115.04,""],["to",115.35,""],["go.",115.47,""]]},{"s":115.98,"e":116.7,"w":[["And",115.98,""],["all",116.04,""],["you",116.24,""],["need",116.44,""]]},{"s":116.7,"e":117.35,"w":[["to",116.7,""],["do",116.83,""],["is",116.96,""],["just",117.09,""]]},{"s":117.35,"e":118.81,"w":[["click",117.35,""],["the",117.68,""],["launch",117.93,"hi"],["button,",118.28,""]]},{"s":118.81,"e":119.39,"w":[["go",118.81,""],["live,",118.98,"hi"]]},{"s":119.39,"e":120.07,"w":[["and",119.39,""],["you",119.56,""],["see",119.73,""],["your",119.9,""]]},{"s":120.07,"e":120.96,"w":[["AOV",120.07,"mark"],["takes",120.35,"hi"],["off.",120.57,"hi"]]}];
+          var root = document.querySelector('[data-composition-id="captions"]');
+          var tl = gsap.timeline({ paused: true });
+          var fit = window.__hyperframes && window.__hyperframes.fitTextFontSize;
+
+          GROUPS.forEach(function (g, gi) {
+            var el = document.createElement("div");
+            el.className = "cg";
+            el.id = "captions-cg-" + gi;
+            g.w.forEach(function (w, wi) {
+              var span = document.createElement("span");
+              span.className = "w" + (w[2] ? " " + w[2] : "");
+              span.id = "captions-w-" + gi + "-" + wi;
+              if (w[2] === "offer") {
+                var bg = document.createElement("span");
+                bg.className = "bg";
+                var tx = document.createElement("span");
+                tx.className = "tx";
+                tx.textContent = w[0];
+                span.appendChild(bg);
+                span.appendChild(tx);
+              } else {
+                span.textContent = w[0];
+              }
+              el.appendChild(span);
+            });
+            if (fit) {
+              var text = g.w.map(function (w) { return w[0]; }).join(" ");
+              var r = fit(text, { fontFamily: "Inter", fontWeight: 500, maxWidth: 720, baseFontSize: 76, minFontSize: 60, step: 2 });
+              if (r && r.fontSize) el.style.fontSize = r.fontSize + "px";
+            }
+            root.appendChild(el);
+          });
+
+          GROUPS.forEach(function (g, gi) {
+            var el = document.getElementById("captions-cg-" + gi);
+            tl.set(el, { opacity: 1, visibility: "visible", y: 0, filter: "blur(0px)" }, g.s);
+
+            g.w.forEach(function (w, wi) {
+              var span = document.getElementById("captions-w-" + gi + "-" + wi);
+              var at = Math.max(g.s, w[1] - 0.03);
+              if (w[2] === "offer") {
+                // the whole offer name arrives as one piece
+                tl.fromTo(span, { opacity: 0, y: 18, scale: 0.86, filter: "blur(10px)" },
+                  { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, at);
+              } else if (w[2] === "mark") {
+                tl.fromTo(span, { opacity: 0, y: 22, scale: 0.7, filter: "blur(6px)" },
+                  { opacity: 1, y: 0, scale: 1.08, filter: "blur(0px)", duration: 0.45, ease: "back.out(2.2)" }, at);
+              } else if (w[2] === "hi") {
+                tl.fromTo(span, { opacity: 0, y: 22, scale: 0.8, filter: "blur(6px)" },
+                  { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "back.out(1.8)" }, at);
+              } else {
+                tl.fromTo(span, { opacity: 0, y: 22, scale: 0.94, filter: "blur(8px)" },
+                  { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, at);
+              }
+            });
+
+            var out = Math.max(g.s + 0.2, g.e - 0.16);
+            tl.to(el, { opacity: 0, y: -18, filter: "blur(6px)", duration: g.e - out, ease: "power2.in" }, out);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, g.e);
+          });
+
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

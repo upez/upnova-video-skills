@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="closing-cta"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="closing-cta"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="closing-cta"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="closing-cta"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="closing-cta"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="closing-cta"] .gl { font-family: "Apple Garamond", serif; font-weight: 700; letter-spacing: -0.06em; padding-right: 0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="closing-cta"] .wm { position: absolute; left: 0; right: 0; margin: 0 auto; top: 330px; width: 560px; height: 126px; background: url("assets/brand/upnova-wordmark.svg") center / contain no-repeat; filter: brightness(0) invert(1); }
+        [data-composition-id="closing-cta"] .l1 { position: absolute; left: 0; right: 0; top: 560px; height: 170px; text-align: center; font-size: 150px; line-height: 170px; font-weight: 700; letter-spacing: -0.05em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="closing-cta"] .l2 { position: absolute; left: 0; right: 0; top: 730px; height: 230px; display: flex; justify-content: center; white-space: nowrap; }
+        [data-composition-id="closing-cta"] .l2 .gl { display: block; font-size: 210px; line-height: 230px; }
+      </style>
+      <div data-hf-id="hf-06jc" id="closing-cta-root" data-composition-id="closing-cta" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-v1gz" class="screen" id="closing-cta-screen">
+          <div data-hf-id="hf-kles" class="slats" id="closing-cta-slats" data-layout-allow-overflow=""></div>
+          <div data-hf-id="hf-5fb9" class="wm" id="closing-cta-wm" role="img" aria-label="Upnova"></div>
+          <div data-hf-id="hf-ink9" class="l1" id="closing-cta-l1">Book your</div>
+          <div data-hf-id="hf-bomv" class="l2" id="closing-cta-l2"><span data-hf-id="hf-nwzb" class="gl" id="closing-cta-n">free call.</span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // CLOSING. "Book it now. Every day you wait is margin you're leaving on the table.": the white Upnova wordmark and the call to action; captions keep running below.
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("closing-cta-" + id); };
+          function rise(el, at, d) { tl.fromTo(el, { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: d || 0.6, ease: "emilOut" }, at); }
+          function lift(el, at, d) { tl.fromTo(el, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: d || 0.6, ease: "emilOut" }, at); }
+          function sheen(el, at) { tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at); }
+          function draw(path, at, dur) { var len = path.getTotalLength(); tl.fromTo(path, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at); tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "emilInOut" }, at); }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: 3.77, ease: "none" }, 0);
+          lift($("wm"), 0.05, 0.7);
+          rise($("l1"), 0.3, 0.7);
+          rise($("l2"), 0.5, 0.8);
+          sheen($("n"), 0.8);
+          tl.to($("screen"), { opacity: 0, duration: 0.3, ease: "emilOut" }, 3.47);
+          window.__timelines["closing-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

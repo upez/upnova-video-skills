@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        [data-composition-id="brand-broll"] { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="brand-broll"] .shot { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+        [data-composition-id="brand-broll"] .shot video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        [data-composition-id="brand-broll"] .photo { position: absolute; inset: 0; background: url("assets/broll/stantt-lifestyle.jpg") 74% 50% / cover no-repeat; }
+        [data-composition-id="brand-broll"] .dim { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 47%, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.18) 100%); }
+        [data-composition-id="brand-broll"] .logo { position: absolute; left: 0; right: 0; margin: 0 auto; top: 852px; height: 100px; background-position: center; background-size: contain; background-repeat: no-repeat; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45)) drop-shadow(0 12px 36px rgba(0, 0, 0, 0.4)); }
+        [data-composition-id="brand-broll"] .logo.leelo { width: 640px; background-image: url("assets/brand/leelo-active-logo-white.svg"); }
+        [data-composition-id="brand-broll"] .logo.stantt { width: 620px; background-image: url("assets/brand/stantt-logo-white.svg"); }
+        [data-composition-id="brand-broll"] .logo.bbc { width: 660px; background-image: url("assets/brand/billy-bones-club-logo-white.png"); }
+      </style>
+      <div data-hf-id="hf-br01" id="brand-broll-root" data-composition-id="brand-broll" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-br02" class="shot" id="brand-broll-s0">
+          <video data-hf-id="hf-br03" id="brand-broll-v0" class="clip" src="assets/broll/leelo-active.mp4" data-start="0" data-duration="1.85" data-track-index="0" muted playsinline></video>
+          <div data-hf-id="hf-br04" class="dim"></div>
+          <div data-hf-id="hf-br05" class="logo leelo" id="brand-broll-l0" role="img" aria-label="Leelo Active"></div>
+        </div>
+        <div data-hf-id="hf-br06" class="shot" id="brand-broll-s1">
+          <div data-hf-id="hf-br07" class="photo" id="brand-broll-photo"></div>
+          <div data-hf-id="hf-br08" class="dim"></div>
+          <div data-hf-id="hf-br09" class="logo stantt" id="brand-broll-l1" role="img" aria-label="Stantt"></div>
+        </div>
+        <div data-hf-id="hf-br10" class="shot" id="brand-broll-s2">
+          <video data-hf-id="hf-br11" id="brand-broll-v2" class="clip" src="assets/broll/billy-bones-club.mp4" data-start="2.7" data-duration="1.9" data-track-index="0" muted playsinline></video>
+          <div data-hf-id="hf-br12" class="dim"></div>
+          <div data-hf-id="hf-br13" class="logo bbc" id="brand-broll-l2" role="img" aria-label="Billy Bones Club"></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // BRAND B-ROLL. "Fashion brands like Leelo Active, Stantt and Billy Bones Club": each brand's own lifestyle
+          // footage, hard-cut on its name, with the brand's logo rising in at the centre.
+          // Leelo Active and Billy Bones Club: product videos from their websites. Stantt: a lifestyle photo from stantt.com
+          // with a slow push-in (no Stantt lifestyle video was reachable).
+          var D = 4.6;
+          var SHOTS = [[0, 1.85], [1.85, 2.7], [2.7, D]];
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("brand-broll-" + id); };
+          SHOTS.forEach(function (s, i) {
+            tl.set($("s" + i), { opacity: 1 }, s[0]);
+            tl.fromTo($("l" + i), { opacity: 0, y: 24, scale: 0.94, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, s[0] + 0.05);
+            if (i < SHOTS.length - 1) tl.set($("s" + i), { opacity: 0 }, s[1]);
+          });
+          tl.fromTo($("photo"), { scale: 1 }, { scale: 1.06, duration: SHOTS[1][1] - SHOTS[1][0], ease: "none" }, SHOTS[1][0]);
+          window.__timelines["brand-broll"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

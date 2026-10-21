@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="bars-grow"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #151715; }
+        [data-composition-id="bars-grow"] .screen { position: absolute; inset: 0; overflow: hidden; background: #f6f7f5; }
+        [data-composition-id="bars-grow"] .pixels { position: absolute; left: -120px; top: -120px; width: 1320px; height: 2160px; background: url("assets/backgrounds/green-pixels.jpg") 50% 50% / cover no-repeat; }
+        [data-composition-id="bars-grow"] .lead { position: absolute; left: 96px; top: 330px; height: 66px; font-size: 56px; line-height: 66px; font-weight: 500; letter-spacing: -0.02em; color: #1d5a2a; white-space: nowrap; }
+        [data-composition-id="bars-grow"] .head { position: absolute; left: 90px; height: 136px; font-size: 130px; line-height: 136px; font-weight: 700; letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="bars-grow"] .bar { position: absolute; bottom: 330px; width: 300px; border-radius: 28px 28px 0 0; transform-origin: 50% 100%; }
+        [data-composition-id="bars-grow"] .bar.a { left: 160px; height: 470px; background: #b4b8b1; }
+        [data-composition-id="bars-grow"] .bar.b { left: 620px; height: 640px; background: #151715; }
+        [data-composition-id="bars-grow"] .base { position: absolute; left: 96px; right: 96px; bottom: 326px; height: 4px; background: #151715; transform-origin: 0% 50%; }
+        [data-composition-id="bars-grow"] .val { position: absolute; width: 300px; height: 96px; text-align: center; font-size: 88px; line-height: 96px; font-weight: 700; letter-spacing: -0.04em; white-space: nowrap; }
+        [data-composition-id="bars-grow"] .cap { position: absolute; top: 1610px; width: 300px; height: 66px; text-align: center; font-size: 56px; line-height: 66px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+        [data-composition-id="bars-grow"] .badge { position: absolute; left: 660px; top: 728px; width: 220px; height: 92px; border-radius: 46px; background: #151715; color: #c5eea8; text-align: center; font-size: 56px; line-height: 92px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; }
+      </style>
+      <div data-hf-id="hf-plww" id="bars-grow-root" data-composition-id="bars-grow" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-9ar5" class="screen" id="bars-grow-screen">
+          <div data-hf-id="hf-b2px" class="pixels" data-layout-allow-overflow id="bars-grow-pixels"></div>
+          <div data-hf-id="hf-d8wv" class="lead" id="bars-grow-lead">Orders happening now</div>
+          <div data-hf-id="hf-b2h1" class="head" id="bars-grow-h1" style="top: 410px">More from</div>
+          <div data-hf-id="hf-b2h2" class="head" id="bars-grow-h2" style="top: 548px">every order.</div>
+          <div data-hf-id="hf-jixs" class="bar a" id="bars-grow-a"></div>
+          <div data-hf-id="hf-4g36" class="bar b" id="bars-grow-b"></div>
+          <div data-hf-id="hf-znut" class="base" id="bars-grow-base"></div>
+          <div data-hf-id="hf-nlcb" class="val" id="bars-grow-va" style="left: 160px; top: 1010px; color: #6c706a">$0</div>
+          <div data-hf-id="hf-lfq7" class="val" id="bars-grow-vb" style="left: 620px; top: 840px; color: #151715">$0</div>
+          <div data-hf-id="hf-sey6" class="cap" id="bars-grow-ca" style="left: 160px; color: #6c706a">Before</div>
+          <div data-hf-id="hf-1shv" class="cap" id="bars-grow-cb" style="left: 620px">With Upnova</div>
+          <div data-hf-id="hf-0stm" class="badge" id="bars-grow-badge">+29%</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // BEFORE / AFTER BARS (Figma green banner). Change the headline, BEFORE, AFTER, the captions and the badge; retime with B.
+          var D = 4.5;
+          var BEFORE = 48, AFTER = 62, PREFIX = "$";
+          var B = { lead: 0.15, head: 0.3, base: 0.8, before: 0.95, after: 1.6, badge: 2.6 };
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("bars-grow-" + id); };
+          function count(el, to, at, dur) {
+            var c = { v: 0 };
+            tl.fromTo(c, { v: 0 }, { v: to, duration: dur, ease: "emilOut",
+              onUpdate: function () { el.textContent = PREFIX + Math.round(c.v); } }, at);
+          }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+          // the pixel field drifts slowly
+          tl.fromTo($("pixels"), { x: 40, y: 30, scale: 1.04 }, { x: -40, y: -30, scale: 1, duration: D, ease: "none" }, 0);
+
+          tl.fromTo($("lead"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "emilOut" }, B.lead);
+          tl.fromTo([$("h1"), $("h2")], { opacity: 0, y: 40, filter: "blur(14px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "emilOut", stagger: 0.12 }, B.head);
+          tl.fromTo($("base"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "emilOut" }, B.base);
+
+          tl.fromTo($("a"), { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "emilOut" }, B.before);
+          tl.fromTo([$("va"), $("ca")], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "emilOut" }, B.before + 0.3);
+          count($("va"), BEFORE, B.before, 0.8);
+
+          // the Upnova bar is the hero: it grows taller, smoothly
+          tl.fromTo($("b"), { scaleY: 0 }, { scaleY: 1, duration: 1.0, ease: "emilOut" }, B.after);
+          tl.fromTo([$("vb"), $("cb")], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "emilOut" }, B.after + 0.4);
+          count($("vb"), AFTER, B.after, 1.0);
+
+          tl.fromTo($("badge"), { opacity: 0, y: 20, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "emilOut" }, B.badge);
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["bars-grow"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

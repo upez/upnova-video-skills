@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="captions"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        [data-composition-id="captions"] .cg {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 1110px;
+          height: 260px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-content: center;
+          align-items: baseline; /* Inter and Apple Garamond words share one baseline (Son, 2026-10-19) */
+          column-gap: 0.22em;
+          row-gap: 0.06em;
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 92px;
+          line-height: 1.15;
+          letter-spacing: -0.08em;
+          color: #fff;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        [data-composition-id="captions"] .w {
+          display: inline-block;
+          position: relative;
+          white-space: nowrap;
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45);
+        }
+        /* emphasis: glossy glass-green Apple Garamond Bold */
+        [data-composition-id="captions"] .w.hi,
+        [data-composition-id="captions"] .w.mark {
+          font-family: "Apple Garamond", serif;
+          font-weight: 700;
+          font-size: 1.2em;
+          letter-spacing: -0.06em;
+          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%),
+            linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
+          background-size: 260% 100%, 100% 100%;
+          background-position: 130% 0, 0 0;
+          background-repeat: no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          text-shadow: none;
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+        }
+        [data-composition-id="captions"] .w.offer {
+          color: #0b0d0a;
+          text-shadow: none;
+          letter-spacing: -0.04em;
+          isolation: isolate;
+          padding: 0.02em 0.3em 0.06em;
+        }
+        [data-composition-id="captions"] .w.offer .bg {
+          position: absolute;
+          inset: 0;
+          border-radius: 0.5em;
+          background: #c5eea8;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+        [data-composition-id="captions"] .w.offer .tx {
+          position: relative;
+        }
+        /* the Upnova logo, rising in where the name is said */
+        [data-composition-id="captions"] .w.logo {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.16em;
+          height: 0.9em;
+          transform: translateY(0.16em);
+        }
+        [data-composition-id="captions"] .w.logo .lg {
+          display: flex;
+          align-items: center;
+          gap: 0.16em;
+          height: 100%;
+          opacity: 0;
+        }
+        [data-composition-id="captions"] .w.logo .mk {
+          width: 0.9em;
+          height: 0.9em;
+          flex-shrink: 0;
+          background: url("assets/brand/upnova-mark.svg") center / contain no-repeat;
+          filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+        }
+        [data-composition-id="captions"] .w.logo .wm {
+          width: 4.46em;
+          height: 0.9em;
+          flex-shrink: 0;
+          background: url("assets/brand/upnova-wordmark.svg") center / contain no-repeat;
+          filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+        }
+      </style>
+
+      <div data-hf-id="hf-hpcu" id="captions-root" data-composition-id="captions" data-width="1080" data-height="1920"></div>
+
+      <script>
+        (function () {
+          // Spoken phrases of 3-4 words shown together: {s: start, e: end, w: [[text, style]]}. Style is "", "hi" (brand green),
+          // "mark" (green, slightly larger), "offer" (an offer name shown as one green pill, never split) or
+          // "logo" (the white Upnova wordmark in place of the word; optional third item = the second it rises in).
+          var GROUPS = [{"s":0.04,"e":0.87,"w":[["I",""],["found",""],["the",""],["biggest",""]]},{"s":0.87,"e":1.82,"w":[["cheat","mark"],["code","mark"],["to",""],["boost",""]]},{"s":1.82,"e":2.79,"w":[["your",""],["Average","hi"],["Order","hi"],["Value.","hi"]]},{"s":2.79,"e":3.6,"w":[["And",""],["it",""],["takes",""],["only",""]]},{"s":3.6,"e":4.6,"w":[["one","mark"],["minute.","mark"]]},{"s":5.85,"e":7.9,"w":[["Let",""],["me",""],["show",""],["you.",""]]},{"s":7.9,"e":8.38,"w":[["So",""],["first",""],["you",""],["want",""]]},{"s":8.38,"e":9.91,"w":[["to",""],["install",""],["Upnova.","hi"]]},{"s":9.91,"e":10.78,"w":[["Upnova","hi"],["will",""],["analyze",""]]},{"s":10.78,"e":11.62,"w":[["your",""],["store","hi"],["data","hi"]]},{"s":11.62,"e":12.26,"w":[["and",""],["give",""],["you",""]]},{"s":12.26,"e":13.11,"w":[["insights",""],["about",""],["your",""]]},{"s":13.11,"e":14.43,"w":[["customer",""],["shopping",""],["behavior.",""]]},{"s":14.43,"e":14.85,"w":[["But",""],["you",""],["want",""],["to",""]]},{"s":14.85,"e":15.41,"w":[["take",""],["a",""],["look",""],["at",""]]},{"s":15.41,"e":16.1,"w":[["this",""],["sales",""],["by",""]]},{"s":16.1,"e":17.25,"w":[["order",""],["price",""],["range.",""]]},{"s":17.25,"e":18.09,"w":[["You",""],["see",""],["this",""]]},{"s":18.09,"e":18.64,"w":[["drop",""],["here?",""]]},{"s":18.64,"e":19.51,"w":[["This",""],["is",""],["where",""],["you",""]]},{"s":19.51,"e":20.79,"w":[["make",""],["more",""],["money.","hi"]]},{"s":20.79,"e":21.88,"w":[["This",""],["is",""],["an",""],["opportunity","hi"]]},{"s":21.88,"e":22.69,"w":[["for",""],["us",""],["to",""],["create",""]]},{"s":22.69,"e":24.15,"w":[["a",""],["free gift with purchase","offer"]]},{"s":24.15,"e":24.72,"w":[["offer",""],["with",""],["the",""]]},{"s":24.72,"e":25.91,"w":[["required",""],["purchase",""]]},{"s":25.91,"e":26.92,"w":[["around",""],["this",""],["range.",""]]},{"s":26.92,"e":27.34,"w":[["Why?","hi"]]},{"s":27.34,"e":28.14,"w":[["Because",""],["most",""],["of",""]]},{"s":28.14,"e":29.27,"w":[["your",""],["customers",""],["will",""]]},{"s":29.27,"e":29.96,"w":[["be",""],["very",""],["close",""]]},{"s":29.96,"e":31.11,"w":[["to",""],["unlocking","hi"],["it.",""]]},{"s":31.11,"e":31.63,"w":[["You",""],["see",""],["I'm",""]]},{"s":31.63,"e":32.71,"w":[["six","mark"],["dollars","mark"],["away",""]]},{"s":32.71,"e":33.5,"w":[["from",""],["getting",""]]},{"s":33.5,"e":34.7,"w":[["the",""],["free","hi"],["serum","hi"],["here",""]]},{"s":34.7,"e":35.86,"w":[["and",""],["I",""],["can",""],["select",""]]},{"s":35.86,"e":36.72,"w":[["among",""],["these",""],["options.",""]]},{"s":36.72,"e":37.53,"w":[["Click",""],["here",""]]},{"s":37.53,"e":38.61,"w":[["but",""],["you",""],["can",""],["see",""]]},{"s":38.61,"e":39.78,"w":[["I'm",""],["a",""],["little",""],["bit",""]]},{"s":39.78,"e":40.79,"w":[["away",""],["and",""],["now",""]]},{"s":40.79,"e":41.79,"w":[["right",""],["beneath",""],["it",""]]},{"s":41.79,"e":43.08,"w":[["very",""],["conveniently",""]]},{"s":43.08,"e":43.8,"w":[["I",""],["can",""],["just",""],["add",""]]},{"s":43.8,"e":45.29,"w":[["more",""],["products",""],["from",""],["here",""]]},{"s":45.29,"e":46.02,"w":[["and",""],["now",""],["I",""],["can",""]]},{"s":46.02,"e":46.98,"w":[["get",""],["the",""],["gift.",""]]},{"s":46.98,"e":47.95,"w":[["Claim.","hi"],["Done.","hi"]]},{"s":48.16,"e":49.57,"w":[["This",""],["can",""],["easily",""]]}];
+          var root = document.querySelector('[data-composition-id="captions"]');
+          var tl = gsap.timeline({ paused: true });
+          var fit = window.__hyperframes && window.__hyperframes.fitTextFontSize;
+
+          GROUPS.forEach(function (g, gi) {
+            var el = document.createElement("div");
+            el.className = "cg";
+            el.id = "captions-cg-" + gi;
+            g.w.forEach(function (w, wi) {
+              var span = document.createElement("span");
+              span.className = "w" + (w[1] ? " " + w[1] : "");
+              span.id = "captions-w-" + gi + "-" + wi;
+              if (w[1] === "logo") {
+                // the real white Upnova wordmark in place of the spoken name; it rises in at w[2] (seconds) or the phrase start
+                var lg = document.createElement("span");
+                lg.className = "lg";
+                lg.id = "captions-logo-" + gi;
+                lg.setAttribute("role", "img");
+                lg.setAttribute("aria-label", "Upnova");
+                lg.setAttribute("data-at", w[2] != null ? w[2] : g.s);
+                var wm = document.createElement("span");
+                wm.className = "wm";
+                lg.appendChild(wm);
+                span.appendChild(lg);
+              } else if (w[1] === "offer") {
+                var bg = document.createElement("span");
+                bg.className = "bg";
+                var tx = document.createElement("span");
+                tx.className = "tx";
+                tx.textContent = w[0];
+                span.appendChild(bg);
+                span.appendChild(tx);
+              } else {
+                span.textContent = w[0];
+              }
+              el.appendChild(span);
+            });
+            if (fit) {
+              var text = g.w.map(function (w) { return w[0]; }).join(" ");
+              var r = fit(text, { fontFamily: "Inter", fontWeight: 700, maxWidth: 960, baseFontSize: 92, minFontSize: 70, step: 2 });
+              if (r && r.fontSize) el.style.fontSize = r.fontSize + "px";
+            }
+            root.appendChild(el);
+          });
+
+          GROUPS.forEach(function (g, gi) {
+            var el = document.getElementById("captions-cg-" + gi);
+            // hard cuts: no fade, slide, scale or blur between phrases (Son, 2026-10-19)
+            tl.set(el, { opacity: 1, visibility: "visible" }, g.s);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, g.e);
+            // the glass emphasis words get one light sheen sweep when the phrase appears
+            el.querySelectorAll(".w.hi, .w.mark").forEach(function (h) {
+              tl.fromTo(h, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "power2.inOut" }, g.s + 0.05);
+            });
+          });
+
+          // the Upnova logo word rises in on the spoken name; the rest of the phrase is already on screen
+          root.querySelectorAll(".w.logo .lg").forEach(function (lg) {
+            tl.fromTo(lg, { opacity: 0, y: 24, scale: 0.94, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, parseFloat(lg.getAttribute("data-at")));
+          });
+
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

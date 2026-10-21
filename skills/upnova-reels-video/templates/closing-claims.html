@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="closing"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+          font-family: "Inter", sans-serif;
+          color: #fff;
+        }
+        [data-composition-id="closing"] .scrim {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1000px;
+          background: linear-gradient(0deg, rgba(6, 8, 5, 0.72) 0%, rgba(6, 8, 5, 0.5) 45%, rgba(6, 8, 5, 0) 100%);
+        }
+        [data-composition-id="closing"] .stage {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 1030px;
+          height: 500px;
+        }
+        [data-composition-id="closing"] .card {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        [data-composition-id="closing"] .card > * {
+          flex-shrink: 0;
+        }
+        [data-composition-id="closing"] .slot {
+          position: relative;
+          width: 100%;
+        }
+        [data-composition-id="closing"] .alt {
+          position: relative;
+          white-space: normal;
+        }
+        [data-composition-id="closing"] .eyebrow {
+          font-size: 56px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 66px;
+          color: rgba(255, 255, 255, 0.82);
+        }
+        [data-composition-id="closing"] .sub {
+          font-size: 56px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 66px;
+        }
+        [data-composition-id="closing"] .big {
+          font-size: 160px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: -0.045em;
+          white-space: nowrap;
+          padding: 0.04em 0 0.08em;
+        }
+        [data-composition-id="closing"] .grad {
+          /* result figures: glossy glass-green Apple Garamond */
+          font-family: "Apple Garamond", serif;
+          font-weight: 700;
+          letter-spacing: -0.06em;
+          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%),
+            linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
+          background-size: 260% 100%, 100% 100%;
+          background-position: 130% 0, 0 0;
+          background-repeat: no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+          font-size: 1.15em;
+        }
+        [data-composition-id="closing"] .green {
+          color: #c5eea8;
+        }
+        [data-composition-id="closing"] .part {
+          display: inline-block;
+        }
+        [data-composition-id="closing"] .track {
+          width: 420px;
+          height: 4px;
+          border-radius: 2px;
+          margin: 6px auto 14px;
+          background: rgba(255, 255, 255, 0.18);
+          overflow: hidden;
+        }
+        [data-composition-id="closing"] .fill {
+          width: 100%;
+          height: 100%;
+          background: #c5eea8;
+          transform-origin: 0% 50%;
+        }
+        [data-composition-id="closing"] .serious {
+          font-size: 132px;
+          font-weight: 700;
+          letter-spacing: -0.045em;
+          white-space: nowrap;
+        }
+
+        [data-composition-id="closing"] .wordmark {
+          width: 560px;
+          height: 113px;
+          display: block;
+          margin: 26px auto 8px;
+          filter: brightness(0) invert(1);
+        }
+        [data-composition-id="closing"] .arrow {
+          width: 64px;
+          height: 64px;
+          margin-top: 4px;
+        }
+
+      </style>
+
+      <div data-hf-id="hf-dseg" id="closing-root" data-composition-id="closing" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-p8d0" class="scrim" id="closing-scrim"></div>
+        <div data-hf-id="hf-wg00" class="stage" id="closing-stage">
+
+          <div data-hf-id="hf-x6wm" class="card" id="closing-c1">
+            <div data-hf-id="hf-173p" class="slot eyebrow"><div data-hf-id="hf-5bhb" class="alt" id="closing-c1-e">So if you want to give it a shot</div></div>
+            <div data-hf-id="hf-jop9" id="closing-c1-logo"><img data-hf-id="hf-rccy" class="wordmark" src="assets/brand/upnova-wordmark.svg" alt="Upnova"></div>
+          </div>
+
+          <div data-hf-id="hf-t8sl" class="card" id="closing-c2">
+            <div data-hf-id="hf-j889" class="slot eyebrow"><div data-hf-id="hf-1l1o" class="alt" id="closing-c2-e">click the link below</div></div>
+            <div data-hf-id="hf-6f18" class="big" id="closing-c2-big" style="font-size: 146px">Get started.</div>
+            <svg data-hf-id="hf-ieb0" class="arrow" id="closing-c2-arrow" viewBox="0 0 24 24" fill="none" stroke="#c5eea8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path data-hf-id="hf-vclu" d="M12 4v15M6 13l6 6 6-6" /></svg>
+          </div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("closing-" + id); };
+
+          // Apple-style reveal: rises out of a soft blur and settles to size.
+          function rise(el, at, dur) {
+            tl.fromTo(el, { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" },
+              { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: dur || 1.0, ease: "emilOut" }, at);
+          }
+          function fade(el, at, dur) {
+            tl.to(el, { opacity: 0, y: -20, filter: "blur(10px)", duration: dur || 0.35, ease: "emilOut" }, at);
+          }
+          function card(id, start, end, keep) {
+            var el = $(id);
+            tl.set(el, { opacity: 1, visibility: "visible", y: 0 }, start);
+            if (keep) return;
+            tl.to(el, { opacity: 0, y: -24, duration: 0.4, ease: "emilOut" }, end - 0.4);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, end);
+          }
+          function count(el, from, to, at, dur) {
+            var o = { v: from };
+            tl.fromTo(o, { v: from }, {
+              v: to, duration: dur, ease: "emilOut",
+              onUpdate: function () { el.textContent = Math.round(o.v); }
+            }, at);
+          }
+
+
+          var T = function (abs) { return abs - 66.56; };
+          tl.fromTo($("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "emilOut" }, 0);
+
+          // "So if you want to give it a shot"
+          card("c1", 0, T(67.97));
+          rise($("c1-e"), T(66.6), 0.8);
+          rise($("c1-logo"), T(66.85), 1.0);
+
+          // "click the link below to get started."
+          card("c2", T(67.99), T(69.5), true);
+          rise($("c2-e"), T(67.99), 0.8);
+          rise($("c2-big"), T(68.82), 0.9);
+          tl.fromTo($("c2-arrow"), { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.5, ease: "emilOut" }, T(69.0));
+
+          window.__timelines["closing"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

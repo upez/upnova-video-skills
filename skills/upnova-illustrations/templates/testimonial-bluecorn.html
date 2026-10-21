@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond.ttf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="testimonial-bluecorn"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="testimonial-bluecorn"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="testimonial-bluecorn"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 640px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
+        [data-composition-id="testimonial-bluecorn"] .card { position: absolute; left: 220px; top: 330px; width: 640px; height: 862px; border-radius: 44px; overflow: hidden; background: #111; box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6); }
+        [data-composition-id="testimonial-bluecorn"] .card video { position: absolute; left: 0; top: 0; width: 640px; height: 862px; object-fit: cover; object-position: 50% 50%; display: block; }
+        [data-composition-id="testimonial-bluecorn"] .fade { position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%); }
+        [data-composition-id="testimonial-bluecorn"] .who { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; top: 240px; height: 64px; padding: 0 26px 0 20px; border-radius: 32px; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; white-space: nowrap; }
+        [data-composition-id="testimonial-bluecorn"] .who i { display: block; width: 14px; height: 14px; border-radius: 7px; background: #c5eea8; flex-shrink: 0; }
+        [data-composition-id="testimonial-bluecorn"] .cap { position: absolute; left: 60px; right: 60px; top: 1212px; height: 130px; text-align: center; font-size: 92px; line-height: 130px; font-weight: 700; letter-spacing: -0.08em; white-space: nowrap; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45); opacity: 0; }
+        [data-composition-id="testimonial-bluecorn"] .cap b { font-family: "Apple Garamond", serif; font-weight: 700; display: inline-block; vertical-align: baseline; font-size: 1.2em; letter-spacing: -0.06em; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="testimonial-bluecorn"] .stat { position: absolute; left: 100px; right: 60px; height: 190px; display: flex; align-items: baseline; gap: 26px; white-space: nowrap; }
+        [data-composition-id="testimonial-bluecorn"] .num { display: block; font-size: 200px; line-height: 190px; letter-spacing: -0.06em; padding-right: 0.06em; font-family: "Apple Garamond", serif; font-weight: 700; background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%); background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="testimonial-bluecorn"] .lab { display: block; font-size: 52px; font-weight: 500; letter-spacing: -0.03em; }
+        [data-composition-id="testimonial-bluecorn"] .brand { display: block; width: 176px; height: 25px; background: url("assets/brand/bluecorn-wordmark-white.png") 0 50% / contain no-repeat; filter: brightness(0) invert(1); flex-shrink: 0; }
+      </style>
+      <div data-hf-id="hf-mwhs" id="testimonial-bluecorn-root" data-composition-id="testimonial-bluecorn" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-yslb" class="screen" id="testimonial-bluecorn-screen">
+          <div data-hf-id="hf-zx1s" class="slats" data-layout-allow-overflow="" id="testimonial-bluecorn-slats"></div>
+          <div data-hf-id="hf-ufrf" class="who" id="testimonial-bluecorn-who"><i data-hf-id="hf-wt6k"></i>Tessa · Chief Revenue Officer,<span data-hf-id="hf-p0zl" class="brand" role="img" aria-label="Bluecorn"></span></div>
+          <div data-hf-id="hf-cmab" class="card" id="testimonial-bluecorn-card">
+            <video data-hf-id="hf-uaty" id="testimonial-bluecorn-video" class="clip" src="assets/testimonials/bluecorn-tessa-full.mp4" data-start="0" data-duration="6" data-media-start="0" data-track-index="9" data-has-audio="true" playsinline></video>
+            <div data-hf-id="hf-8ps2" class="fade"></div>
+                      </div>
+<div data-hf-id="hf-gjdy" class="cap" id="testimonial-bluecorn-g0" data-layout-allow-overlap="">And since then,</div>
+          <div data-hf-id="hf-4fe2" class="cap" id="testimonial-bluecorn-g1" data-layout-allow-overlap="">yeah, it's up <b data-hf-id="hf-za44" class="hi">10%</b></div>
+          <div data-hf-id="hf-8m2x" class="cap" id="testimonial-bluecorn-g2" data-layout-allow-overlap="">and sales, crucially,</div>
+          <div data-hf-id="hf-ovrb" class="cap" id="testimonial-bluecorn-g3" data-layout-allow-overlap=""><b data-hf-id="hf-ymm3" class="hi">top line sales</b></div>
+          <div data-hf-id="hf-d7i6" class="cap" id="testimonial-bluecorn-g4" data-layout-allow-overlap="">in our Shopify store</div>
+          <div data-hf-id="hf-rzj0" class="cap" id="testimonial-bluecorn-g5" data-layout-allow-overlap="">are up <b data-hf-id="hf-jo22" class="hi">30%</b>.</div>
+          <div data-hf-id="hf-fm5h" class="stat" style="top: 1380px"><span data-hf-id="hf-11gq" class="num" id="testimonial-bluecorn-n0">+0%</span><span data-hf-id="hf-1wsd" class="lab" id="testimonial-bluecorn-l0">average order value</span></div>
+          <div data-hf-id="hf-qg1v" class="stat" style="top: 1580px"><span data-hf-id="hf-3grx" class="num" id="testimonial-bluecorn-n1">+0%</span><span data-hf-id="hf-hu3n" class="lab" id="testimonial-bluecorn-l1">top line sales</span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // VIDEO TESTIMONIAL. Tessa, Chief Revenue Officer at Bluecorn (beeswax candles), from her video review for Upnova: two takes joined
+          // with a jump cut (17.3-19.0s "And since then, yeah, it's up 10%" + 23.45-27.75s "...top line sales in our Shopify store are up 30%").
+          // To reuse: swap the video and data-media-start, the name pill, GROUPS (seconds in this section) and STATS.
+          var D = 6.4;
+          var GROUPS = [[0.03, 0.79], [0.79, 1.7], [1.7, 2.99], [2.99, 4.06], [4.06, 4.82], [4.82, 6.0]];
+          var STATS = [{ id: "0", value: 10, at: 1.34 }, { id: "1", value: 30, at: 4.9 }];
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("testimonial-bluecorn-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "emilOut" }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: D, ease: "none" }, 0);
+          tl.fromTo($("card"), { opacity: 0, y: 80, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "emilOut" }, 0);
+          tl.fromTo($("who"), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "emilOut" }, 0.35);
+
+          // captions: each phrase appears at once on its first word and leaves when the next one starts
+          // emphasis words: a light sheen sweeps across the glass once when the phrase appears
+          function sheen(el, at) {
+            el.querySelectorAll(".hi").forEach(function (h) {
+              tl.fromTo(h, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at + 0.05);
+            });
+          }
+          GROUPS.forEach(function (g, i) {
+            tl.set($("g" + i), { opacity: 1 }, g[0]);
+            sheen($("g" + i), g[0]);
+            tl.set($("g" + i), { opacity: 0 }, g[1]);
+          });
+
+          // the numbers rise and count on the spoken words
+          STATS.forEach(function (s) {
+            tl.fromTo([$("n" + s.id), $("l" + s.id)], { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "emilOut" }, s.at - 0.1);
+            var c = { v: 0 };
+            tl.fromTo(c, { v: 0 }, { v: s.value, duration: 0.5, ease: "emilOut",
+              onUpdate: function () { $("n" + s.id).textContent = "+" + Math.round(c.v) + "%"; } }, s.at - 0.1);
+            tl.fromTo($("n" + s.id), { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 1.1, ease: "emilInOut" }, s.at + 0.3);
+          });
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.4);
+          window.__timelines["testimonial-bluecorn"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

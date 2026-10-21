@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="offer-claim"] { position: absolute; inset: 0; overflow: hidden; pointer-events: none; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="offer-claim"] .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 1200px; background: linear-gradient(0deg, rgba(6, 8, 5, 0.8) 0%, rgba(6, 8, 5, 0.6) 50%, rgba(6, 8, 5, 0) 100%); opacity: 0; }
+        [data-composition-id="offer-claim"] .row { position: absolute; left: 60px; right: 60px; display: flex; justify-content: center; align-items: baseline; gap: 0.24em; white-space: nowrap; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45); opacity: 0; }
+        [data-composition-id="offer-claim"] .row > span { display: block; flex-shrink: 0; }
+        [data-composition-id="offer-claim"] .sm { font-size: 60px; line-height: 72px; font-weight: 500; letter-spacing: -0.04em; }
+        [data-composition-id="offer-claim"] .md { font-size: 74px; line-height: 90px; font-weight: 700; letter-spacing: -0.06em; }
+        [data-composition-id="offer-claim"] .xl { font-size: 128px; line-height: 140px; font-weight: 700; letter-spacing: -0.06em; }
+        [data-composition-id="offer-claim"] .big { font-size: 240px; line-height: 230px; gap: 0; }
+        [data-composition-id="offer-claim"] .g { font-family: "Apple Garamond", serif; font-weight: 700; font-size: 1.2em; letter-spacing: -0.06em; padding-right: 0.04em;
+          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%), linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
+          background-size: 260% 100%, 100% 100%; background-position: 130% 0, 0 0; background-repeat: no-repeat;
+          -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none;
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35)); }
+        [data-composition-id="offer-claim"] .big .g { font-size: 1em; }
+      </style>
+      <div data-hf-id="hf-oc01" id="offer-claim-root" data-composition-id="offer-claim" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-oc02" class="shade" id="offer-claim-shade"></div>
+        <div data-hf-id="hf-oc03" class="row md" id="offer-claim-r0" style="top: 870px"><span data-hf-id="hf-oc04">In the next</span><span data-hf-id="hf-oc05" class="g" id="offer-claim-g0">3 DAYS</span></div>
+        <div data-hf-id="hf-oc06" class="row sm" id="offer-claim-r1" style="top: 974px"><span data-hf-id="hf-oc07">we'll build you an</span><span data-hf-id="hf-oc08" class="g" id="offer-claim-g1">upsell system</span></div>
+        <div data-hf-id="hf-oc09" class="row sm" id="offer-claim-r2" style="top: 1056px"><span data-hf-id="hf-oc10">that bumps your</span></div>
+        <div data-hf-id="hf-oc11" class="row md" id="offer-claim-r3" style="top: 1130px"><span data-hf-id="hf-oc12" class="g" id="offer-claim-g3">Average Order Value</span><span data-hf-id="hf-oc13">by</span></div>
+        <div data-hf-id="hf-oc14" class="row big" id="offer-claim-r4" style="top: 1236px"><span data-hf-id="hf-oc15" class="g" id="offer-claim-n0">10</span><span data-hf-id="hf-oc16" class="g" id="offer-claim-n1">–30%</span></div>
+        <div data-hf-id="hf-oc17" class="row sm" id="offer-claim-r5" style="top: 1480px"><span data-hf-id="hf-oc18">And if it doesn't,</span></div>
+        <div data-hf-id="hf-oc19" class="row xl" id="offer-claim-r6" style="top: 1560px"><span data-hf-id="hf-oc20">you don't pay.</span></div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // OFFER CLAIM. The spoken offer builds up into one big claim in the lower half: every line rises in on its
+          // first spoken word and stays, so the whole promise reads on one screen. Times are seconds in this section
+          // (section starts at 2.70s in the reel).
+          var D = 8.4;
+          var ROWS = [["r0", 0.08], ["r1", 1.04], ["r2", 2.66], ["r3", 3.5], ["r5", 6.04], ["r6", 7.64, 0.6]];
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("offer-claim-" + id); };
+          function sheen(el, at) {
+            tl.fromTo(el, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "emilInOut" }, at);
+          }
+          function rise(el, at, dur) {
+            tl.fromTo(el, { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: dur || 0.9, ease: "emilOut" }, at);
+          }
+          tl.fromTo($("shade"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "emilOut" }, 0);
+          ROWS.forEach(function (r) { rise($(r[0]), r[1], r[2]); });
+          sheen($("g0"), 0.4);
+          sheen($("g1"), 1.4);
+          sheen($("g3"), 3.8);
+
+          // "10" on the spoken 10, then "–30%" on the spoken 30
+          tl.set($("r4"), { opacity: 1 }, 4.7);
+          rise($("n0"), 4.7);
+          rise($("n1"), 5.22);
+          sheen($("n0"), 5.0);
+          sheen($("n1"), 5.6);
+
+          tl.to([$("shade"), $("r0"), $("r1"), $("r2"), $("r3"), $("r4"), $("r5"), $("r6")], { opacity: 0, duration: 0.15, ease: "emilOut" }, D - 0.15);
+          window.__timelines["offer-claim"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

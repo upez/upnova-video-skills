@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="roas-target"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="roas-target"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="roas-target"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 700px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.7; }
+        [data-composition-id="roas-target"] .tag { position: absolute; left: 108px; top: 420px; height: 64px; padding: 0 28px 0 22px; border-radius: 32px; border: 2px solid rgba(255, 255, 255, 0.35); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="roas-target"] .tag i { display: block; width: 14px; height: 14px; border-radius: 7px; background: #c5eea8; box-shadow: 0 0 14px #c5eea8; flex-shrink: 0; }
+        [data-composition-id="roas-target"] .head { position: absolute; left: 100px; top: 520px; height: 120px; font-size: 108px; line-height: 120px; font-weight: 700; letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; }
+        [data-composition-id="roas-target"] .chart { position: absolute; left: 108px; top: 760px; width: 864px; height: 700px; overflow: visible; }
+        [data-composition-id="roas-target"] .tlabel { position: absolute; left: 108px; top: 944px; height: 56px; font-size: 40px; line-height: 56px; font-weight: 500; color: rgba(255, 255, 255, 0.7); white-space: nowrap; }
+        [data-composition-id="roas-target"] .note { position: absolute; right: 60px; top: 760px; height: 92px; padding: 0 36px; border-radius: 46px; background: #c5eea8; color: #0b0d0a; font-size: 56px; line-height: 92px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; }
+      </style>
+      <div data-hf-id="hf-r3rt" id="roas-target-root" data-composition-id="roas-target" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-r3sc" class="screen" id="roas-target-screen">
+          <div data-hf-id="hf-r3sl" class="slats" data-layout-allow-overflow id="roas-target-slats"></div>
+          <div data-hf-id="hf-r3tg" class="tag" id="roas-target-tag"><i data-hf-id="hf-r3dt"></i>Return on ad spend</div>
+          <div data-hf-id="hf-r3hd" class="head" id="roas-target-head">Past target.</div>
+          <svg data-hf-id="hf-r3sv" class="chart" viewBox="0 0 864 700">
+            <defs data-hf-id="hf-mh0t">
+              <clipPath data-hf-id="hf-kuud" id="roas-target-clip"><rect data-hf-id="hf-0lub" id="roas-target-cliprect" x="0" y="0" width="0" height="700" /></clipPath>
+            </defs>
+            <g data-hf-id="hf-gabe" stroke="rgba(255,255,255,0.08)" stroke-width="2">
+              <line data-hf-id="hf-qoxs" x1="0" y1="100" x2="864" y2="100" />
+              <line data-hf-id="hf-h8es" x1="0" y1="300" x2="864" y2="300" />
+              <line data-hf-id="hf-ko5k" x1="0" y1="500" x2="864" y2="500" />
+            </g>
+            <line data-hf-id="hf-dmea" x1="0" y1="680" x2="864" y2="680" stroke="rgba(255,255,255,0.3)" stroke-width="4" />
+            <g data-hf-id="hf-v4fp" clip-path="url(#roas-target-clip)">
+              <line data-hf-id="hf-a86z" x1="0" y1="250" x2="864" y2="250" stroke="rgba(255,255,255,0.6)" stroke-width="4" stroke-dasharray="18 14" />
+            </g>
+            <path data-hf-id="hf-d4ct" id="roas-target-line" d="M 20 600 L 150 545 L 280 570 L 410 440 L 540 395 L 670 250 L 810 140" fill="none" stroke="#c5eea8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+            <circle data-hf-id="hf-237x" id="roas-target-r0" cx="810" cy="140" r="16" fill="none" stroke="#c5eea8" stroke-width="4" />
+            <circle data-hf-id="hf-jp0m" id="roas-target-r1" cx="810" cy="140" r="16" fill="none" stroke="#c5eea8" stroke-width="4" />
+            <circle data-hf-id="hf-k9ov" id="roas-target-r2" cx="810" cy="140" r="16" fill="none" stroke="#c5eea8" stroke-width="4" />
+            <circle data-hf-id="hf-ww93" id="roas-target-dot" cx="810" cy="140" r="20" fill="#c5eea8" />
+          </svg>
+          <div data-hf-id="hf-4imi" class="tlabel" id="roas-target-tlabel">Target 3.0x</div>
+          <div data-hf-id="hf-tayi" class="note" id="roas-target-note">4.2x ROAS</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // ROAS VS TARGET. Dashed target line draws first, then the data line climbs past it, the end dot pops and the result tag lands.
+          var D = 4.5;
+          var B = { tag: 0.15, head: 0.3, target: 0.7, line: 1.1, dot: 2.2, note: 2.5 };
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("roas-target-" + id); };
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+          tl.fromTo($("slats"), { x: 50 }, { x: -50, duration: D, ease: "none" }, 0);
+          tl.fromTo($("tag"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "emilOut" }, B.tag);
+          tl.fromTo($("head"), { opacity: 0, y: 40, filter: "blur(14px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "emilOut" }, B.head);
+
+          tl.fromTo($("cliprect"), { attr: { width: 0 } }, { attr: { width: 864 }, duration: 0.8, ease: "emilInOut" }, B.target);
+          tl.fromTo($("tlabel"), { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "emilOut" }, B.target + 0.5);
+
+          var path = $("line");
+          var len = path.getTotalLength();
+          tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.1, ease: "emilInOut" }, B.line);
+
+          tl.fromTo($("dot"), { opacity: 0, attr: { r: 14 } }, { opacity: 1, attr: { r: 20 }, duration: 0.5, ease: "emilOut" }, B.dot);
+          ["r0", "r1", "r2"].forEach(function (id, i) {
+            tl.fromTo($(id), { attr: { r: 16 }, opacity: 0.9 }, { attr: { r: 90 }, opacity: 0, duration: 1.1, ease: "emilOut" }, B.dot + i * 0.22);
+          });
+          tl.fromTo($("note"), { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "emilOut" }, B.note);
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["roas-target"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

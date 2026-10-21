@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="logo-wall"] { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; color: #fff; }
+        [data-composition-id="logo-wall"] .screen { position: absolute; inset: 0; overflow: hidden; background: #000; }
+        [data-composition-id="logo-wall"] .row { position: absolute; left: -400px; height: 80px; display: flex; align-items: center; gap: 110px; white-space: nowrap; }
+        [data-composition-id="logo-wall"] .row img { display: block; max-width: 220px; max-height: 64px; flex-shrink: 0; filter: brightness(0) invert(1); opacity: 0.55; }
+        [data-composition-id="logo-wall"] .shade { position: absolute; inset: 0; background: radial-gradient(ellipse 62% 26% at 50% 50%, rgba(0, 0, 0, 0.94) 30%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.35) 100%); }
+        [data-composition-id="logo-wall"] .num-row { position: absolute; left: 60px; right: 60px; top: 780px; height: 300px; display: flex; justify-content: center; }
+        [data-composition-id="logo-wall"] .num { display: block; font-size: 300px; line-height: 300px; font-weight: 700; letter-spacing: -0.05em; white-space: nowrap; }
+        [data-composition-id="logo-wall"] .sub { position: absolute; left: 108px; right: 108px; top: 1090px; height: 66px; text-align: center; font-size: 56px; line-height: 66px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+        [data-composition-id="logo-wall"] .sub b { font-weight: 500; color: #c5eea8; }
+      </style>
+      <div data-hf-id="hf-lw01" id="logo-wall-root" data-composition-id="logo-wall" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-lw02" class="screen" id="logo-wall-screen">
+          <div data-hf-id="hf-lw03" id="logo-wall-rows" data-layout-allow-overflow></div>
+          <div data-hf-id="hf-lw04" class="shade" id="logo-wall-shade"></div>
+          <div data-hf-id="hf-lw05" class="num-row"><span data-hf-id="hf-lw06" class="num" id="logo-wall-num">0+</span></div>
+          <div data-hf-id="hf-lw07" class="sub" id="logo-wall-sub">Shopify stores run on <b data-hf-id="hf-lw08">Upnova</b></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          // LOGO WALL. Rows of customer logos (assets/logos, turned white) drift in alternating directions behind a store-count.
+          var D = 4.5;
+          var VALUE = 600, SUFFIX = "+";
+          var ROWS = 10, TOP = 150, GAP = 170, LOGOS = 18, DRIFT = 260;
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("logo-wall-" + id); };
+          var holder = $("rows");
+          for (var r = 0; r < ROWS; r++) {
+            var row = document.createElement("div");
+            row.className = "row";
+            row.id = "logo-wall-row" + r;
+            row.setAttribute("data-layout-allow-overflow", "");
+            row.style.top = (TOP + r * GAP) + "px";
+            for (var k = 0; k < 12; k++) {
+              var img = document.createElement("img");
+              img.src = "assets/logos/logo-" + (((r * 5 + k) % LOGOS) + 1) + ".webp";
+              img.alt = "";
+              row.appendChild(img);
+            }
+            holder.appendChild(row);
+            var dir = r % 2 ? 1 : -1;
+            tl.fromTo(row, { x: -dir * DRIFT - (r % 3) * 120 }, { x: dir * DRIFT - (r % 3) * 120, duration: D, ease: "none" }, 0);
+            tl.fromTo(row, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "emilOut" }, 0.05 * r);
+          }
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "emilOut" }, 0);
+
+          tl.fromTo($("num"), { opacity: 0, y: 36, scale: 1.08, filter: "blur(16px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "emilOut" }, 0.4);
+          var c = { v: 0 };
+          tl.fromTo(c, { v: 0 }, { v: VALUE, duration: 1.4, ease: "emilOut",
+            onUpdate: function () { $("num").textContent = Math.round(c.v) + SUFFIX; } }, 0.4);
+          tl.fromTo($("sub"), { opacity: 0, y: 24, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "emilOut" }, 1.1);
+
+          tl.to($("screen"), { opacity: 0, duration: 0.35, ease: "emilOut" }, D - 0.35);
+          window.__timelines["logo-wall"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

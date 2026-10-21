@@ -1,0 +1,102 @@
+# path	where (skill = installed with the skill, repo = media/ in upez/upnova-video-skills)	bytes
+assets/Cinematic whoosh impact.mp3	skill	91104
+assets/Clock ticking.mp3	skill	159024
+assets/Fast airy whoosh.mp3	skill	30240
+assets/Heavy cinematic impact.mp3	skill	115200
+assets/Keyboard Typing.mp3	skill	1046016
+assets/Low cinematic boom.mp3	skill	39000
+assets/Short synth whoosh.mp3	skill	26400
+assets/Synthetic Sweeping Riser.mp3	skill	113040
+assets/UI Pop.mp3	skill	7944
+assets/backgrounds/dark-slats.jpg	skill	142688
+assets/backgrounds/green-pixels.jpg	skill	275121
+assets/backgrounds/green-streak.jpg	skill	1326184
+assets/brand/billy-bones-club-logo-white.png	skill	46676
+assets/brand/bluecorn-wordmark-white.png	skill	11338
+assets/brand/cannanda-wordmark.png	skill	9277
+assets/brand/devonlang-logo.png	skill	45535
+assets/brand/grain-overlay.png	skill	30164
+assets/brand/leelo-active-logo-white.svg	skill	3188
+assets/brand/shopify.svg	skill	1551
+assets/brand/stantt-logo-white.svg	skill	1548
+assets/brand/stantt-wordmark.png	skill	3042
+assets/brand/upnova-mark.svg	skill	5027
+assets/brand/upnova-wordmark.svg	skill	10010
+assets/broll/billy-bones-club.mp4	repo	2443820
+assets/broll/leelo-active.mp4	repo	3417456
+assets/broll/offers-ready.mp4	repo	585967
+assets/broll/stantt-lifestyle.jpg	repo	105444
+assets/broll/study-data.mp4	repo	991683
+assets/fonts/AppleGaramond-Bold.ttf	skill	47264
+assets/fonts/AppleGaramond.ttf	skill	47476
+assets/fonts/Inter Tight/InterTight-Variable.ttf	skill	580572
+assets/fonts/Inter-Bold.otf	skill	254684
+assets/fonts/Inter-Medium.otf	skill	253376
+assets/fonts/Inter-Regular.otf	skill	244440
+assets/fonts/Inter-SemiBold.otf	skill	254024
+assets/guides/builder-page.png	repo	308925
+assets/guides/caption-example.mp4	repo	4700916
+assets/logos/logo-1.webp	skill	3740
+assets/logos/logo-10.webp	skill	2322
+assets/logos/logo-11.webp	skill	4194
+assets/logos/logo-12.webp	skill	3672
+assets/logos/logo-13.webp	skill	3054
+assets/logos/logo-14.webp	skill	3978
+assets/logos/logo-15.webp	skill	9294
+assets/logos/logo-16.webp	skill	2874
+assets/logos/logo-17.webp	skill	2820
+assets/logos/logo-18.webp	skill	896
+assets/logos/logo-2.webp	skill	2688
+assets/logos/logo-3.webp	skill	11018
+assets/logos/logo-4.webp	skill	5048
+assets/logos/logo-5.webp	skill	7094
+assets/logos/logo-6.webp	skill	4620
+assets/logos/logo-7.webp	skill	2706
+assets/logos/logo-8.webp	skill	2630
+assets/logos/logo-9.webp	skill	5302
+assets/products/flex-clip.jpg	skill	10489
+assets/products/hat-clip.jpg	skill	10057
+assets/products/link.jpg	skill	30370
+assets/testimonials/bluecorn-tessa-full.mp4	repo	1758773
+assets/testimonials/cannanda-lee.mp4	repo	1687358
+assets/testimonials/devonlang-tyler.mp4	repo	2564598
+assets/testimonials/grid/g0.mp4	repo	334392
+assets/testimonials/grid/g1.mp4	repo	420845
+assets/testimonials/grid/g10.mp4	repo	356972
+assets/testimonials/grid/g11.mp4	repo	209284
+assets/testimonials/grid/g2.mp4	repo	484736
+assets/testimonials/grid/g3.mp4	repo	176614
+assets/testimonials/grid/g4.mp4	repo	223013
+assets/testimonials/grid/g5.mp4	repo	191506
+assets/testimonials/grid/g6.mp4	repo	199075
+assets/testimonials/grid/g7.mp4	repo	369780
+assets/testimonials/grid/g8.mp4	repo	183140
+assets/testimonials/grid/g9.mp4	repo	531212
+assets/testimonials/quotes/clubseven-logo.png	repo	26919
+assets/testimonials/quotes/clubseven-photo.jpg	repo	119714
+assets/testimonials/quotes/dailysale-logo.png	repo	17188
+assets/testimonials/quotes/dailysale-photo.jpg	repo	222014
+assets/testimonials/quotes/devonlang-logo.webp	repo	2194
+assets/testimonials/quotes/devonlang-photo.webp	repo	40266
+assets/testimonials/quotes/heritage-logo.png	repo	10473
+assets/testimonials/quotes/heritage-photo.png	repo	1980874
+assets/testimonials/quotes/phyba-logo.png	repo	14207
+assets/testimonials/quotes/phyba-photo.jpg	repo	103725
+assets/testimonials/quotes/redspec-logo.webp	repo	4942
+assets/testimonials/quotes/redspec-photo.webp	repo	34252
+assets/testimonials/stantt-matt-short.mp4	repo	1485827
+assets/testimonials/stantt-matt.mp4	repo	5666793
+assets/upsells/bundle-builder.png	repo	642509
+assets/upsells/buy-x-get-y.png	repo	451776
+assets/upsells/free-gift.png	repo	547744
+assets/upsells/order-volume-phone.webp	repo	16708
+assets/upsells/order-volume.png	repo	369571
+assets/upsells/phone-bundle-builder.mp4	repo	909254
+assets/upsells/phone-cross-sells.mp4	repo	327079
+assets/upsells/phone-in-cart-upsells.mp4	repo	1085470
+assets/upsells/phone-shopping-goals.mp4	repo	326431
+assets/upsells/product-upgrade.png	repo	695440
+assets/upsells/product-volume.png	repo	715762
+sources/bluecorn/tessa-testimonial-720p.mp4	repo	4272387
+sources/cannanda/testimonial-dr-lee-know.mp4	repo	3893791
+sources/stantt/testimonial-matt.mp4	repo	5666793

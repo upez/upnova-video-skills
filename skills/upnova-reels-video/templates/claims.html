@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
+        @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
+        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
+        [data-composition-id="proof"] {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+          font-family: "Inter", sans-serif;
+          color: #fff;
+        }
+        [data-composition-id="proof"] .scrim {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1000px;
+          background: linear-gradient(0deg, rgba(6, 8, 5, 0.72) 0%, rgba(6, 8, 5, 0.5) 45%, rgba(6, 8, 5, 0) 100%);
+        }
+        [data-composition-id="proof"] .stage {
+          position: absolute;
+          left: 108px;
+          right: 108px;
+          top: 1030px;
+          height: 500px;
+        }
+        [data-composition-id="proof"] .card {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+        }
+        [data-composition-id="proof"] .card > * {
+          flex-shrink: 0;
+        }
+        [data-composition-id="proof"] .slot {
+          position: relative;
+          width: 100%;
+        }
+        [data-composition-id="proof"] .alt {
+          position: relative;
+          white-space: normal;
+        }
+        [data-composition-id="proof"] .eyebrow {
+          font-size: 56px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 66px;
+          color: rgba(255, 255, 255, 0.82);
+        }
+        [data-composition-id="proof"] .sub {
+          font-size: 56px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          line-height: 66px;
+        }
+        [data-composition-id="proof"] .big {
+          font-size: 160px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: -0.045em;
+          white-space: nowrap;
+          padding: 0.04em 0 0.08em;
+        }
+        [data-composition-id="proof"] .grad {
+          /* result figures: glossy glass-green Apple Garamond */
+          font-family: "Apple Garamond", serif;
+          font-weight: 700;
+          letter-spacing: -0.06em;
+          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%),
+            linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
+          background-size: 260% 100%, 100% 100%;
+          background-position: 130% 0, 0 0;
+          background-repeat: no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+          font-size: 1.15em;
+        }
+        [data-composition-id="proof"] .green {
+          color: #c5eea8;
+        }
+        [data-composition-id="proof"] .part {
+          display: inline-block;
+        }
+        [data-composition-id="proof"] .track {
+          width: 420px;
+          height: 4px;
+          border-radius: 2px;
+          margin: 6px auto 14px;
+          background: rgba(255, 255, 255, 0.18);
+          overflow: hidden;
+        }
+        [data-composition-id="proof"] .fill {
+          width: 100%;
+          height: 100%;
+          background: #c5eea8;
+          transform-origin: 0% 50%;
+        }
+        [data-composition-id="proof"] .serious {
+          font-size: 132px;
+          font-weight: 700;
+          letter-spacing: -0.045em;
+          white-space: nowrap;
+        }
+
+        [data-composition-id="proof"] .label {
+          font-size: 56px;
+          font-weight: 400;
+          letter-spacing: -1px;
+          margin-top: 2px;
+        }
+
+      </style>
+
+      <div data-hf-id="hf-b5rk" id="proof-root" data-composition-id="proof" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-vsov" class="scrim" id="proof-scrim"></div>
+        <div data-hf-id="hf-w0c3" class="stage" id="proof-stage">
+
+          <div data-hf-id="hf-6t5z" class="card" id="proof-c1">
+            <div data-hf-id="hf-173p" class="slot eyebrow"><div data-hf-id="hf-4cxx" class="alt" id="proof-c1-e">boost your AOV by at least</div></div>
+            <div data-hf-id="hf-finx" class="big grad" id="proof-c1-big">0%</div>
+            <div data-hf-id="hf-kumy" class="slot sub"><div data-hf-id="hf-198x" class="alt" id="proof-c1-s">more.</div></div>
+          </div>
+
+          <div data-hf-id="hf-y5a4" class="card" id="proof-c2">
+            <div data-hf-id="hf-j889" class="slot eyebrow"><div data-hf-id="hf-ei6g" class="alt" id="proof-c2-e">one of many strategies we use for</div></div>
+            <div data-hf-id="hf-6m1o" class="big grad" id="proof-c2-big">0+</div>
+            <div data-hf-id="hf-o1s9" class="label" id="proof-c2-l"><span data-hf-id="hf-mecw" class="green">Shopify</span> stores</div>
+          </div>
+
+          <div data-hf-id="hf-ywxx" class="card" id="proof-c3">
+            <div data-hf-id="hf-thyf" class="big" id="proof-c3-big" style="font-size: 146px">Guaranteed.</div>
+            <div data-hf-id="hf-61by" class="slot sub"><div data-hf-id="hf-t091" class="alt" id="proof-c3-s">It works.</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
+          (function () {
+            if (window.__emilEases) return; window.__emilEases = true;
+            if (window.CustomEase) { gsap.registerPlugin(CustomEase); CustomEase.create("emilOut", "0.23,1,0.32,1"); CustomEase.create("emilInOut", "0.77,0,0.175,1"); }
+            else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
+          })();
+          var tl = gsap.timeline({ paused: true });
+          var $ = function (id) { return document.getElementById("proof-" + id); };
+
+          // Apple-style reveal: rises out of a soft blur and settles to size.
+          function rise(el, at, dur) {
+            tl.fromTo(el, { opacity: 0, y: 36, scale: 1.06, filter: "blur(16px)" },
+              { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: dur || 1.0, ease: "emilOut" }, at);
+          }
+          function fade(el, at, dur) {
+            tl.to(el, { opacity: 0, y: -20, filter: "blur(10px)", duration: dur || 0.35, ease: "emilOut" }, at);
+          }
+          function card(id, start, end, keep) {
+            var el = $(id);
+            tl.set(el, { opacity: 1, visibility: "visible", y: 0 }, start);
+            if (keep) return;
+            tl.to(el, { opacity: 0, y: -24, duration: 0.4, ease: "emilOut" }, end - 0.4);
+            tl.set(el, { opacity: 0, visibility: "hidden" }, end);
+          }
+          function count(el, from, to, at, dur, suffix) {
+            var o = { v: from };
+            tl.fromTo(o, { v: from }, {
+              v: to, duration: dur, ease: "emilOut",
+              onUpdate: function () { el.textContent = Math.round(o.v) + (suffix || ""); }
+            }, at);
+          }
+
+
+          var T = function (abs) { return abs - 49.57; };
+          tl.fromTo($("scrim"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "emilOut" }, 0);
+
+          // "This can easily boost your AOV by at least 10 percent more."
+          card("c1", T(49.6), T(53.06));
+          rise($("c1-e"), T(49.84), 0.9);
+          rise($("c1-big"), T(51.6), 0.9);
+          count($("c1-big"), 0, 10, T(51.6), 0.7, "%");
+          rise($("c1-s"), T(52.55), 0.6);
+
+          // "one of many strategies that we use for 600 plus Shopify stores"
+          card("c2", T(53.08), T(58.62));
+          rise($("c2-e"), T(53.3), 0.9);
+          rise($("c2-big"), T(56.14), 0.9);
+          count($("c2-big"), 0, 600, T(56.14), 0.9, "+");
+          rise($("c2-l"), T(57.15), 0.7);
+
+          // "and I can guarantee it works."
+          card("c3", T(58.64), T(60.2));
+          rise($("c3-big"), T(58.64), 1.0);
+          rise($("c3-s"), T(59.52), 0.6);
+
+          window.__timelines["proof"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
