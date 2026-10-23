@@ -1,6 +1,6 @@
 ---
 name: upnova-reels-video
-description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, or a feature highlight on a screenshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts), caption placement, grouping and sync, offer-name phrases, claim sections, real logos and widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
+description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, or a client's real store and cart in 3D, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
 ---
 
 # Upnova Reels video style
@@ -21,8 +21,16 @@ Collected from Son's feedback on:
    Its feedback is collected in §0b below.
 5. The same "1019" reel, second round (HyperFrames project "Upnova Reels Video Testimonials",
    20 October 2026, ~117s): full-screen graphic scenes between the on-camera parts, phone feature
-   shots, a 3D store report, four founder testimonials and a re-shot intro. Its feedback is the
-   **newest** and is collected in §0c below.
+   shots, a 3D store report, four founder testimonials and a re-shot intro. Its feedback is collected
+   in §0c below.
+6. "Price Preview" reel (HyperFrames project "Upnova Reels Video Project", 23 October 2026, 59s): Son
+   on camera telling one client's story (Stantt): the store's deal, why nobody saw it, the new feature,
+   an A/B test and the result. Full-screen scenes built from the client's real store. Its feedback is
+   the **newest** and is collected in §0d below.
+
+**Dollar amounts in this file are written as "USD 6", "USD 60M+".** The skill loader swaps a dollar
+sign followed by a digit for the words the person typed after the skill's name, so the real form
+garbles here. On screen, always show them with the dollar sign.
 
 Every rule below came from Son, either directly or as the fix for something Son flagged. Where
 sources disagree, the **newest wins**, and the rule says so. Follow them by default on the next reel.
@@ -78,7 +86,7 @@ Put every one of these in the first plan and build it without waiting to be aske
 2. **Claim text is punchy, not transcribed** (`three days,` → **`3 DAYS`**): in claims and other big
    emphasis, write quantities as **digits**, set the key short term in **UPPERCASE**, and **drop
    trailing commas/periods on the emphasised term**. Applies to every number word ("ten percent" →
-   "10%", "three minutes" → "3 MINUTES", "six dollars" → "$6"). The values still match what was said
+   "10%", "three minutes" → "3 MINUTES", "six dollars" → "USD 6" shown with the dollar sign). The values still match what was said
    (§4); only the form changes.
 3. **Mixed fonts sit on one baseline.** Any row or caption phrase that mixes Inter and the Apple
    Garamond emphasis needs `align-items: baseline` on its flex box (`captions.html` has it now);
@@ -150,11 +158,59 @@ Son flagged each of these on the second round of the 1019 reel. Build them this 
     section, its sounds and the root length; booms tied to that testimonial stay put.
 11. **Zoom on the speaker: quick and snappy.** Son preferred a snap over a slow push: scale the
     on-camera clip 1 → ~1.28 in ~0.35s `expo.out` on the moment (the offer starting), hold, then ease
-    back out (~0.6s) once the claim clears.
+    back out (~0.6s) once the claim clears. **Keep the head in the upper part of the frame** while a
+    claim sits in the lower half (§0d.5).
 12. **Replacing a stretch of footage** (a re-shot intro): transcribe the new clip, find the silence in
     the old footage where its last line ends, start the old clip there with `data-media-start`,
     re-time everything inside the new stretch to the new words (claim rows, captions, the logo
     rise, sound hits), shift everything after by the difference, and update the root length.
+
+## 0d. Client stores and screenshots (newest, 23 October 2026, Price Preview reel)
+
+Son flagged each of these on a reel that tells one client's story. Build them this way from the start:
+
+1. **The client is shown by its real logo and its real store, not by the word "Shopify".** When Son
+   says "this brand's Shopify store", show the client's logo rising in, then a real screenshot of the
+   client's **desktop store** in a simple browser-window card (grey bar with three dots, rounded
+   corners, slow 1 → 1.05 drift). **Don't give "Shopify" the green emphasis** in captions (Son: "don't
+   highlight Shopify"); it is no longer in `build_groups.py`'s `HI` list. Use the client's logo again
+   under the result figures (§0c.3).
+2. **Real client UI first; draw only as the last resort.** Son sent the real Stantt cart to replace a
+   drawn one ("here's how Stantt cart look"). In this order:
+   - Screenshot the client's real pages. Store popups ("You've got a mystery discount", Klaviyo) cover
+     every frame of `app.capture` / `hyperframes capture`. Chrome headless with the popup hosts
+     blocked worked:
+     `timeout 60 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --hide-scrollbars --user-data-dir=/tmp/<dir>/prof --host-resolver-rules="MAP *.klaviyo.com 127.0.0.1, MAP *.attn.tv 127.0.0.1, MAP *.privy.com 127.0.0.1, MAP *.justuno.com 127.0.0.1" --window-size=1440,900 --force-device-scale-factor=1.5 --virtual-time-budget=8000 --screenshot=/tmp/<dir>/home.png https://<store>/`
+     (without `timeout` and its own `--user-data-dir` it hung for 10 minutes). Crop off the cookie
+     banner with ffmpeg `crop`.
+   - For a page you can't reach (a cart with items, a logged-in view), **ask Son for a screenshot** in
+     the plan.
+   - Only if neither works, draw the page from the store's real product photos, names and prices
+     (`https://<store>/collections/<handle>/products.json`), in the store's own colours (next point),
+     and tell Son it is drawn.
+3. **Match the client's brand colours element by element.** Read them from the capture's
+   `extracted/tokens.json` (`colors`, and `colorStats` where `interactiveBg` counts buttons), then
+   check each against a real screenshot before using it. Stantt: **buttons navy `#373D61`** (Add to
+   cart, Secure Checkout), **sale prices and discount tags orange `#CC662A`**. Son corrected this twice:
+   first "Stantt use orange color, not black", then "keep the buttons the same brand color as Stantt's
+   button color". Orange went on the buttons by mistake; a screenshot check would have caught it.
+4. **3D push-in on a screenshot: tight.** Son: "zoom in more, much tighter." Push in until the
+   feature fills most of the frame's width, about **3x** (`z` ~1080 with `perspective: 1600px`; 1.6x
+   was too loose), and land it in the **middle of the screen**. With `transform-origin` on the feature
+   (screen position F), perspective origin P and the screen spot you want G, the move is
+   `x, y = P − F + (G − P) · (1600 − z) / 1600` (Stantt cart: F (869, 614), P (540, 900),
+   G (540, 880), z 1080 → x −329, y 280). Keep the gentle 12° tilt and −24° turn (§7). The ring sits on
+   the feature; the label pill and its arrow go **below** it, clear of the bottom captions.
+5. **Snap zoom on the speaker: head in the upper area.** Son: "zoom in is fine but have the head in the
+   upper area so it doesn't lay under the text." Set the zoom's `transformOrigin` low (`"50% 90%"`):
+   the point at the origin stays put, so everything above it, the head included, moves up as it
+   scales. Set it with `tl.set` at each snap so other zooms keep their own origin. Snapshot the zoomed
+   frame and check the chin is above the claim's first line.
+6. **Logos white or black, depending on what is behind them.** On footage and dark scenes show the
+   logo **white** (`filter: brightness(0) invert(1)` on a black logo); on light UI (a store header, a
+   white card) keep it **black**. When the element also animates `filter` (the blur rise-in), put the
+   colour filter on an **inner layer**: the tween replaces the whole `filter` value, and a white
+   wordmark turned dark at the end of the reel.
 
 ## Templates
 
@@ -221,7 +277,8 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
   - The real Upnova logo: `assets/brand/upnova-mark.svg` (round pistachio-green mark) and
     `assets/brand/upnova-wordmark.svg` (fetch-assets; originally from the Upnova Design System). The wordmark is black: on dark backgrounds show it white
     with `filter: brightness(0) invert(1)`, without changing its shape.
-  - **Brands by their real logo, not their name in text** (e.g. "Matt · CEO, [STANTT wordmark]").
+  - **Brands by their real logo, not their name in text** (e.g. "Matt · CEO, [STANTT wordmark]"),
+    white or black to suit the background (§0d.6).
     Brand logos already prepared: `assets/brand/` (Stantt, Bluecorn, Cannanda, Devon & Lang, Leelo
     Active, Billy Bones Club). More are in the `upez/upnova-website` repo, `public/testimonials/logos/`.
   - Customer logos for "600+ stores" claims: the 18 files `assets/logos/logo-1.webp` to
@@ -229,7 +286,7 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
   - **Real Upnova widgets**, not drawn lookalikes: the Storybook at https://upnova-widgets.vercel.app
     (screenshot a story with Chrome headless at 430px wide, 2x:
     `iframe.html?id=<story-id>&viewMode=story`; story ids are in `/index.json`). Never invent widget
-    UI (Son rejected a made-up "You're $12 away from free shipping" card: "this is not Upnova design").
+    UI (Son rejected a made-up "You're 12 dollars away from free shipping" card: "this is not Upnova design").
     Son later removed the screenshot-built cart section from the library too, so ask before building
     a section out of widget screenshots.
 - Fonts: Inter Regular, Medium, SemiBold and Bold and Apple Garamond (Bold and Regular) come with
@@ -280,7 +337,7 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
   `build_groups.py`.
 
 **Emphasis (keep it sparse)**
-- `hi`: Shopify, AI agent, Upnova, Average Order Value, upsell, premium, launch, go live,
+- `hi`: AI agent, Upnova, Average Order Value, upsell, premium, launch, go live,
   "Not at all", "takes off", "Claim. Done.", "buy more".
 - `mark`: numbers and claims: 15%, 20%, 34%, five, six dollars, cheat code, one minute, AOV, guarantee.
 - Both render in the glass-green Apple Garamond style above.
@@ -377,7 +434,7 @@ Apple would do. These are claims, and claims need to show very clearly."
 - Free-gift reel, closing: the white Upnova wordmark, "click the link below" / **Get started.** with a
   small arrow. Keep the logo clear of the speaker's head.
 - First reel, opening: "will boost your average value" / **10–30%** / "Or else you don't pay.",
-  **I'm serious.**, **600+** stores | **$60M+**, **3 minutes** + progress line, **Minutes,** *not ~~days~~.*
+  **I'm serious.**, **600+** stores | **USD 60M+**, **3 minutes** + progress line, **Minutes,** *not ~~days~~.*
 
 ## 6. Logo wall behind the speaker
 
@@ -468,7 +525,8 @@ video testimonial from a brand, highlighting a result."
 **Highlight a feature in a screenshot** (`upnova-illustrations` → `screenshot-highlight.html`).
 Son: show the screen, then focus on the feature and point at it.
 1. **Show it in plain 2D first**: the whole screenshot rises in, flat and sharp.
-2. **Then a 3D camera move** to focus: push in (closer camera, `z` ~+820), a **gentle X tilt (~12°)**
+2. **Then a 3D camera move** to focus: push in tight (closer camera, `z` ~1080, about 3x, feature in
+   the middle of the screen, §0d.4), a **gentle X tilt (~12°)**
    and a stronger **Y turn (~−24°)**, `transform-origin` on the feature, inside a parent with
    `perspective: 1600px`. Son rejected a steep X tilt (34°) and a swing-in from an angle at the start.
 3. **Lens blur like a long focal lens**, not dimming: the sharp screenshot plus two blurred copies

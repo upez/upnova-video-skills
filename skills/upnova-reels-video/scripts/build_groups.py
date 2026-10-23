@@ -47,7 +47,7 @@ TERMS = [
     (["ai", "agents"], ["AI", "agents"], "hi"),
 ]
 MARK = {"10", "15", "20", "30", "600", "60", "five", "three", "aov", "guarantee"}  # numbers / big claims
-HI = {"shopify", "ai", "agent", "agents", "upnova", "upsell", "amazing", "generic", "premium",
+HI = {"ai", "agent", "agents", "upnova", "upsell", "amazing", "generic", "premium",
       "launch", "live", "discount", "install", "brand", "data", "integrated", "previewed"}
 
 

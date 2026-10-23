@@ -58,7 +58,7 @@ Original videos named below as `media/sources/...` come the same way (pass that 
 | stat-count | 4.5 s | Tag pill, big number counts up, green S-curve draws (Figma "AOV increase") |
 | bars-grow | 4.5 s | Green pixel backdrop, "MORE FROM EVERY ORDER.", before/after bars, gain chip |
 | roas-target | 4.5 s | Dashed target line, ROAS line climbs past it, dot ripples, result pill |
-| revenue-climb | 4.5 s | $60M+ count-up with the green light streak rising |
+| revenue-climb | 4.5 s | USD 60M+ count-up (shown with the dollar sign) with the green light streak rising |
 | free-shipping | 4.5 s | "UNLOCKED." one-word slam on the green pixel backdrop |
 | offer-morph | 6 s | One widget card resizes through Free gift, Bundles, Buy X get Y, Volume deals with a 4-part tracker. **Son removed it from the catalog on 2026-10-20**: template kept, don't use unless asked |
 | crossed-out | 4.5 s | Three "old way" cards get red X's and dim, "Not anymore." lands green |
@@ -150,7 +150,7 @@ project the same files are under `assets/reel/`. Timings inside each file are se
 
 - Show **real Upnova widgets**, never drawn lookalikes: screenshot stories from
   https://upnova-widgets.vercel.app (iframe.html?id=<story>&viewMode=story, Chrome headless at 430px wide, 2x) and
-  animate the pieces. Don't invent widget UI like a "You're $12 away" card.
+  animate the pieces. Don't invent widget UI like a "You're 12 dollars away" card.
 - No bouncy/overshoot eases (no back.out) on bars and chips: use power3.out / expo.out.
 - Solid gray for "before" elements, not transparent.
 - A green chip on the green pixel backdrop is unreadable: use dark chip with green text there.
