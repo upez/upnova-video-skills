@@ -13,19 +13,20 @@
         [data-composition-id="free-gift-cart"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
         [data-composition-id="free-gift-cart"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
         [data-composition-id="free-gift-cart"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
-        /* the real cart runs in a phone-sized page (430 x 932); its top 480 px show at 2x in a rounded card */
-        [data-composition-id="free-gift-cart"] .card { position: absolute; left: 110px; top: 520px; width: 860px; height: 960px; border-radius: 56px; overflow: hidden; background: #fff; }
-        [data-composition-id="free-gift-cart"] .phone { position: absolute; left: 0; top: 0; width: 430px; height: 480px; zoom: 2; overflow: hidden; }
-        [data-composition-id="free-gift-cart"] .pan { position: absolute; left: 0; top: 0; width: 430px; height: 932px; }
+        /* the real cart runs in a phone-sized page (430 x 932). It is drawn at 3.4x (zoom, so the text stays sharp in
+           the close-up) and shown scaled down; the 3D camera moves the whole phone inside a perspective */
+        [data-composition-id="free-gift-cart"] .camera { position: absolute; inset: 0; perspective: 2400px; }
+        [data-composition-id="free-gift-cart"] .card { position: absolute; left: 0; top: 0; width: 1462px; height: 3169px; border-radius: 150px; overflow: hidden; background: #fff; box-shadow: 0 60px 160px rgba(0, 0, 0, 0.55); }
+        [data-composition-id="free-gift-cart"] .phone { position: absolute; left: 0; top: 0; width: 430px; height: 932px; zoom: 3.4; overflow: hidden; }
         [data-composition-id="free-gift-cart"] iframe { display: block; width: 430px; height: 932px; border: 0; }
       </style>
       <div id="free-gift-cart-root" data-composition-id="free-gift-cart" data-width="1080" data-height="1920">
         <div class="screen" id="free-gift-cart-screen">
           <div class="slats" id="free-gift-cart-slats" data-layout-allow-overflow></div>
-          <div class="tag" id="free-gift-cart-tag" style="top: 400px"><i></i>Free gift</div>
-          <div class="card" id="free-gift-cart-card">
-            <div class="phone">
-              <div class="pan" id="free-gift-cart-pan" data-layout-allow-overflow>
+          <div class="tag" id="free-gift-cart-tag" style="top: 200px"><i></i>Free gift</div>
+          <div class="camera">
+            <div class="card" id="free-gift-cart-card" data-layout-allow-overflow>
+              <div class="phone">
                 <iframe id="free-gift-cart-frame" src="assets/widgets/free-gift/cart-frame.html" title="Upnova cart"></iframe>
               </div>
             </div>
@@ -41,12 +42,14 @@
             else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
           })();
 
-          // FREE GIFT WITH PURCHASE, in the cart. This is the real Upnova cart (cart-winston with the minimal
+          // FREE GIFT WITH PURCHASE, in the cart. This is the real Upnova cart (cart-winston with the linear-progress
           // goals bar, from upez/widgets, built by widgets/live/build.sh into free-gift-cart.js), running in a
           // phone-sized page. It loads the Storybook's mock cart (4 hoodies), and the video moves it to 5: the
           // cart itself redraws the goals, prices and "Claim", and opens its own claim sheet.
           // Settings: the goals as a merchant sets them, the gift, and the beats.
           var OFFER = {
+            goalsTemplate: "linear-progress",                              // the cart's goals bar widget
+            goalsSettings: { progress_bar_filler_bg_color: "#111111", progress_bar_container_bg_color: "#e5e7eb", tertiary_color: "#1f2937" },
             goals: { shipping: 400, gift: 500, discount: 900 },
             giftTitle: "Free Lip Gloss",
             giftThumb: "gift-thumb.jpg",                                   // paths are next to cart-frame.html
@@ -54,7 +57,14 @@
             localImages: { "BIG_BOY_HOOD_NAVYS_Back": "hoodie.jpg" },
             quantity: [4, 5]
           };
-          var B = { rise: 0.15, add: 2.3, addFor: 0.7, sheet: 3.7, sheetFor: 0.6, out: 7.6, end: 8.0 };
+          var B = { rise: 0.15, push: 1.1, pushFor: 1.3, add: 2.7, addFor: 0.8, back: 4.1, backFor: 1.0, sheet: 4.7, sheetFor: 0.6, out: 7.6, end: 8.0 };
+          // camera: Z is the drawing scale; FOCUS is the goals bar's centre in the cart (430 x 932 page px)
+          var Z = 3.4, FOCUS = { x: 215, y: 125 }, PHONE = { x: 215, y: 466 };
+          var SHOTS = {
+            wide:  { s: 0.42, rx: 0,  ry: 0,   at: PHONE, to: { x: 540, y: 1040 } },   // flat, the whole cart
+            close: { s: 0.66, rx: 10, ry: -18, at: FOCUS, to: { x: 600, y: 900 } },    // tilted, close on the goals bar
+            mid:   { s: 0.5,  rx: 6,  ry: -10, at: PHONE, to: { x: 540, y: 1080 } }    // back out for the claim sheet
+          };
 
           var frame = document.getElementById("free-gift-cart-frame");
           function start() {
@@ -71,7 +81,18 @@
             tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
             tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: B.end, ease: "none" }, 0);
             tl.fromTo($("tag"), { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, 0.02);
-            tl.fromTo($("card"), { opacity: 0, y: 70, scale: 0.94, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }, B.rise);
+            // the camera: every shot scales and turns the phone around the point it looks at (transform-origin),
+            // then moves that point to its place on screen
+            var ox = FOCUS.x * Z, oy = FOCUS.y * Z;
+            var shot = function (k) {
+              var sh = SHOTS[k], px = sh.at.x * Z, py = sh.at.y * Z;
+              return { scale: sh.s, rotationX: sh.rx, rotationY: sh.ry, x: sh.to.x - (ox + sh.s * (px - ox)), y: sh.to.y - (oy + sh.s * (py - oy)) };
+            };
+            gsap.set($("card"), { transformOrigin: ox + "px " + oy + "px" });
+            var wide = shot("wide");
+            tl.fromTo($("card"), Object.assign({}, wide, { opacity: 0, y: wide.y + 80, filter: "blur(12px)" }), Object.assign({}, wide, { opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }), B.rise);
+            tl.to($("card"), Object.assign(shot("close"), { duration: B.pushFor, ease: "emilInOut" }), B.push);
+            tl.to($("card"), Object.assign(shot("mid"), { duration: B.backFor, ease: "emilInOut" }), B.back);
 
             // every frame: the cart between its 4- and 5-hoodie states, the claim sheet in or out, the cart's own
             // CSS animations set to the video's time. All of it is a function of the time, so every render matches.

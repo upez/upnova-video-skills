@@ -14,11 +14,13 @@ import { useCartOperations } from "~/utils/hooks/cart/hooks/useCartOperations";
 import { setupCartFetchMocks } from "~/components/page/cart-winston/stories/mock-cart-fetch";
 import { createMockCart } from "~/components/page/cart-winston/stories/mock-cart";
 import LinearProgressMinimalistic from "~/components/shopping-goals-v-2/linear-progress-minimalistic";
+import LinearProgress from "~/components/shopping-goals-v-2/linear-progress";
 
 // The cart loads nested widgets (the goals bar) from Upnova's servers; a video can't. Hand them over
 // through the cart's own component cache instead (the hook dev hot-reload uses).
 const BUNDLED: Record<string, unknown> = {
   "shopping-goals-v-2:linear-progress-minimalistic": LinearProgressMinimalistic,
+  "shopping-goals-v-2:linear-progress": LinearProgress,
 };
 (window as any).__UPNOVA_DEV__ = {
   registerComponentCache: (cache: Record<string, unknown>) => { Object.assign(cache, BUNDLED); },
@@ -28,7 +30,7 @@ const BUNDLED: Record<string, unknown> = {
 
 MotionGlobalConfig.skipAnimations = true;
 
-type Opts = { localImages?: Record<string, string>; goals: { shipping: number; gift: number; discount: number }; giftTitle: string; giftImages: string[]; giftThumb: string; quantity: [number, number] };
+type Opts = { goalsTemplate?: string; goalsSettings?: Record<string, unknown>; brandColor?: string; localImages?: Record<string, string>; goals: { shipping: number; gift: number; discount: number }; giftTitle: string; giftImages: string[]; giftThumb: string; quantity: [number, number] };
 
 function makeGiftProduct(id: number, title: string, image: string) {
   return {
@@ -56,9 +58,9 @@ function setupGlobals(o: Opts) {
     new Intl.NumberFormat("en-US", { style: "currency", currency: currency || "USD", trailingZeroDisplay: "stripIfInteger" } as any).format(amount);
   w.upez__cart_settings = {
     ...(w.upez__cart_settings || {}),
-    brand_color: "#111", discount_color: "#555",
-    goals_template: "linear-progress-minimalistic",
-    goals_template__settings: { progress_bar_filler_bg_color: "#111111", progress_bar_container_bg_color: "#e8e8e8" },
+    brand_color: o.brandColor || "#111", discount_color: "#555",
+    goals_template: o.goalsTemplate || "linear-progress-minimalistic",
+    goals_template__settings: o.goalsSettings || { progress_bar_filler_bg_color: "#111111", progress_bar_container_bg_color: "#e8e8e8" },
     enable_discount_form: false, enable_note: false, enable_shop_pay: false, enable_shipping_rates: false,
     __label_checkout: "Checkout", headlines: [],
   };

@@ -136,7 +136,7 @@ built into one file, mounted in the video, and driven by the video's clock.
 | Template | Length | What it shows |
 | --- | --- | --- |
 | free-gift-banner | 6.6 s | The real product page banner (`FreeGiftPdpBanner`). The video hands it a cart total each frame ($0 → $25 → $42 → $50) and it draws itself: the bar fills, "You're $X away from getting a free gift" counts down, then it turns green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
-| free-gift-cart | 8.0 s | The real cart (`cart-winston` with the minimal goals bar) in a phone-sized page: 4 hoodies, "You are $58.40 away from Free Lip Gloss"; the video moves it to 5 hoodies and the cart redraws the goals ("Claim"), prices and "Claim your Free Lip Gloss", then its own claim sheet slides up ("Choose gift →", $0) |
+| free-gift-cart | 8.0 s | The real cart (`cart-winston`) with the **linear-progress** goals bar (`goalsTemplate`), in a phone-sized page. It starts flat and whole, then the camera tilts in 3D and pushes in close on the goals bar ("You are $58.40 away from Free Lip Gloss", tier nodes); the video moves the cart from 4 to 5 hoodies and the bar fills and the gift node turns to "Claim"; the camera pulls back and the cart's own claim sheet slides up ("Choose gift →", $0). Camera shots in `SHOTS` (scale, X/Y tilt, the point looked at); the cart is drawn at 3.4x (`Z`) so the close-up stays sharp |
 
 Settings at the top of each template: banner `OFFER` (tiers, gifts, the widget's own `settings` such as
 `label`, `headline`, `accent_color`) and `CART` (the totals at each beat); cart `OFFER` (goals, gift, photos,
