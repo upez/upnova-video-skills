@@ -1,13 +1,14 @@
 ---
 name: upnova-illustrations
-description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, a Shopify cart upsell, free-shipping bar, offer morph (free gift / bundle / buy X get Y / volume), crossed-out \"old way\" cards, a checklist, the 600+ stores logo wall, a before/after split, an offer build-up claim, a logo wall behind the cut-out speaker, brand B-roll, results with brand logos, phone feature shots, a pixel-reveal step list, a 3D data report, upsell types, an A/B test, AOV charts, an \"all handled\" checklist, a book-a-call card, a closing call to action, founder video testimonials (wide or narrow card) or written review cards. Also use when asked for \"the illustration library\", \"reference animations\" or \"the Figma style\"."
+description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use whenever a video shows an Upnova upsell widget (free gift with purchase first: the product page banner and the cart unlock, built from the real widgets, never redrawn), and when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, a Shopify cart upsell, free-shipping bar, offer morph (free gift / bundle / buy X get Y / volume), crossed-out \"old way\" cards, a checklist, the 600+ stores logo wall, a before/after split, an offer build-up claim, a logo wall behind the cut-out speaker, brand B-roll, results with brand logos, phone feature shots, a pixel-reveal step list, a 3D data report, upsell types, an A/B test, AOV charts, an \"all handled\" checklist, a book-a-call card, a closing call to action, founder video testimonials (wide or narrow card) or written review cards. Also use when asked for \"the illustration library\", \"reference animations\" or \"the Figma style\"."
 ---
 
 # Upnova illustration library
 
 Built October 2026 in the HyperFrames project "Upnova Ad Animation References" (first called "Untitled 3";
-catalog video, 157.7 s, 1080x1920, 29 numbered sections). Sections 01-12 are the original illustrations;
-13-29 (added 2026-10-20) are the reusable pieces of the 1019 reel. **The catalog holds reusable pieces only,
+catalog video, 172.3 s, 1080x1920, 31 numbered sections). Sections 01-12 are the original illustrations;
+13-29 (added 2026-10-20) are the reusable pieces of the 1019 reel; 30-31 (2026-10-25) are the free gift
+with purchase widgets (see "Real Upnova widgets"). **The catalog holds reusable pieces only,
 each playing on its own over black** (Son, 2026-10-20: "you just add parts of the illustrations or assets
 that could be reusable", not the whole video). No speaker footage, voice-over or running captions in the
 catalog; founder testimonials keep their own clip and sound, and each section keeps its own sound cues.
@@ -123,6 +124,51 @@ project the same files are under `assets/reel/`. Timings inside each file are se
   and the call to action, each starting so its peak lands on the word.
 
 
+## Real Upnova widgets: never draw them, use the widget kit
+
+Claude kept getting Upnova upsells wrong because it drew them from memory: made-up layouts, wording and
+colours (Son rejected a "You're 12 dollars away" card: "this is not Upnova design"). **Never draw an Upnova widget.**
+Use a template built from the real widget, or capture the real widget first.
+
+**Free gift with purchase** (pilot, 2026-10-25, Upnova's own demo look):
+
+| Template | Length | What it shows |
+| --- | --- | --- |
+| free-gift-banner | 6.6 s | Product page banner ("FreeGiftPdpBanner"): "Spend $50, get a free gift", the blue bar fills to "$25 away", then "$8 away", then turns green with "✓ Unlocked" and "Nice! You've unlocked your free gift"; the gift thumbnails lift as they do on hover |
+| free-gift-cart | 8.0 s | Cart drawer with the minimal goals bar: 4 hoodies, "You are $58.40 away from Free Lip Gloss"; a 5th hoodie pushes the cart past $500, the gift tier fills and turns to "Claim", "Claim your Free Lip Gloss"; the claim sheet slides up over a 50% dim and the view moves down to the gift choice ("Choose gift →", $0) |
+
+Settings sit at the top of each template's script (banner: `GOAL`, `STEPS`; cart: `QTY`, `PRICE`, `COMPARE`,
+`AWAY`) and the beats in `B`. Gift photos are `assets/widgets/free-gift/photo-*.jpg` (the Storybook's demo
+photos): swap the files for a brand's own products, keep the names.
+
+**Anatomy of free gift with purchase** (use these words exactly, they are the widget's):
+- Product page banner: badge pill `FREE GIFT` (gift-tag icon); headline `Spend $X, get a free gift` (`$X` bold);
+  progress bar (blue `#1754cf` gradient on a light track) with a light shimmer crossing it every 3 s;
+  `You're $Y away from getting a free gift` (`$Y` bold); a row of gift thumbnails. Unlocked: green bar, a green
+  `✓ Unlocked` next to the badge, `Nice! You've unlocked your free gift`. Multi-tier shows `Tier 2 of 2` and
+  `Spend $100, get a premium gift`. Card background `#f7f7f5`, 1px border at 10% black, system font.
+- In the cart (minimal goals bar): goal cards `Spend $400 / Free Shipping`, `Spend $500 / Free Lip Gloss`
+  (the gift's photo in the node), `Spend $900 / 15% off`; one black bar segment per goal on a `#e8e8e8` track;
+  `You are $58.40 away from Free Lip Gloss`. Unlocked: the label becomes `Claim`, the line becomes
+  `Claim your Free Lip Gloss` with a shimmer, and the cart opens a sheet `Claim your Free Lip Gloss` with
+  each gift (`Choose gift →`, `$0`).
+- Never: a "free shipping" card, coupon-style badges, confetti, new colours or wording not listed here.
+
+**Capturing another widget or state** (`widgets/`, needs `puppeteer-core` and Chrome, see the top of `capture.cjs`):
+1. Find the story in the Storybook (`https://upnova-widgets.vercel.app/index.json`, ~1,000 stories; the source
+   is the private `upez/widgets` repo). Screenshot candidates first and pick with Son.
+2. `node widgets/capture.cjs <story-id> <dir> <name> '[part="<root part>"]'` writes `<name>.html` (real markup,
+   computed styles inlined, `part` names kept as hooks), `<name>.png` and the photos. Carts: add `--open-cart`;
+   to get a state no story shows, set the goals with `FG_TIERS='{"shipping":400,"gift":440,"discount":900}'`
+   (the real component then draws that state, nothing is faked).
+3. `node widgets/verify.cjs <dir> <name>` must report only a few hundred differing pixels (sharper photos).
+   If text colour, weight or borders differ, fix `capture.cjs`, not the copy.
+4. Build the template from captures, as `widgets/free-gift/build.py` does: give the moving parts ids, layer two
+   real states where the widget changes (cross-fade or swap), grow bars with a `clip-path` reveal (not width),
+   put the widget in the house scene (dark slats, tag pill, centred, `zoom` for sharp text), and check with
+   `hyperframes check` and stills of every beat before showing Son.
+5. Text inside the widget stays its real size (under 56px); that is the allowed UI exception.
+
 ## The look (from the Figma)
 
 - Two backdrops only: **black with soft white light slats** at the bottom (`dark-slats.jpg`), and
@@ -150,7 +196,8 @@ project the same files are under `assets/reel/`. Timings inside each file are se
 
 - Show **real Upnova widgets**, never drawn lookalikes: screenshot stories from
   https://upnova-widgets.vercel.app (iframe.html?id=<story>&viewMode=story, Chrome headless at 430px wide, 2x) and
-  animate the pieces. Don't invent widget UI like a "You're 12 dollars away" card.
+  animate the pieces. Don't invent widget UI like a "You're 12 dollars away" card. Since 2026-10-25: use the widget
+  kit above (captured real widgets), not screenshots.
 - No bouncy/overshoot eases (no back.out) on bars and chips: use power3.out / expo.out.
 - Solid gray for "before" elements, not transparent.
 - A green chip on the green pixel backdrop is unreadable: use dark chip with green text there.
