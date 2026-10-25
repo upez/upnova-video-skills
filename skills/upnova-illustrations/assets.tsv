@@ -97,9 +97,10 @@ assets/upsells/phone-in-cart-upsells.mp4	repo	1085470
 assets/upsells/phone-shopping-goals.mp4	repo	326431
 assets/upsells/product-upgrade.png	repo	695440
 assets/upsells/product-volume.png	repo	715762
-assets/widgets/free-gift/cart-frame.html	skill	503
-assets/widgets/free-gift/free-gift-banner.js	skill	711586
-assets/widgets/free-gift/free-gift-cart.js	skill	1286461
+assets/widgets/free-gift/banner-frame.html	skill	548
+assets/widgets/free-gift/cart-frame.html	skill	532
+assets/widgets/free-gift/free-gift-banner.js	skill	857933
+assets/widgets/free-gift/free-gift-cart.js	skill	1317037
 assets/widgets/free-gift/gift-berry.jpg	skill	18668
 assets/widgets/free-gift/gift-nude.jpg	skill	18510
 assets/widgets/free-gift/gift-rose.jpg	skill	49484
@@ -108,6 +109,8 @@ assets/widgets/free-gift/hoodie.jpg	skill	35408
 assets/widgets/free-gift/photo-1.jpg	skill	17212
 assets/widgets/free-gift/photo-2.jpg	skill	57385
 assets/widgets/free-gift/photo-3.jpg	skill	52000
+assets/widgets/virtual-clock.js	skill	5944
+assets/widgets/widget-frame-host.js	skill	3329
 sources/bluecorn/tessa-testimonial-720p.mp4	repo	4272387
 sources/cannanda/testimonial-dr-lee-know.mp4	repo	3893791
 sources/stantt/testimonial-matt.mp4	repo	5666793

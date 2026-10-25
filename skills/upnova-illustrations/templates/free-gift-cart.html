@@ -33,6 +33,7 @@
           </div>
         </div>
       </div>
+      <script src="assets/widgets/widget-frame-host.js"></script>
       <script>
         (function () {
           // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
@@ -44,8 +45,9 @@
 
           // FREE GIFT WITH PURCHASE, in the cart. This is the real Upnova cart (cart-winston with the linear-progress
           // goals bar, from upez/widgets, built by widgets/live/build.sh into free-gift-cart.js), running in a
-          // phone-sized page. It loads the Storybook's mock cart (4 hoodies), and the video moves it to 5: the
-          // cart itself redraws the goals, prices and "Claim", and opens its own claim sheet.
+          // phone-sized page on the video's clock (virtual-clock.js): it loads the Storybook's mock cart (4 hoodies),
+          // and at B.tap the video does what a shopper does, sets the quantity to 5. Everything after that is the
+          // cart's own code with its own timing: the update, the prices, the goals bar, "Claim", the claim sheet.
           // Settings: the goals as a merchant sets them, the gift, and the beats.
           var OFFER = {
             goalsTemplate: "linear-progress",                              // the cart's goals bar widget
@@ -57,7 +59,7 @@
             localImages: { "BIG_BOY_HOOD_NAVYS_Back": "hoodie.jpg" },
             quantity: [4, 5]
           };
-          var B = { rise: 0.15, push: 1.1, pushFor: 1.3, add: 2.7, addFor: 0.8, back: 4.1, backFor: 1.0, sheet: 4.7, sheetFor: 0.6, out: 7.6, end: 8.0 };
+          var B = { rise: 0.15, push: 1.0, pushFor: 1.3, tap: 2.3, back: 5.0, backFor: 1.0, out: 9.1, end: 9.5 };
           // camera: Z is the drawing scale; FOCUS is the goals bar's centre in the cart (430 x 932 page px)
           var Z = 3.4, FOCUS = { x: 215, y: 125 }, PHONE = { x: 215, y: 466 };
           var SHOTS = {
@@ -66,16 +68,14 @@
             mid:   { s: 0.5,  rx: 6,  ry: -10, at: PHONE, to: { x: 540, y: 1080 } }    // back out for the claim sheet
           };
 
-          var frame = document.getElementById("free-gift-cart-frame");
-          function start() {
-            var fw = frame.contentWindow;
-            if (!fw || !fw.UpnovaFreeGiftCart) return setTimeout(start, 30);
-            fw.UpnovaFreeGiftCart.mount(fw.document.getElementById("cart"), OFFER).then(build);
-          }
-          function build(cart) {
-            var $ = function (id) { return document.getElementById("free-gift-cart-" + id); };
-            var inOut = gsap.parseEase("emilInOut"), out = gsap.parseEase("emilOut");
-            var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+          var $ = function (id) { return document.getElementById("free-gift-cart-" + id); };
+          var widget = UpnovaWidgetFrame($("frame"), {
+            global: "UpnovaFreeGiftCart",
+            options: OFFER,
+            actions: [{ at: B.tap, run: function (cart) { cart.changeQuantity(OFFER.quantity[1]); } }],
+            section: $("root")
+          });
+          function build() {
             var tl = gsap.timeline({ paused: true });
 
             tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
@@ -94,25 +94,14 @@
             tl.to($("card"), Object.assign(shot("close"), { duration: B.pushFor, ease: "emilInOut" }), B.push);
             tl.to($("card"), Object.assign(shot("mid"), { duration: B.backFor, ease: "emilInOut" }), B.back);
 
-            // every frame: the cart between its 4- and 5-hoodie states, the claim sheet in or out, the cart's own
-            // CSS animations set to the video's time. All of it is a function of the time, so every render matches.
+            // every frame, the cart's clock follows the video (the renderer also waits for it on "hf-seek")
             var clock = { t: 0 };
-            var apply = function () {
-              var t = clock.t;
-              cart.setCartBetween(cart.states[0], cart.states[1], inOut(clamp((t - B.add) / B.addFor)));
-              var p = out(clamp((t - B.sheet) / B.sheetFor));
-              var parts = cart.sheetParts();
-              if (parts.sheet) { parts.sheet.style.transform = "translateY(" + ((1 - p) * 110) + "%)"; parts.sheet.style.visibility = p > 0 ? "visible" : "hidden"; }
-              if (parts.dim) { parts.dim.style.opacity = String(p); parts.dim.style.visibility = p > 0 ? "visible" : "hidden"; }
-              cart.sync(t);
-            };
-            tl.fromTo(clock, { t: 0 }, { t: B.end, duration: B.end, ease: "none", onUpdate: apply }, 0);
+            tl.fromTo(clock, { t: 0 }, { t: B.end, duration: B.end, ease: "none", onUpdate: function () { widget.show(clock.t); } }, 0);
             tl.to([$("card"), $("tag")], { opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "emilOut" }, B.out);
-            apply();
             window.__timelines["free-gift-cart"] = tl;
             if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
           }
-          start();
+          widget.ready.then(build);
         })();
       </script>
     </template>
