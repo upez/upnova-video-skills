@@ -283,9 +283,10 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
     Active, Billy Bones Club). More are in the `upez/upnova-website` repo, `public/testimonials/logos/`.
   - Customer logos for "600+ stores" claims: the 18 files `assets/logos/logo-1.webp` to
     `logo-18.webp` (fetch-assets; from the website's homepage marquee).
-  - **Real Upnova widgets: never draw them.** Use the widget kit in the `upnova-illustrations` skill
-    ("Real Upnova widgets": the real free gift banner and cart components running in the video, and how to
-    add more). Older note: the Storybook at https://upnova-widgets.vercel.app
+  - **Real Upnova widgets: never draw them.** Use the widget workflow in the `upnova-illustrations` skill
+    ("Real Upnova widgets": build the real component, record its native browser animation, then place that
+    recording inside the HyperFrames camera scene). Do not run widgets on a synthetic video clock: it was
+    laggy and inconsistent when seeking. Older note: the Storybook at https://upnova-widgets.vercel.app
     (screenshot a story with Chrome headless at 430px wide, 2x:
     `iframe.html?id=<story-id>&viewMode=story`; story ids are in `/index.json`). Never invent widget
     UI (Son rejected a made-up "You're 12 dollars away from free shipping" card: "this is not Upnova design").

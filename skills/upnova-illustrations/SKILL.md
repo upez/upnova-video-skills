@@ -1,6 +1,6 @@
 ---
 name: upnova-illustrations
-description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use whenever a video shows an Upnova upsell widget (free gift with purchase first: the product page banner and the cart unlock, built from the real widgets, never redrawn), and when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, a Shopify cart upsell, free-shipping bar, offer morph (free gift / bundle / buy X get Y / volume), crossed-out \"old way\" cards, a checklist, the 600+ stores logo wall, a before/after split, an offer build-up claim, a logo wall behind the cut-out speaker, brand B-roll, results with brand logos, phone feature shots, a pixel-reveal step list, a 3D data report, upsell types, an A/B test, AOV charts, an \"all handled\" checklist, a book-a-call card, a closing call to action, founder video testimonials (wide or narrow card) or written review cards. Also use when asked for \"the illustration library\", \"reference animations\" or \"the Figma style\"."
+description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use whenever a video shows an Upnova upsell widget (free gift with purchase first: the product page banner and cart unlock, built from real widgets, never redrawn), and when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, a Shopify cart upsell, free-shipping bar, offer morph (free gift / bundle / buy X get Y / volume), crossed-out old-way cards, a checklist, the 600+ stores logo wall, a before/after split, an offer build-up claim, a logo wall behind the cut-out speaker, brand B-roll, results with brand logos, phone feature shots, a pixel-reveal step list, a 3D data report, upsell types, an A/B test, AOV charts, an all-handled checklist, a book-a-call card, a closing call to action, founder video testimonials or written review cards. Also use for the illustration library, reference animations or Figma style."
 ---
 
 # Upnova illustration library
@@ -128,57 +128,58 @@ project the same files are under `assets/reel/`. Timings inside each file are se
 
 Claude kept getting Upnova upsells wrong when it drew them (made-up layouts, wording, colours; Son: "this is
 not Upnova design"), and a copy of the widget's markup animated by hand was "not good" either (Son,
-2026-10-25). **Videos run the real widget code**: the React component from the private `upez/widgets` repo,
-built into one file, mounted in the video, and driven by the video's clock.
+2026-10-25). Running the component on a synthetic video clock was also laggy and inconsistent when seeking.
+**Build the real widget, run it on the browser's real clock, record the interaction, then use that recording
+inside the HyperFrames camera scene.** Never recreate its progress fill, text swap, loading state or sheet
+animation in GSAP.
 
 **Free gift with purchase** (pilot, 2026-10-25, Upnova's own demo look = the Storybook's):
 
 | Template | Length | What it shows |
 | --- | --- | --- |
 | free-gift-banner | 6.6 s | The real product page banner (`FreeGiftPdpBanner`) in a phone-width page. At each beat the video sets the cart total ($25, $42, $50) and the banner animates itself: its bar fill, "You're $X away from getting a free gift", then green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
-| free-gift-cart | 9.5 s | The real cart (`cart-winston`) with the **linear-progress** goals bar (`goalsTemplate`), in a phone-sized page. It starts flat and whole, then the camera tilts in 3D and pushes in close on the goals bar ("You are $58.40 away from Free Lip Gloss", tier nodes); at `B.tap` the video sets the quantity to 5, as a shopper would, and the cart does the rest with its own timing: the stepper spins while it updates, the prices fade in, the bar fills, the gift node turns to "Claim"; the camera pulls back and the cart opens its own claim sheet ("Choose gift →", $0). Camera shots in `SHOTS` (scale, X/Y tilt, the point looked at); the cart is drawn at 3.4x (`Z`) so the close-up stays sharp |
+| free-gift-cart | 8 s | A real-time browser recording of `cart-winston` with the **linear-progress** goals bar. The recording contains the widget's native quantity update, price fade, progress fill, text swap, Claim state and claim sheet; HyperFrames only supplies the 3D camera, entrance and exit. Camera shots stay in `SHOTS` (scale, X/Y tilt, point looked at), and the recording is enlarged inside the phone for a sharp close-up |
 
 Settings at the top of each template: banner `OFFER` (tiers, gifts, the widget's own `settings` such as
 `label`, `headline`, `accent_color`) and `CART` (the totals at each beat); cart `OFFER` (goals, gift, photos,
 quantities). Beats are in `B`. Photos live in `assets/widgets/free-gift/` (Storybook demo photos: swap the
 files for a brand's products).
 
-**How it works** (`widgets/live/` and `assets/widgets/`):
-- Each widget runs in its own phone-sized page in an iframe (`free-gift/banner-frame.html`,
-  `free-gift/cart-frame.html`), so it lays out as on a phone (its breakpoints read the window width).
-- **The page runs on the video's clock** (`virtual-clock.js`, loaded first): `performance.now`, `Date`,
-  timers, `requestAnimationFrame` and every CSS animation, including those inside the widget's shadow roots,
-  only move when the video says so. The widget's own code runs for real, with its own animations and
-  timing (motion, count-ups, transitions, the mock cart's one-second update), so every frame matches what a
-  shopper sees, and every render is identical. `motion` is kept off the browser's own animation engine
-  (`element.animate`, which keeps real time), so it runs every animation itself on the clock with its designed
-  durations and easing; CSS animations whose time is up are finished for real.
-- **Check against the real widget** before showing Son: record the same page on the real clock (Chrome
-  screencast) and step the video-clock version through the same moments; the two rows of stills must match.
-- `widget-frame-host.js` drives it: `UpnovaWidgetFrame(iframe, { global, options, actions, section })`
-  mounts the widget, lets it settle, runs `actions` at their seconds (what a shopper does: set the cart total,
-  change a quantity), and `show(seconds)` advances the widget's clock to that moment. The section's timeline
-  calls it every frame, and the renderer waits for it through the `hf-seek` event (`waitUntil`). Going
-  backwards reloads the page and replays to the moment (a short wait when scrubbing back in Studio).
-- `<name>.tsx` mounts the component into a shadow root (as on a store) with mock data and returns the
-  functions the actions use (`setCart`, `changeQuantity`).
-- Nothing loads from the internet at render time: nested widgets the cart fetches from Upnova's servers are
-  bundled and handed over through the cart's component cache, and outside photo links are swapped for local
-  files (`localImages`).
-- Templates register their timeline once the widget is ready, then call `window.__hfForceTimelineRebind()`.
-- `widgets/live/build.sh [name]` clones or updates `upez/widgets` (needs `gh auth login` with access to
-  `upez`), builds each entry into `assets/widgets/free-gift/<name>.js` and prints the widgets commit it
-  used. **Rebuild when the widgets change** so videos show the current widget.
-- Time the camera around the widget's real moments (the cart takes ~1 s to update after a change and opens the
-  claim sheet ~3.5 s after it): take stills every half second first to see when things happen.
+**How it works** (`upez/widgets`, Storybook, and `assets/widgets/`):
+- Build the current private widget repo to a temporary static Storybook, for example
+  `pnpm exec storybook build --output-dir /private/tmp/upnova-storybook-recording`. Record from the static
+  build or from a dedicated phone-sized capture page that imports the same built component; do not run a
+  persistent development server.
+- The capture page is **430×932 CSS pixels** and loads the real component with the exact offer fixture needed
+  for the video: template, products, photos, quantities, thresholds, colours and copy. Trigger the same action
+  a shopper performs (quantity increase, cart-total update, Claim click). Do not call `skipAnimations`, fake
+  intermediate states, interpolate displayed money, or replace the widget's transitions.
+- Record in Chromium on the browser's real clock. Keep enough time before the action for a clean initial hold
+  and enough after it for every native animation to settle. A Playwright `recordVideo` context is suitable;
+  use installed Chrome when Playwright's browser is unavailable.
+- Save the reproducible capture page or recorder script with the skill/project when this will be regenerated.
+  Record the widget commit, Storybook story or entry file, viewport, fixture and action timing. Do not leave the
+  only build or recorder in `/private/tmp`; temporary Storybook output itself may be removed after capture.
+- Inspect frames before using the recording. Browser recording can letterbox when the CSS viewport occupies
+  fewer encoded pixels: the failed free-gift capture had gray padding on the right and bottom. Crop only the
+  recorder padding, scale the real widget canvas to the phone width, and pad any remaining bottom area with
+  the widget background colour. Never stretch unequal axes or crop widget UI.
+- Trim and hold the capture so its native action lands on the section's intended beat. Put the resulting local
+  WebM/MP4 inside the phone/card; HyperFrames animates only the outer camera (3D tilt, zoom, pullback, entrance,
+  exit). This makes preview seeking and rendering deterministic because seeking reads a video frame instead of
+  replaying React and browser animations.
+- Nothing loads from the internet during a HyperFrames render. Bundle or localize every product and gift image
+  before recording. Rebuild and rerecord when widget code, fixture values, products, colours or wording change.
+- Validate the recording itself at the initial state, mid-transition, settled state and claim sheet, then run
+  `hyperframes check` and snapshot those same beats in the final 3D scene.
 
 **Adding another widget** (bundle builder next):
 1. Find its story in the Storybook (`https://upnova-widgets.vercel.app/index.json`) and read the story file
    in `upez/widgets`: it shows the props and the `window.UPEZ__*` globals the widget reads.
-2. Copy `free-gift-banner.tsx` (a widget that takes a cart prop) or `free-gift-cart.tsx` (anything inside the
-   cart drawer) to `<name>.tsx`, set up the same globals, and return the functions the actions call; never turn its animations off.
-3. `widgets/live/build.sh <name>`, then a template like `free-gift-*.html`, then `hyperframes check` and
-   stills of every beat. If a still shows something stuck halfway, check that its animations are inside the clock's reach (a shadow root it saw being created).
+2. Make a phone-sized capture entry that mounts the real component with local fixtures and exposes only the
+   shopper actions the recording needs; never turn its animations off.
+3. Build Storybook, record the native interaction, remove recorder-only padding, and place the resulting video
+   in a template like `free-gift-*.html`. Run `hyperframes check` and inspect stills of every beat.
 4. Text inside the widget keeps its real size (under 56px); that is the allowed UI exception.
 
 **Free gift wording, as the widget writes it** (for scripts and claims): badge `FREE GIFT`; `Spend $X, get a
