@@ -150,8 +150,11 @@ files for a brand's products).
   timers, `requestAnimationFrame` and every CSS animation, including those inside the widget's shadow roots,
   only move when the video says so. The widget's own code runs for real, with its own animations and
   timing (motion, count-ups, transitions, the mock cart's one-second update), so every frame matches what a
-  shopper sees, and every render is identical. Animations whose time is up are finished for real, because
-  `motion` waits for that before its next step.
+  shopper sees, and every render is identical. `motion` is kept off the browser's own animation engine
+  (`element.animate`, which keeps real time), so it runs every animation itself on the clock with its designed
+  durations and easing; CSS animations whose time is up are finished for real.
+- **Check against the real widget** before showing Son: record the same page on the real clock (Chrome
+  screencast) and step the video-clock version through the same moments; the two rows of stills must match.
 - `widget-frame-host.js` drives it: `UpnovaWidgetFrame(iframe, { global, options, actions, section })`
   mounts the widget, lets it settle, runs `actions` at their seconds (what a shopper does: set the cart total,
   change a quantity), and `show(seconds)` advances the widget's clock to that moment. The section's timeline

@@ -43,6 +43,10 @@
   window.cancelAnimationFrame = function (id) { rafs = rafs.filter(function (x) { return x.id !== id; }); };
   window.requestIdleCallback = function (fn) { return window.setTimeout(function () { fn({ didTimeout: false, timeRemaining: function () { return 50; } }); }, 1); };
   window.cancelIdleCallback = window.clearTimeout;
+  // motion hands most animations to the browser's own animation engine (element.animate), which keeps real
+  // time. Without it, motion runs the same animations itself, frame by frame, on this clock (same durations,
+  // same easing), so they play exactly as designed
+  try { delete Element.prototype.animate; } catch (e) {}
   // React's scheduler posts its work through MessageChannel (a real-time task); without it, it uses
   // setTimeout, which follows this clock
   try { window.MessageChannel = undefined; } catch (e) {}
@@ -141,5 +145,5 @@
     }
   }
 
-  window.__vclock = { now: function () { return t; }, advanceTo: advanceTo, runUntil: runUntil };
+  window.__vclock = { now: function () { return t; }, advanceTo: advanceTo, runUntil: runUntil, animations: allAnimations, pending: function () { return { timers: timers.map(function (x) { return Math.round(x.at - t) + (x.every ? '/' + x.every : ''); }), rafs: rafs.length }; } };
 })();
