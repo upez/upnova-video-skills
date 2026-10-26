@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <!-- needs the whole widget folder: "assets/widgets/free-gift/" (fetch-assets copies it) -->
+    <!-- needs the recording in "assets/widgets/free-gift/" (fetch-assets copies it) -->
     <template>
       <style>
         @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
@@ -13,21 +13,20 @@
         [data-composition-id="free-gift-banner"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
         [data-composition-id="free-gift-banner"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
         [data-composition-id="free-gift-banner"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
-        /* the real widget runs in a phone-width page (430 x 232), shown at 2.4x; zoom keeps its text sharp */
+        /* the recording is the banner at phone width (430 x 232 at 3x, on black), shown at 2.4x */
         [data-composition-id="free-gift-banner"] .stage { position: absolute; left: 24px; top: 680px; width: 1032px; height: 557px; }
         [data-composition-id="free-gift-banner"] .widget { width: 430px; height: 232px; zoom: 2.4; }
-        [data-composition-id="free-gift-banner"] iframe { display: block; width: 430px; height: 232px; border: 0; background: transparent; }
+        [data-composition-id="free-gift-banner"] video { display: block; width: 430px; height: 232px; }
       </style>
       <div id="free-gift-banner-root" data-composition-id="free-gift-banner" data-width="1080" data-height="1920">
         <div class="screen" id="free-gift-banner-screen">
           <div class="slats" id="free-gift-banner-slats" data-layout-allow-overflow></div>
           <div class="tag" id="free-gift-banner-tag" style="top: 560px"><i></i>Free gift</div>
           <div class="stage" id="free-gift-banner-stage">
-            <div class="widget"><iframe id="free-gift-banner-frame" src="assets/widgets/free-gift/banner-frame.html" title="Upnova free gift banner" allowtransparency="true"></iframe></div>
+            <div class="widget"><video id="free-gift-banner-recording" class="clip" data-start="0" data-duration="6.6" src="assets/widgets/free-gift/free-gift-banner.mp4" muted playsinline></video></div>
           </div>
         </div>
       </div>
-      <script src="assets/widgets/widget-frame-host.js"></script>
       <script>
         (function () {
           // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
@@ -37,44 +36,20 @@
             else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
           })();
 
-          // FREE GIFT WITH PURCHASE, product page banner. This is the real Upnova component
-          // (FreeGiftPdpBanner from upez/widgets, built by widgets/live/build.sh into free-gift-banner.js), running
-          // in a phone-width page on the video's clock (virtual-clock.js). The video only changes the cart total
-          // at each beat; the widget animates itself (its bar fill, its shimmer) with its own timing.
-          // Settings: the offer as merchants set it up, and the cart total at each beat.
-          var OFFER = {
-            tiers: [{ title: "a free gift", minPurchaseValue: 50, gifts: [
-              { title: "Free gift 1", image: "photo-1.jpg" },          // paths are next to banner-frame.html
-              { title: "Free gift 2", image: "photo-2.jpg" },
-              { title: "Free gift 3", image: "photo-3.jpg" }
-            ] }],
-            settings: {},      // the widget's own settings: label, headline, progress_message, accent_color...
-            cart: 0
-          };
-          var CART = [{ at: 1.0, total: 25 }, { at: 2.2, total: 42 }, { at: 3.3, total: 50 }];
+          // FREE GIFT WITH PURCHASE, product page banner. A recording of the real Upnova banner (FreeGiftPdpBanner)
+          // at a real store, Rare Beauty: "Spend $100, get a free deluxe mini" with the two real deluxe samples.
+          // The cart goes $30 -> $66 at 2.2 s -> $102 at 3.6 s (free-gift-banner.json) and the banner animates
+          // itself: its bar fill, then green with "Unlocked". Recorded by widgets/record/record.cjs from
+          // widgets/fixtures/rare-beauty-free-gift.json; rerecord to change products, amounts or wording.
           var B = { rise: 0.15, out: 6.2, end: 6.6 };
-
           var $ = function (id) { return document.getElementById("free-gift-banner-" + id); };
-          var widget = UpnovaWidgetFrame($("frame"), {
-            global: "UpnovaFreeGiftBanner",
-            options: OFFER,
-            actions: CART.map(function (c) { return { at: c.at, run: function (banner) { banner.setCart(c.total); } }; }),
-            section: $("root")
-          });
-          function build() {
-            var tl = gsap.timeline({ paused: true });
-            tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
-            tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: B.end, ease: "none" }, 0);
-            tl.fromTo($("tag"), { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, 0.02);
-            tl.fromTo($("stage"), { opacity: 0, y: 60, scale: 0.94, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }, B.rise);
-            // every frame, the widget's clock follows the video (the renderer also waits for it on "hf-seek")
-            var clock = { t: 0 };
-            tl.fromTo(clock, { t: 0 }, { t: B.end, duration: B.end, ease: "none", onUpdate: function () { widget.show(clock.t); } }, 0);
-            tl.to([$("stage"), $("tag")], { opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "emilOut" }, B.out);
-            window.__timelines["free-gift-banner"] = tl;
-            if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
-          }
-          widget.ready.then(build);
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: B.end, ease: "none" }, 0);
+          tl.fromTo($("tag"), { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, 0.02);
+          tl.fromTo($("stage"), { opacity: 0, y: 60, scale: 0.94, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }, B.rise);
+          tl.to([$("stage"), $("tag")], { opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "emilOut" }, B.out);
+          window.__timelines["free-gift-banner"] = tl;
         })();
       </script>
     </template>

@@ -1,0 +1,19 @@
+{
+  "kind": "cart",
+  "fixture": "rare-beauty-free-gift.json",
+  "fps": 30,
+  "length": 8.6,
+  "scale": 3,
+  "size": {
+    "width": 430,
+    "height": 932
+  },
+  "actions": [
+    {
+      "at": 2.6,
+      "label": "add one more"
+    }
+  ],
+  "frames": 296,
+  "recorded": "2026-10-26T17:08:44.002Z"
+}

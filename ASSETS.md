@@ -169,17 +169,13 @@ Not shared, made per reel: `assets/presenter-cutout-<name>.webm` (the speaker cu
 
 | File | Where | Size | Used by |
 | --- | --- | --- | --- |
-| `assets/widgets/free-gift/banner-frame.html` | skill | 1 KB | upnova-illustrations/free-gift-banner |
-| `assets/widgets/free-gift/cart-frame.html` | skill | 1 KB | upnova-illustrations/free-gift-cart |
 | `assets/widgets/free-gift/free-gift-banner.js` | skill | 837 KB | - |
+| `assets/widgets/free-gift/free-gift-banner.json` | skill | 1 KB | - |
+| `assets/widgets/free-gift/free-gift-banner.mp4` | skill | 66 KB | upnova-illustrations/free-gift-banner |
 | `assets/widgets/free-gift/free-gift-cart.js` | skill | 1.3 MB | - |
-| `assets/widgets/free-gift/gift-berry.jpg` | skill | 18 KB | - |
-| `assets/widgets/free-gift/gift-nude.jpg` | skill | 18 KB | - |
-| `assets/widgets/free-gift/gift-rose.jpg` | skill | 48 KB | - |
-| `assets/widgets/free-gift/gift-thumb.jpg` | skill | 4 KB | - |
-| `assets/widgets/free-gift/hoodie.jpg` | skill | 34 KB | - |
-| `assets/widgets/free-gift/photo-1.jpg` | skill | 16 KB | - |
-| `assets/widgets/free-gift/photo-2.jpg` | skill | 56 KB | - |
-| `assets/widgets/free-gift/photo-3.jpg` | skill | 50 KB | - |
-| `assets/widgets/virtual-clock.js` | skill | 5 KB | - |
-| `assets/widgets/widget-frame-host.js` | skill | 3 KB | upnova-illustrations/free-gift-banner, upnova-illustrations/free-gift-cart |
+| `assets/widgets/free-gift/free-gift-cart.json` | skill | 1 KB | - |
+| `assets/widgets/free-gift/free-gift-cart.mp4` | skill | 595 KB | upnova-illustrations/free-gift-cart |
+| `assets/widgets/free-gift/rare-beauty/find-comfort-body-mousse-feel-seen.jpg` | skill | 31 KB | - |
+| `assets/widgets/free-gift/rare-beauty/lip-oil-deluxe-sample-delight.jpg` | skill | 17 KB | - |
+| `assets/widgets/free-gift/rare-beauty/liquid-blush-deluxe-sample-encourage.jpg` | skill | 17 KB | - |
+| `assets/widgets/free-gift/rare-beauty/soft-pinch-cheek-lip-trio.jpg` | skill | 45 KB | - |

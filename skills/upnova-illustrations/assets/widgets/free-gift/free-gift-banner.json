@@ -1,0 +1,23 @@
+{
+  "kind": "banner",
+  "fixture": "rare-beauty-free-gift.json",
+  "fps": 30,
+  "length": 6.6,
+  "scale": 3,
+  "size": {
+    "width": 430,
+    "height": 232
+  },
+  "actions": [
+    {
+      "at": 2.2,
+      "label": "cart 66"
+    },
+    {
+      "at": 3.6,
+      "label": "cart 102"
+    }
+  ],
+  "frames": 64,
+  "recorded": "2026-10-26T17:08:53.345Z"
+}

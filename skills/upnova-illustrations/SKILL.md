@@ -133,33 +133,42 @@ not Upnova design"), and a copy of the widget's markup animated by hand was "not
 inside the HyperFrames camera scene.** Never recreate its progress fill, text swap, loading state or sheet
 animation in GSAP.
 
-**Free gift with purchase** (pilot, 2026-10-25, Upnova's own demo look = the Storybook's):
+**Mock data: real products from real stores, in a use case that makes sense** (Son, 2026-10-26: "use mockup
+products that are real products from real stores, not random images or a random use case"). Every product,
+gift, price and photo in a widget recording comes from one real store's catalog, and the offer is one that
+store could run: the gift is something the store really gives away (a deluxe sample, a mini), the cart holds
+that store's products, and the amounts add up. Never picsum or stock photos, never a gift from another
+category (no lip gloss gift in a hoodie cart). Real catalogs are in `upez/widgets` `src/mockData/` (Rare
+Beauty, Gorjana, Monica Vinader, Pixi, Dermalogica, Nude Project, Oak & Luna, Zipster Baby, Tru Supplements,
+Klipsta); a client's own store works too (`https://<store>/products.json`). Put the products in a fixture
+(`widgets/fixtures/*.json`, with product and variant IDs and where they came from) and save the photos in
+`assets/widgets/<widget>/<store>/`.
+
+**Free gift with purchase** (2026-10-26, Rare Beauty, `widgets/fixtures/rare-beauty-free-gift.json`):
 
 | Template | Length | What it shows |
 | --- | --- | --- |
-| free-gift-banner | 6.6 s | The real product page banner (`FreeGiftPdpBanner`) in a phone-width page. At each beat the video sets the cart total ($25, $42, $50) and the banner animates itself: its bar fill, "You're $X away from getting a free gift", then green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
-| free-gift-cart | 8 s | A real-time browser recording of `cart-winston` with the **linear-progress** goals bar. The recording contains the widget's native quantity update, price fade, progress fill, text swap, Claim state and claim sheet; HyperFrames only supplies the 3D camera, entrance and exit. Camera shots stay in `SHOTS` (scale, X/Y tilt, point looked at), and the recording is enlarged inside the phone for a sharp close-up |
+| free-gift-banner | 6.6 s | A recording of the real product page banner (`FreeGiftPdpBanner`): "Spend $100, get a free deluxe mini" with the two real Rare Beauty deluxe samples. The cart goes $30 → $66 → $102 and the banner animates itself: its bar fill ("You're $70 away…", "$34 away…"), then green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
+| free-gift-cart | 8.5 s | A recording of the real cart (`cart-winston`, **linear-progress** goals bar): 1 Soft Pinch Cheek & Lip Trio + 1 Find Comfort Body Mousse ($66), "You are $34 away from Free Deluxe Mini". At 2.6 s the shopper adds a second trio ($102) and the cart does the rest: the stepper spins, the goals bar fills, "Claim", and its claim sheet with Soft Pinch Tinted Lip Oil and Liquid Blush deluxe samples ($0). HyperFrames only adds the 3D camera (`SHOTS`: scale, X/Y tilt, point looked at), entrance and exit; `B.tap` matches the recording's tap |
 
-Settings at the top of each template: banner `OFFER` (tiers, gifts, the widget's own `settings` such as
-`label`, `headline`, `accent_color`) and `CART` (the totals at each beat); cart `OFFER` (goals, gift, photos,
-quantities). Beats are in `B`. Photos live in `assets/widgets/free-gift/` (Storybook demo photos: swap the
-files for a brand's products).
+To change products, amounts or wording: edit the fixture, rebuild (`widgets/live/build.sh`) if the widget code
+changed, rerecord (`node widgets/record/record.cjs cart|banner <fixture> <out.mp4>`), then retime `B` from the
+`<out>.json` it writes. Keep every cart line under 3: the Storybook mock cart adds its own "3+ for 20% off".
 
 **How it works** (`upez/widgets`, Storybook, and `assets/widgets/`):
-- Build the current private widget repo to a temporary static Storybook, for example
-  `pnpm exec storybook build --output-dir /private/tmp/upnova-storybook-recording`. Record from the static
-  build or from a dedicated phone-sized capture page that imports the same built component; do not run a
-  persistent development server.
-- The capture page is **430×932 CSS pixels** and loads the real component with the exact offer fixture needed
-  for the video: template, products, photos, quantities, thresholds, colours and copy. Trigger the same action
-  a shopper performs (quantity increase, cart-total update, Claim click). Do not call `skipAnimations`, fake
-  intermediate states, interpolate displayed money, or replace the widget's transitions.
-- Record in Chromium on the browser's real clock. Keep enough time before the action for a clean initial hold
-  and enough after it for every native animation to settle. A Playwright `recordVideo` context is suitable;
-  use installed Chrome when Playwright's browser is unavailable.
-- Save the reproducible capture page or recorder script with the skill/project when this will be regenerated.
-  Record the widget commit, Storybook story or entry file, viewport, fixture and action timing. Do not leave the
-  only build or recorder in `/private/tmp`; temporary Storybook output itself may be removed after capture.
+- **The tools are saved in this skill:** `widgets/live/build.sh` clones/updates `upez/widgets` and builds each
+  entry (`widgets/live/<name>.tsx`: the real component plus a `mount(host, fixture)` that sets up its data and
+  exposes the shopper's actions) into `assets/widgets/<widget>/<name>.js`. `widgets/record/cart.html` and
+  `banner.html` are the capture pages (430×932 / 430×232 CSS px) that load those bundles, and
+  `widgets/record/record.cjs` records them: it mounts the widget with the fixture, records the screen at 3x
+  through Chrome's screencast on the real clock, does what a shopper does at the fixture's times, and writes a
+  constant 30 fps MP4 (each frame = what was on screen at that moment) plus a `.json` with the action times and
+  frame counts. Needs puppeteer-core, Chrome and ffmpeg (see the top of `record.cjs`).
+- The widget's own data: the fixture sets template, products, photos, quantities, thresholds, colours and copy.
+  Trigger the same action a shopper performs (quantity change, cart-total update, Claim click). Do not call
+  `skipAnimations`, fake intermediate states, interpolate displayed money, or replace the widget's transitions.
+- Keep enough time before the action (`hold`) for the camera to arrive and after it (`after`) for every native
+  animation to settle; set `hold` so the tap lands on the section's beat and the recording can start at 0.
 - Inspect frames before using the recording. Browser recording can letterbox when the CSS viewport occupies
   fewer encoded pixels: the failed free-gift capture had gray padding on the right and bottom. Crop only the
   recorder padding, scale the real widget canvas to the phone width, and pad any remaining bottom area with
@@ -184,8 +193,8 @@ files for a brand's products).
 
 **Free gift wording, as the widget writes it** (for scripts and claims): badge `FREE GIFT`; `Spend $X, get a
 free gift`; `You're $Y away from getting a free gift`; unlocked `✓ Unlocked`, `Nice! You've unlocked your
-free gift`; in the cart `Spend $500 / Free Lip Gloss` → `Claim`, `You are $58.40 away from Free Lip Gloss`,
-`Claim your Free Lip Gloss`, `Choose gift →`.
+free gift`; in the cart `Spend $100 / Free Deluxe Mini` → `Claim`, `You are $34 away from Free Deluxe Mini`,
+`Claim your Free Deluxe Mini`, `Choose gift →` (the tier's title is whatever the merchant names it).
 
 ## The look (from the Figma)
 

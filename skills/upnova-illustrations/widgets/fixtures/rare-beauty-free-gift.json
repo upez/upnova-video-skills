@@ -1,0 +1,84 @@
+{
+  "about": "Free gift with purchase at a real store: Rare Beauty (rarebeauty.com). Products, IDs, prices and photos are Rare Beauty's own, from upez/widgets src/mockData/rareBeauty.ts (the catalog the widgets team uses in the PremiumFreeGiftBeauty story). Photos are saved in assets/widgets/free-gift/rare-beauty/. Paths are relative to the capture pages in widgets/record/.",
+  "currency": "USD",
+  "cart": {
+    "lines": [
+      {
+        "productId": 8157483008135,
+        "variantId": 42925873463431,
+        "title": "Soft Pinch Cheek & Lip Trio",
+        "handle": "soft-pinch-cheek-lip-trio",
+        "vendor": "Rare Beauty",
+        "productType": "Lip & Cheek",
+        "price": 36,
+        "compareAt": 56,
+        "image": "../../assets/widgets/free-gift/rare-beauty/soft-pinch-cheek-lip-trio.jpg",
+        "quantity": 1
+      },
+      {
+        "productId": 8277716140167,
+        "variantId": 43498429546631,
+        "title": "Find Comfort Hydrating Body Mousse to Oil - Feel Seen",
+        "handle": "find-comfort-hydrating-body-mousse-to-oil-feel-seen",
+        "vendor": "Rare Beauty",
+        "productType": "Body Oil",
+        "price": 30,
+        "image": "../../assets/widgets/free-gift/rare-beauty/find-comfort-body-mousse-feel-seen.jpg",
+        "quantity": 1
+      }
+    ],
+    "addTo": 2,
+    "note": "The shopper takes the trio from 1 to 2 ($66 -> $102). Keep every line under 3: the Storybook mock cart adds a 3+ for 20% off discount by itself.",
+    "hold": 2.6,
+    "after": 6.0
+  },
+  "goals": {
+    "template": "linear-progress",
+    "settings": {
+      "progress_bar_filler_bg_color": "#111111",
+      "progress_bar_container_bg_color": "#e5e7eb",
+      "tertiary_color": "#1f2937"
+    },
+    "brandColor": "#111111",
+    "shipping": 50,
+    "gift": 100,
+    "discount": 150,
+    "giftTitle": "Free Deluxe Mini",
+    "giftThumb": "../../assets/widgets/free-gift/rare-beauty/lip-oil-deluxe-sample-delight.jpg",
+    "gifts": [
+      {
+        "productId": 7376580083847,
+        "variantId": 40408565088391,
+        "title": "Soft Pinch Tinted Lip Oil Deluxe Sample - Delight",
+        "handle": "soft-pinch-tinted-lip-oil-deluxe-sample-delight",
+        "image": "../../assets/widgets/free-gift/rare-beauty/lip-oil-deluxe-sample-delight.jpg"
+      },
+      {
+        "productId": 7375963619463,
+        "variantId": 40407116054663,
+        "title": "Soft Pinch Liquid Blush Deluxe Sample - Encourage",
+        "handle": "soft-pinch-liquid-blush-deluxe-sample-encourage",
+        "image": "../../assets/widgets/free-gift/rare-beauty/liquid-blush-deluxe-sample-encourage.jpg"
+      }
+    ]
+  },
+  "banner": {
+    "tierTitle": "a free deluxe mini",
+    "goal": 100,
+    "steps": [
+      {
+        "at": 0.0,
+        "cart": 30
+      },
+      {
+        "at": 1.2,
+        "cart": 66
+      },
+      {
+        "at": 2.6,
+        "cart": 102
+      }
+    ],
+    "after": 3.0
+  }
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <!-- needs the whole widget folder: "assets/widgets/free-gift/" (fetch-assets copies it) -->
+    <!-- needs the recording in "assets/widgets/free-gift/" (fetch-assets copies it) -->
     <template>
       <style>
         @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-SemiBold.otf"); font-weight: 600; font-style: normal; }
@@ -13,12 +13,12 @@
         [data-composition-id="free-gift-cart"] .slats { position: absolute; left: -160px; width: 1400px; bottom: 0; height: 760px; background: url("assets/backgrounds/dark-slats.jpg") 50% 100% / cover no-repeat; opacity: 0.6; }
         [data-composition-id="free-gift-cart"] .tag { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; height: 84px; padding: 0 34px 0 28px; border-radius: 42px; border: 2px solid rgba(255, 255, 255, 0.32); display: flex; align-items: center; gap: 18px; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
         [data-composition-id="free-gift-cart"] .tag i { display: block; width: 18px; height: 18px; border-radius: 9px; background: #c5eea8; flex-shrink: 0; }
-        /* the real cart runs in a phone-sized page (430 x 932). It is drawn at 3.4x (zoom, so the text stays sharp in
-           the close-up) and shown scaled down; the 3D camera moves the whole phone inside a perspective */
+        /* the recording is a phone screen (430 x 932 at 3x). The phone is drawn at 3.4x (zoom) and shown scaled
+           down, so the close-up stays sharp; the 3D camera moves the whole phone inside a perspective */
         [data-composition-id="free-gift-cart"] .camera { position: absolute; inset: 0; perspective: 2400px; }
         [data-composition-id="free-gift-cart"] .card { position: absolute; left: 0; top: 0; width: 1462px; height: 3169px; border-radius: 150px; overflow: hidden; background: #fff; box-shadow: 0 60px 160px rgba(0, 0, 0, 0.55); }
         [data-composition-id="free-gift-cart"] .phone { position: absolute; left: 0; top: 0; width: 430px; height: 932px; zoom: 3.4; overflow: hidden; }
-        [data-composition-id="free-gift-cart"] iframe { display: block; width: 430px; height: 932px; border: 0; }
+        [data-composition-id="free-gift-cart"] video { display: block; width: 430px; height: 932px; object-fit: cover; }
       </style>
       <div id="free-gift-cart-root" data-composition-id="free-gift-cart" data-width="1080" data-height="1920">
         <div class="screen" id="free-gift-cart-screen">
@@ -27,13 +27,12 @@
           <div class="camera">
             <div class="card" id="free-gift-cart-card" data-layout-allow-overflow>
               <div class="phone">
-                <iframe id="free-gift-cart-frame" src="assets/widgets/free-gift/cart-frame.html" title="Upnova cart"></iframe>
+                <video id="free-gift-cart-recording" class="clip" data-start="0" data-duration="8.6" src="assets/widgets/free-gift/free-gift-cart.mp4" muted playsinline></video>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <script src="assets/widgets/widget-frame-host.js"></script>
       <script>
         (function () {
           // Emil Kowalski easing (emil-design-eng): strong ease-out for entrances, strong ease-in-out for moves. No bounce.
@@ -43,23 +42,14 @@
             else { gsap.registerEase("emilOut", gsap.parseEase("expo.out")); gsap.registerEase("emilInOut", gsap.parseEase("expo.inOut")); }
           })();
 
-          // FREE GIFT WITH PURCHASE, in the cart. This is the real Upnova cart (cart-winston with the linear-progress
-          // goals bar, from upez/widgets, built by widgets/live/build.sh into free-gift-cart.js), running in a
-          // phone-sized page on the video's clock (virtual-clock.js): it loads the Storybook's mock cart (4 hoodies),
-          // and at B.tap the video does what a shopper does, sets the quantity to 5. Everything after that is the
-          // cart's own code with its own timing: the update, the prices, the goals bar, "Claim", the claim sheet.
-          // Settings: the goals as a merchant sets them, the gift, and the beats.
-          var OFFER = {
-            goalsTemplate: "linear-progress",                              // the cart's goals bar widget
-            goalsSettings: { progress_bar_filler_bg_color: "#111111", progress_bar_container_bg_color: "#e5e7eb", tertiary_color: "#1f2937" },
-            goals: { shipping: 400, gift: 500, discount: 900 },
-            giftTitle: "Free Lip Gloss",
-            giftThumb: "gift-thumb.jpg",                                   // paths are next to cart-frame.html
-            giftImages: ["gift-rose.jpg", "gift-nude.jpg", "gift-berry.jpg"],
-            localImages: { "BIG_BOY_HOOD_NAVYS_Back": "hoodie.jpg" },
-            quantity: [4, 5]
-          };
-          var B = { rise: 0.15, push: 1.0, pushFor: 1.3, tap: 2.3, back: 4.2, backFor: 1.0, out: 9.1, end: 9.5 };
+          // FREE GIFT WITH PURCHASE, in the cart. The phone plays a recording of the real Upnova cart (cart-winston
+          // with the linear-progress goals bar) at a real store, Rare Beauty: 1 Soft Pinch Cheek & Lip Trio and 1 Find
+          // Comfort Body Mousse ($66, "$34 away from Free Deluxe Mini"). At 2.6 s the shopper adds a second trio
+          // ($102) and the cart does the rest with its own animations: the update, the goals bar filling, "Claim",
+          // and its claim sheet with the two real deluxe samples. Recorded by widgets/record/record.cjs from
+          // widgets/fixtures/rare-beauty-free-gift.json; rerecord to change products, amounts or wording.
+          // Only the camera is animated here. B.tap must match the recording's tap (free-gift-cart.json).
+          var B = { rise: 0.15, push: 1.1, pushFor: 1.3, tap: 2.6, back: 4.0, backFor: 1.0, out: 8.1, end: 8.5 };
           // camera: Z is the drawing scale; FOCUS is the goals bar's centre in the cart (430 x 932 page px)
           var Z = 3.4, FOCUS = { x: 215, y: 125 }, PHONE = { x: 215, y: 466 };
           var SHOTS = {
@@ -69,39 +59,24 @@
           };
 
           var $ = function (id) { return document.getElementById("free-gift-cart-" + id); };
-          var widget = UpnovaWidgetFrame($("frame"), {
-            global: "UpnovaFreeGiftCart",
-            options: OFFER,
-            actions: [{ at: B.tap, run: function (cart) { cart.changeQuantity(OFFER.quantity[1]); } }],
-            section: $("root")
-          });
-          function build() {
-            var tl = gsap.timeline({ paused: true });
-
-            tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
-            tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: B.end, ease: "none" }, 0);
-            tl.fromTo($("tag"), { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, 0.02);
-            // the camera: every shot scales and turns the phone around the point it looks at (transform-origin),
-            // then moves that point to its place on screen
-            var ox = FOCUS.x * Z, oy = FOCUS.y * Z;
-            var shot = function (k) {
-              var sh = SHOTS[k], px = sh.at.x * Z, py = sh.at.y * Z;
-              return { scale: sh.s, rotationX: sh.rx, rotationY: sh.ry, x: sh.to.x - (ox + sh.s * (px - ox)), y: sh.to.y - (oy + sh.s * (py - oy)) };
-            };
-            gsap.set($("card"), { transformOrigin: ox + "px " + oy + "px" });
-            var wide = shot("wide");
-            tl.fromTo($("card"), Object.assign({}, wide, { opacity: 0, y: wide.y + 80, filter: "blur(12px)" }), Object.assign({}, wide, { opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }), B.rise);
-            tl.to($("card"), Object.assign(shot("close"), { duration: B.pushFor, ease: "emilInOut" }), B.push);
-            tl.to($("card"), Object.assign(shot("mid"), { duration: B.backFor, ease: "emilInOut" }), B.back);
-
-            // every frame, the cart's clock follows the video (the renderer also waits for it on "hf-seek")
-            var clock = { t: 0 };
-            tl.fromTo(clock, { t: 0 }, { t: B.end, duration: B.end, ease: "none", onUpdate: function () { widget.show(clock.t); } }, 0);
-            tl.to([$("card"), $("tag")], { opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "emilOut" }, B.out);
-            window.__timelines["free-gift-cart"] = tl;
-            if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
-          }
-          widget.ready.then(build);
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo($("screen"), { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
+          tl.fromTo($("slats"), { x: -40 }, { x: 40, duration: B.end, ease: "none" }, 0);
+          tl.fromTo($("tag"), { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "emilOut" }, 0.02);
+          // every shot scales and turns the phone around the point it looks at (transform-origin), then moves that
+          // point to its place on screen
+          var ox = FOCUS.x * Z, oy = FOCUS.y * Z;
+          var shot = function (k) {
+            var sh = SHOTS[k], px = sh.at.x * Z, py = sh.at.y * Z;
+            return { scale: sh.s, rotationX: sh.rx, rotationY: sh.ry, x: sh.to.x - (ox + sh.s * (px - ox)), y: sh.to.y - (oy + sh.s * (py - oy)) };
+          };
+          gsap.set($("card"), { transformOrigin: ox + "px " + oy + "px" });
+          var wide = shot("wide");
+          tl.fromTo($("card"), Object.assign({}, wide, { opacity: 0, y: wide.y + 80, filter: "blur(12px)" }), Object.assign({}, wide, { opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "emilOut" }), B.rise);
+          tl.to($("card"), Object.assign(shot("close"), { duration: B.pushFor, ease: "emilInOut" }), B.push);
+          tl.to($("card"), Object.assign(shot("mid"), { duration: B.backFor, ease: "emilInOut" }), B.back);
+          tl.to([$("card"), $("tag")], { opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "emilOut" }, B.out);
+          window.__timelines["free-gift-cart"] = tl;
         })();
       </script>
     </template>

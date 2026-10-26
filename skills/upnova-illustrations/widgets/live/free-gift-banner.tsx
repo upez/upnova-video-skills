@@ -1,5 +1,5 @@
-// The real FreeGiftPdpBanner for a video. It runs in banner-frame.html on the video's clock
-// (virtual-clock.js), so its own animations (the bar fill, the shimmer) play as in a store.
+// The real FreeGiftPdpBanner, mounted for a recording (widgets/record/). It runs on the browser's real clock
+// with all its own animations (the bar fill, the shimmer, the unlocked state).
 //   UpnovaFreeGiftBanner.mount(host, { tiers, settings, cart }) -> Promise<{ setCart(dollars) }>
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
