@@ -1,0 +1,15 @@
+{
+  "mode": "bundle-cart",
+  "story": "showcase-the-booze-outlet--wine-cart-with-bundle-progress",
+  "fps": 30,
+  "length": 7.5,
+  "actions": [
+    1.7
+  ],
+  "size": {
+    "width": 430,
+    "height": 932
+  },
+  "scale": 2,
+  "paintedFrames": 221
+}

@@ -1,14 +1,14 @@
 ---
 name: upnova-illustrations
-description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use whenever a video shows an Upnova upsell widget (free gift with purchase first: the product page banner and cart unlock, built from real widgets, never redrawn), and when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, a Shopify cart upsell, free-shipping bar, offer morph (free gift / bundle / buy X get Y / volume), crossed-out old-way cards, a checklist, the 600+ stores logo wall, a before/after split, an offer build-up claim, a logo wall behind the cut-out speaker, brand B-roll, results with brand logos, phone feature shots, a pixel-reveal step list, a 3D data report, upsell types, an A/B test, AOV charts, an all-handled checklist, a book-a-call card, a closing call to action, founder video testimonials or written review cards. Also use for the illustration library, reference animations or Figma style."
+description: "Son's library of drop-in animated illustrations for Upnova ads and Instagram Reels (9:16), styled from the Upnova website Figma. Use whenever a video shows an Upnova upsell widget (free gift, bundle builder, product volume or buy X get Y, built from real widgets and recorded from Storybook, never redrawn), and when an Upnova ad, reel or VSL needs a stat count-up, before/after bars, ROAS or revenue chart, Shopify cart offer, crossed-out old-way cards, checklist, logo wall, before/after split, offer claim, brand B-roll, phone feature shot, 3D data report, A/B test, AOV chart, CTA or founder testimonial."
 ---
 
 # Upnova illustration library
 
 Built October 2026 in the HyperFrames project "Upnova Ad Animation References" (first called "Untitled 3";
-catalog video, 172.3 s, 1080x1920, 31 numbered sections). Sections 01-12 are the original illustrations;
-13-29 (added 2026-10-20) are the reusable pieces of the 1019 reel; 30-31 (2026-10-25) are the real free
-gift with purchase widgets, running live (see "Real Upnova widgets"). **The catalog holds reusable pieces only,
+catalog video, 197.46 s, 1080x1920, 35 numbered sections). Sections 01-12 are the original illustrations;
+13-28 (added 2026-10-20) are reusable pieces of the 1019 reel; 29-30 are real free-gift widgets; 31-35
+are real bundle builder, product-volume and buy-X-get-Y widgets (see "Real Upnova widgets"). **The catalog holds reusable pieces only,
 each playing on its own over black** (Son, 2026-10-20: "you just add parts of the illustrations or assets
 that could be reusable", not the whole video). No speaker footage, voice-over or running captions in the
 catalog; founder testimonials keep their own clip and sound, and each section keeps its own sound cues.
@@ -151,6 +151,16 @@ Klipsta); a client's own store works too (`https://<store>/products.json`). Put 
 | free-gift-banner | 6.6 s | A recording of the real product page banner (`FreeGiftPdpBanner`): "Spend $100, get a free deluxe mini" with the two real Rare Beauty deluxe samples. The cart goes $30 → $66 → $102 and the banner animates itself: its bar fill ("You're $70 away…", "$34 away…"), then green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
 | free-gift-cart | 8.5 s | A recording of the real cart (`cart-winston`, **linear-progress** goals bar): 1 Soft Pinch Cheek & Lip Trio + 1 Find Comfort Body Mousse ($66), "You are $34 away from Free Deluxe Mini". At 2.6 s the shopper adds a second trio ($102) and the cart does the rest: the stepper spins, the goals bar fills, "Claim", and its claim sheet with Soft Pinch Tinted Lip Oil and Liquid Blush deluxe samples ($0). HyperFrames only adds the 3D camera (`SHOTS`: scale, X/Y tilt, point looked at), entrance and exit; `B.tap` matches the recording's tap |
 
+**Other offers** (2026-10-26, The Booze Outlet; real wine and whiskey catalog products):
+
+| Template | Length | What it shows |
+| --- | --- | --- |
+| bundle-builder-page | 8.5 s | Real `ModernBundleBuilder` wine-case page. The shopper adds two real wines; the widget applies its own 10% tier, changes prices and advances the native tier tracker |
+| bundle-builder-cart | 7.5 s | Real `cart-winston` bundle progress. The shopper increases Austin Hope Cabernet from 1 to 2; cart count becomes 3, 10% unlocks, prices and checkout total update |
+| product-volume-blueberry | 6.5 s | Real Blue Berry product-volume template for Buffalo Trace 1L. The shopper selects Buy 3 / Save 10%; the real tier card selection and page positioning are recorded |
+| buy-x-get-y-bottom | 7.5 s | Real cart-bottom cross-sell: Maker's Mark + Wild Turkey, then add a real Jim Beam offer at 20% off. The cart inserts it and updates count and total |
+| buy-x-get-y-below-item | 7.5 s | The same real buy-X-get-Y offer through the native `IN_CART_ITEM_UPSELL` / `horizontal-cart-item-cross-sell` template below the matching cart item; Add inserts the real product |
+
 To change products, amounts or wording: edit the fixture, rebuild (`widgets/live/build.sh`) if the widget code
 changed, rerecord (`node widgets/record/record.cjs cart|banner <fixture> <out.mp4>`), then retime `B` from the
 `<out>.json` it writes. Keep every cart line under 3: the Storybook mock cart adds its own "3+ for 20% off".
@@ -164,6 +174,13 @@ changed, rerecord (`node widgets/record/record.cjs cart|banner <fixture> <out.mp
   through Chrome's screencast on the real clock, does what a shopper does at the fixture's times, and writes a
   constant 30 fps MP4 (each frame = what was on screen at that moment) plus a `.json` with the action times and
   frame counts. Needs puppeteer-core, Chrome and ffmpeg (see the top of `record.cjs`).
+- For an existing Storybook story, build Storybook to a static folder and use
+  `node widgets/record/storybook-record.cjs <storybook-dir> <mode> <out.mp4>`. Modes saved here are
+  `bundle-page`, `bundle-cart`, `volume-blueberry`, `bxgy-bottom`, and `bxgy-below-item`. The recorder serves
+  the static build inside Chrome without starting a server, performs a real pointer/quantity interaction,
+  and writes the same constant-30-fps MP4 plus action metadata. `bxgy-below-item` expects the story variant
+  to configure `IN_CART_ITEM_UPSELL`, add collection membership to matching cart lines, and use the widget's
+  own `horizontal-cart-item-cross-sell` template; never move the bottom-cart DOM into place after rendering.
 - The widget's own data: the fixture sets template, products, photos, quantities, thresholds, colours and copy.
   Trigger the same action a shopper performs (quantity change, cart-total update, Claim click). Do not call
   `skipAnimations`, fake intermediate states, interpolate displayed money, or replace the widget's transitions.
@@ -182,7 +199,7 @@ changed, rerecord (`node widgets/record/record.cjs cart|banner <fixture> <out.mp
 - Validate the recording itself at the initial state, mid-transition, settled state and claim sheet, then run
   `hyperframes check` and snapshot those same beats in the final 3D scene.
 
-**Adding another widget** (bundle builder next):
+**Adding another widget:**
 1. Find its story in the Storybook (`https://upnova-widgets.vercel.app/index.json`) and read the story file
    in `upez/widgets`: it shows the props and the `window.UPEZ__*` globals the widget reads.
 2. Make a phone-sized capture entry that mounts the real component with local fixtures and exposes only the

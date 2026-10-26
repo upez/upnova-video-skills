@@ -1,0 +1,15 @@
+{
+  "mode": "bxgy-bottom",
+  "story": "showcase-the-booze-outlet--buy-x-get-y-whiskey",
+  "fps": 30,
+  "length": 7.5,
+  "actions": [
+    1.8
+  ],
+  "size": {
+    "width": 430,
+    "height": 932
+  },
+  "scale": 2,
+  "paintedFrames": 69
+}

@@ -1,0 +1,15 @@
+{
+  "mode": "volume-blueberry",
+  "story": "showcase-the-booze-outlet--buffalo-trace-volume",
+  "fps": 30,
+  "length": 6.5,
+  "actions": [
+    1.6
+  ],
+  "size": {
+    "width": 430,
+    "height": 932
+  },
+  "scale": 2,
+  "paintedFrames": 3
+}

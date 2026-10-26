@@ -1,0 +1,16 @@
+{
+  "mode": "bundle-page",
+  "story": "showcase-the-booze-outlet--wine-bundle-builder",
+  "fps": 30,
+  "length": 8.5,
+  "actions": [
+    1.5,
+    3
+  ],
+  "size": {
+    "width": 430,
+    "height": 932
+  },
+  "scale": 2,
+  "paintedFrames": 228
+}
