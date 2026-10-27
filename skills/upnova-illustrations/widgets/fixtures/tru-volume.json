@@ -1,0 +1,16 @@
+{
+  "store": "Tru Supplements",
+  "source": "upez/widgets src/mockData/tru-supplements-catalog-mock.ts (gettrusupps.com product data, real CDN photos)",
+  "offer": "Product volume on Protein Complete ($49.99): Single Tub / Double Pack Save 10% / Triple Bundle Save 20%",
+  "products": [
+    {
+      "title": "Protein Complete",
+      "price": "$49.99",
+      "id": 4388962828369,
+      "flavors": "real gettrusupps.com color swatches"
+    }
+  ],
+  "stories": [
+    "widgets-product-volume-upsell-blue-berry--tru-supplements-protein (upez/widgets src/components/product-volume-upsell/blue-berry/index.stories.tsx)"
+  ]
+}

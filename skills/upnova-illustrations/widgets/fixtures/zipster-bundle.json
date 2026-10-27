@@ -1,0 +1,24 @@
+{
+  "store": "Zipster Baby",
+  "source": "upez/widgets src/mockData/zipsterBaby.ts (real zipsterbaby.ie products.json snapshot, June 2026) \u2014 same products the showcase stories mount",
+  "brand_color": "#228b97",
+  "currency": "EUR",
+  "offer": "Family bundle: 3 items 10% / 4 items 15% / 5 items 20% off (the tiers zipsterbaby.ie runs)",
+  "products": [
+    {
+      "title": "ZIPSTER\u2122 Koala",
+      "price": "\u20ac32",
+      "id": 8688039461206
+    },
+    {
+      "title": "ZIPSTER\u2122 Peter Rabbit Meadow Hopper",
+      "price": "\u20ac32",
+      "id": 15553408205184
+    }
+  ],
+  "stories": [
+    "showcase-zipster-baby--zipster-baby-bundle-builder-page (upez/widgets src/showcase/ZipsterBaby.stories.tsx)",
+    "showcase-zipster-baby--zipster-baby-cart-bundle-progress (same file)"
+  ],
+  "note": "Every ZIPSTER product has size variants, so the recorded mobile flow is + opens the card's size picker, then a size row adds the variant"
+}

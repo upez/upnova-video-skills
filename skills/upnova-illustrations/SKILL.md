@@ -151,15 +151,15 @@ Klipsta); a client's own store works too (`https://<store>/products.json`). Put 
 | free-gift-banner | 6.6 s | A recording of the real product page banner (`FreeGiftPdpBanner`): "Spend $100, get a free deluxe mini" with the two real Rare Beauty deluxe samples. The cart goes $30 → $66 → $102 and the banner animates itself: its bar fill ("You're $70 away…", "$34 away…"), then green with "✓ Unlocked" and "Nice! You've unlocked your free gift" |
 | free-gift-cart | 8.5 s | A recording of the real cart (`cart-winston`, **linear-progress** goals bar): 1 Soft Pinch Cheek & Lip Trio + 1 Find Comfort Body Mousse ($66), "You are $34 away from Free Deluxe Mini". At 2.6 s the shopper adds a second trio ($102) and the cart does the rest: the stepper spins, the goals bar fills, "Claim", and its claim sheet with Soft Pinch Tinted Lip Oil and Liquid Blush deluxe samples ($0). HyperFrames only adds the 3D camera (`SHOTS`: scale, X/Y tilt, point looked at), entrance and exit; `B.tap` matches the recording's tap |
 
-**Other offers** (2026-10-26, The Booze Outlet; real wine and whiskey catalog products):
+**Other offers** (2026-10-27, three brands diversified — Son: "each offer uses a different brand", never the wine demo again):
 
-| Template | Length | What it shows |
-| --- | --- | --- |
-| bundle-builder-page | 8.5 s | Real `ModernBundleBuilder` wine-case page. The shopper adds two real wines; the widget applies its own 10% tier, changes prices and advances the native tier tracker |
-| bundle-builder-cart | 7.5 s | Real `cart-winston` bundle progress. The shopper increases Austin Hope Cabernet from 1 to 2; cart count becomes 3, 10% unlocks, prices and checkout total update |
-| product-volume-blueberry | 6.5 s | Real Blue Berry product-volume template for Buffalo Trace 1L. The shopper selects Buy 3 / Save 10%; the real tier card selection and page positioning are recorded |
-| buy-x-get-y-bottom | 7.5 s | Real cart-bottom cross-sell: Maker's Mark + Wild Turkey, then add a real Jim Beam offer at 20% off. The cart inserts it and updates count and total |
-| buy-x-get-y-below-item | 7.5 s | The same real buy-X-get-Y offer through the native `IN_CART_ITEM_UPSELL` / `horizontal-cart-item-cross-sell` template below the matching cart item; Add inserts the real product |
+| Template | Brand | Length | What it shows |
+| --- | --- | --- | --- |
+| bundle-builder-page | Zipster Baby | 8.5 s | Real `ModernBundleBuilder` family-bundle page (teal #228b97, ZIPSTER™ sleep suits €32). The shopper taps +, picks a size, adds a second suit: the tier tracker fills and "You unlocked 10% off!" with prices animating to €86.40 struck €96 |
+| bundle-builder-cart | Zipster Baby | 7.5 s | Real `cart-winston` bundle progress ("Family bundle — unlock up to 20% off"). The shopper taps + on the Koala line from 1 to 2; cart count 2 → 3, the tracker turns "10% off unlocked!", checkout €64 → €96 |
+| product-volume-blueberry | Tru Supplements | 6.5 s | Real Blue Berry volume template for "Protein Complete" ($49.99, real flavor swatches). The shopper selects Triple Bundle / Save 20%; the real tier card selection and page positioning are recorded |
+| buy-x-get-y-bottom | Pixi Beauty | 7.5 s | Real cart-bottom cross-sell (Pixi #BD4E55, Roboto Condensed): Remedy Mask Trio + On-the-Glow Petite in cart, "Add a second treat — 20% off Pixi bestsellers"; Add inserts Choose Your Remedy Mask Duo and updates count and totals |
+| buy-x-get-y-below-item | Pixi Beauty | 7.5 s | The same real buy-X-get-Y offer through the native `IN_CART_ITEM_UPSELL` flow (story `PixiBeautyBuyXGetYBelowItem`), rendering below the matching cart item; Add inserts the real product |
 
 To change products, amounts or wording: edit the fixture, rebuild (`widgets/live/build.sh`) if the widget code
 changed, rerecord (`node widgets/record/record.cjs cart|banner <fixture> <out.mp4>`), then retime `B` from the

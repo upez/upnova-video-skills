@@ -1,0 +1,31 @@
+{
+  "store": "Pixi Beauty",
+  "source": "upez/widgets src/mockData/pixiBeauty.ts (real pixibeauty.com products.json snapshot, September 2026)",
+  "brand_color": "#BD4E55",
+  "font": "Roboto Condensed (pixibeauty.com's real body font)",
+  "currency": "USD",
+  "offer": "Buy X get Y: cart holds Remedy Mask Trio ($57, compare $72) + On-the-Glow SUPERGLOW Petite ($12); cross-sell suggests other real Pixi products at 20% off",
+  "products": [
+    {
+      "title": "Remedy Mask Trio",
+      "price": "$57",
+      "id": 7795001065568
+    },
+    {
+      "title": "On-the-Glow SUPERGLOW Petite",
+      "price": "$12",
+      "id": 7765986345056
+    },
+    {
+      "title": "Choose Your Remedy Mask Duo",
+      "price": "$48",
+      "id": 7794986975328,
+      "added_in_recording": true
+    }
+  ],
+  "stories": [
+    "showcase-pixi-beauty--pixi-beauty-buy-x-get-y (bottom cart)",
+    "showcase-pixi-beauty--pixi-beauty-buy-x-get-y-below-item (IN_CART_ITEM_UPSELL below the matching line)",
+    "both in upez/widgets src/showcase/PixiBeauty.stories.tsx"
+  ]
+}

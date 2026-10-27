@@ -8,11 +8,14 @@ const puppeteer = require("/Applications/HyperFrames.app/Contents/Resources/app.
 const chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const [root, mode, outPath] = process.argv.slice(2);
 const stories = {
-  "bundle-page": { id: "showcase-the-booze-outlet--wine-bundle-builder", length: 8.5, actions: [1.5, 3.0] },
-  "bundle-cart": { id: "showcase-the-booze-outlet--wine-cart-with-bundle-progress", length: 7.5, actions: [1.7] },
-  "volume-blueberry": { id: "showcase-the-booze-outlet--buffalo-trace-volume", length: 6.5, actions: [1.6] },
-  "bxgy-bottom": { id: "showcase-the-booze-outlet--buy-x-get-y-whiskey", length: 7.5, actions: [1.8] },
-  "bxgy-below-item": { id: "showcase-the-booze-outlet--buy-x-get-y-whiskey", query: "&offerPlacement=below-item", length: 7.5, actions: [1.8] },
+  // Zipster Baby — bundle builder (page + cart progress), teal #228b97, live zipsterbaby.ie feed
+  "zipster-page": { id: "showcase-zipster-baby--zipster-baby-bundle-builder-page", length: 8.5, actions: [1.2, 2.6, 4.0, 5.4] },
+  "zipster-cart": { id: "showcase-zipster-baby--zipster-baby-cart-bundle-progress", length: 7.5, actions: [1.7] },
+  // Tru Supplements — product volume tiers on the real ACV Complete product
+  "tru-volume": { id: "widgets-product-volume-upsell-blue-berry--tru-supplements-protein", length: 6.5, actions: [1.6] },
+  // Pixi Beauty — buy X get Y cross-sell, bottom of cart and below the matching cart item
+  "pixi-bxgy-bottom": { id: "showcase-pixi-beauty--pixi-beauty-buy-x-get-y", length: 7.5, actions: [1.8] },
+  "pixi-bxgy-below-item": { id: "showcase-pixi-beauty--pixi-beauty-buy-x-get-y-below-item", length: 7.5, actions: [1.8] },
 };
 if (!root || !stories[mode] || !outPath) {
   console.error("usage: record-offer-story.cjs <storybook-dir> <mode> <out.mp4>");
@@ -26,28 +29,73 @@ const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-async function perform(page) {
-  if (mode === "bundle-page") {
-    const plus = () => page.evaluate(() => {
-      const buttons = [...document.querySelectorAll('button[aria-label="Add to bundle"]')].filter(button => {
-        const rect = button.getBoundingClientRect();
-        return rect.width > 0 && rect.height > 0 && rect.top > 0 && rect.bottom < innerHeight - 180;
-      });
-      buttons[Math.min(1, buttons.length - 1)]?.click();
+// Zipster products all have size variants, so the real mobile flow is: + opens the card's
+// size picker, then tapping a size row adds that variant. Rows are always in the DOM
+// (clipped when closed), so click only a row the topmost element at its centre.
+async function clickChoosePlus(page, cardIndex) {
+  const point = await page.evaluate(idx => {
+    const buttons = [...document.querySelectorAll('[part="upnova-choose-item-btn"]')].filter(el => {
+      const r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0 && r.bottom < innerHeight - 150;
     });
-    await sleep(story.actions[0] * 1000); await plus();
-    await sleep((story.actions[1] - story.actions[0]) * 1000); await plus();
+    const el = buttons[Math.min(idx, buttons.length - 1)];
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  }, cardIndex);
+  if (point) await page.mouse.click(point.x, point.y);
+}
+
+async function clickSizeRow(page, sizeText, plus) {
+  const point = await page.evaluate(({ txt, plus }) => {
+    const onTop = (el, x, y) => { const top = document.elementFromPoint(x, y); return top && (el === top || el.contains(top)); };
+    const rows = [...document.querySelectorAll("button")].filter(b => {
+      if (b.innerText?.trim() !== txt) return false;
+      const r = b.getBoundingClientRect();
+      return r.width > 0 && r.x < 430 && onTop(b, r.x + r.width / 2, r.y + r.height / 2);
+    });
+    const row = rows[0];
+    if (!row) return null;
+    const r = row.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  }, { txt: sizeText, plus });
+  if (point) await page.mouse.click(point.x, point.y);
+}
+
+async function perform(page) {
+  if (mode === "zipster-page") {
+    let plus = null;
+    await sleep(story.actions[0] * 1000);
+    await clickChoosePlus(page, 0);
+    plus = await page.evaluate(() => {
+      const el = [...document.querySelectorAll('[part="upnova-choose-item-btn"]')].find(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.bottom < innerHeight - 150; });
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+    });
+    await sleep((story.actions[1] - story.actions[0]) * 1000);
+    await clickSizeRow(page, "6-9M (68/74)", plus);
+    await sleep((story.actions[2] - story.actions[1]) * 1000);
+    await clickChoosePlus(page, 1);
+    plus = await page.evaluate(() => {
+      const el = [...document.querySelectorAll('[part="upnova-choose-item-btn"]')].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.bottom < innerHeight - 150; })[1];
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+    });
+    await sleep((story.actions[3] - story.actions[2]) * 1000);
+    await clickSizeRow(page, "3-6M (62/68)", plus);
     return;
   }
   await sleep(story.actions[0] * 1000);
-  if (mode === "bundle-cart") {
+  if (mode === "zipster-cart") {
     await page.evaluate(() => {
       const buttons = [...document.querySelectorAll("button")].filter(button => button.getAttribute("part") === "upnova-7554472a099f");
       buttons[0]?.click();
     });
-  } else if (mode === "volume-blueberry") {
+  } else if (mode === "tru-volume") {
     await page.evaluate(() => {
-      const label = [...document.querySelectorAll("*")].find(element => element.children.length === 0 && element.textContent?.trim() === "Buy 3");
+      const label = [...document.querySelectorAll("*")].find(element => element.children.length === 0 && element.textContent?.trim() === "Triple Bundle");
       let target = label;
       while (target && target !== document.body) {
         const style = getComputedStyle(target);
