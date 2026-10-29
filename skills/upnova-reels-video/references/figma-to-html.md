@@ -10,6 +10,7 @@ frame to HTML. Never redraw it by eye, and never crop a screenshot of it.**
 
 ## Where Upnova's designs live
 
+- **Open the upsells here:** https://www.figma.com/design/XkRTHbJxUbfjmYEJ8lZMiJ/Upnova-website?node-id=1850-356&p=f
 - File `XkRTHbJxUbfjmYEJ8lZMiJ` ("Upnova-website"). Son names the frames so they are easy to find.
 - Canvas `1850:356` "Upnova upsells": the real offers on real client stores (Zipster, Leelo Active),
   desktop and mobile, as `html.to.design` imports. Frames used so far:

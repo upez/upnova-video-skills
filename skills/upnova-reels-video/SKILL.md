@@ -227,7 +227,7 @@ them apply to reels too.
    `scripts/figma-to-html/figma2html.py`: it turns the frame's own code into a scoped HTML fragment with
    its real images, icons and font, then lets you swap only numbers and copy.
 2. **Show Upnova's real offers, never a random mock-up.** They are on the "Upnova upsells" canvas
-   (`1850:356`) of the Upnova-website file; Son names the frames. Keep the client products that are in
+   (`1850:356`) of the Upnova-website file (https://www.figma.com/design/XkRTHbJxUbfjmYEJ8lZMiJ/Upnova-website?node-id=1850-356&p=f); Son names the frames. Keep the client products that are in
    the Figma (Zipster, Leelo Active); change only the numbers the film needs.
 3. **Re-read the Figma when Son says he updated it.** Node ids and frames change; list the canvas again.
 
