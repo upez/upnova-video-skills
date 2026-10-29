@@ -1,6 +1,6 @@
 ---
 name: upnova-reels-video
-description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, or a client's real store and cart in 3D, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
+description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
 ---
 
 # Upnova Reels video style
@@ -26,7 +26,11 @@ Collected from Son's feedback on:
 6. "Price Preview" reel (HyperFrames project "Upnova Reels Video Project", 23 October 2026, 59s): Son
    on camera telling one client's story (Stantt): the store's deal, why nobody saw it, the new feature,
    an A/B test and the result. Full-screen scenes built from the client's real store. Its feedback is
-   the **newest** and is collected in §0d below.
+   collected in §0d below.
+7. "Audience Segment" feature launch film (HyperFrames project "New video 2", 29 October 2026, 16:9,
+   50s): Son on camera, with illustrated cutaways for a new feature, real offers converted from the
+   Upnova Figma, 3D phones, sound effects checked with earshot, and captions. Its feedback is the
+   **newest** and is collected in §0e below; the Figma method is in `references/figma-to-html.md`.
 
 **Dollar amounts in this file are written as "USD 6", "USD 60M+".** The skill loader swaps a dollar
 sign followed by a digit for the words the person typed after the skill's name, so the real form
@@ -212,6 +216,60 @@ Son flagged each of these on a reel that tells one client's story. Build them th
    colour filter on an **inner layer**: the tween replaces the whole `filter` value, and a white
    wordmark turned dark at the end of the reel.
 
+## 0e. Feature launch films and Figma (newest, 29 October 2026, Audience Segment film)
+
+Son flagged each of these on a 16:9 feature launch (talking head plus illustrated cutaways). Most of
+them apply to reels too.
+
+**Figma to HTML (the biggest lesson)**
+1. **Convert Figma frames, never redraw them by eye.** Son: "why the design so hard for you to match?
+   isn't there a figma to html tool?" Follow `references/figma-to-html.md` and run
+   `scripts/figma-to-html/figma2html.py`: it turns the frame's own code into a scoped HTML fragment with
+   its real images, icons and font, then lets you swap only numbers and copy.
+2. **Show Upnova's real offers, never a random mock-up.** They are on the "Upnova upsells" canvas
+   (`1850:356`) of the Upnova-website file; Son names the frames. Keep the client products that are in
+   the Figma (Zipster, Leelo Active); change only the numbers the film needs.
+3. **Re-read the Figma when Son says he updated it.** Node ids and frames change; list the canvas again.
+
+**What the illustrations show**
+4. **The exclusive offer must look visibly stronger** than the public one. Bundle builder, public:
+   buy 2 get 10%, buy 3 get 15%; the segment's offer: buy 2 get 20%, buy 3 get 30%. Every screen that
+   shows a deal (cart tiers, bundle slots, deal lines, "Same store" cards) uses these same numbers.
+5. **Product words:** say "segment", never "room". Don't show the product upgrade upsell (not common).
+   Leave out any offer Son cuts from the script (the volume deal went from both picture and voice).
+6. **Admin screens are light Polaris, like the real app.** Son rejected a dark theme ("Layout have to be
+   Polaris. check upez-frontend"), for every frame. Page `#F6F6F7`, cards white with `#E3E3E3` borders,
+   text `#1A1A1A` / `#616161`. Take labels from the real code in `~/Projects/upnova/upez-frontend`
+   (audience restrictions: "Required audiences", "Excluded audiences"; tags "VIP customers", "Wholesale").
+7. **Upnova colours only, no Polaris blue.** Son: "use the colors from upnova, not this blue purple thing."
+   Accents, outlines, links, checks and badges use green `#C5EEA8` and ink `#0C110D`, never `#005BD3`.
+   The client's own colours stay inside the client's store UI (Zipster teal in its cart).
+8. **When Son asks for an illustration, draw an illustration, not UI.** "An animation of the link being
+   typed out, then packing an emailed letter and sending it to a special audience, not everyone ...
+   not this UI thing." Flat shapes in the Upnova palette, acting out the sentence on its words.
+9. **Never crop icons.** Avatar circles with a badge must not use `overflow: hidden`; the badge sits on
+   the edge, whole, and the person icon fits inside the circle.
+10. **Phones in 3D, whole and clean.** Show the whole phone turning in 3D (GSAP `rotationY` inside a
+    `perspective: 1600px` stage), no notch, and no gap at the top: the screen fills the phone and starts
+    at its top edge. Phone screens are images or converted Figma HTML, not videos.
+11. **Show the page and the cart together** when the voice describes the experience (the bundle builder
+    page next to its cart), and give long talking stretches B-roll or illustrations (Son flagged a
+    10-second stretch with none).
+
+**Titles and logos**
+12. **The first mention of a new feature gets its own title screen with the Upnova logo.**
+13. **Remixing a Moment: the brand's icon, not the reference's.** A logo-lockup Moment (sphere shrinks
+    to a disk, words cut in) was ported with the Grok sphere's white glints; Son: "this is grok icon, you
+    have to use upnova icon." Use the real `upnova-mark.svg` from the first frame and keep the Moment's
+    motion. Keep the lockup bare: Son removed the extra "New" tag and the line under it.
+14. A lockup that is wider than the Moment's makes the disk travel further; scale the words' entrance
+    offsets by the same ratio, or the words run into the disk.
+
+**Working**
+15. **Ask before any paid generation** (fal, HeyGen). On this film Son chose none: everything was drawn
+    or converted in HyperFrames.
+16. A message with only picked elements and no instruction: ask what to change, change nothing.
+
 ## Templates
 
 Working files are in `templates/`. Copy them into the new project's `compositions/`, run
@@ -232,6 +290,8 @@ timings and the GROUPS data:
 | `templates/testimonial-narrow.html` | Founder testimonial for a low-res vertical clip: narrow 540x960 card, captions under it (id `testimonial-cannanda`, §7) |
 | `templates/index-example.html` | How the sections, the cut-out clip and the sound cues were wired in the root |
 | `scripts/build_groups.py` | Transcript to caption groups (offer names and terms kept whole, brand spelling fixed) |
+| `scripts/figma-to-html/figma2html.py` | Converts a Figma frame's code (from `get_design_context`) into a scoped HTML fragment with its real assets and font; see `references/figma-to-html.md` (§0e) |
+| `references/figma-to-html.md` | Where Upnova's Figma offers live, the 7 steps from Figma frame to video scene, and the pitfalls |
 | `templates/older/` | First reel's versions Son later rejected (top-of-frame claims, word-by-word captions). Reference only. |
 
 **More sections live in the `upnova-illustrations` skill** (its `templates/` folder, installed next to this one):
@@ -358,6 +418,23 @@ pill (`#c5eea8` background, dark text):
 
 **Captions are off during sections that carry their own words** (proof claims, the AI motion
 section, the closing). End the captions clip exactly where the next section starts.
+
+**Captions in HyperFrames Desktop (newest, 29 October 2026)**
+- The app's `captions_apply` only gives HeyGen's stock styles (Pill Karaoke and the like). Son asked
+  for this house style, so build captions as **our own composition** instead: run `captions_apply` once
+  to get the transcript words (its output holds them in `window.__HF_CAPTION__`; they run 0.1s behind
+  film time on that film, so check against the voice), group them with `build_groups.py`, and write a
+  `captions` composition from `templates/captions.html` mounted over the whole film on the top track.
+  Remove the app's caption clip from `index.html`, and tell Son the Captions tab no longer manages them.
+- **On a 16:9 film:** 80px Inter Bold, box left/right 160px, top ~740px (on the chest). Over light
+  illustration scenes the phrase gets `low`: top ~958px, 60px, **dark ink `#0C110D`** with no shadow
+  (white captions vanish on a light scene).
+- **Hide the captions over a title screen** that shows the words itself (the feature's logo lockup).
+- **Fix the spelling of names** before grouping: "UpNova" or "Up Nova" is always **"Upnova"**.
+- **Editing captions later:** a misheard word: fix it with `transcript_correct_words`, then rebuild the
+  phrase (or change its text in the composition's `GROUPS` list directly); never retype the timings. A
+  phrase in the wrong place: change its `low` flag or its `s`/`e` seconds. When sections move, shift
+  the seconds and the `low` ranges with them (§0c.1).
 
 **Caption guide:** `upnova-illustrations` → `caption-guide.html` shows the method on a real
 talking-head clip in three steps (transcribe with word times, group 3–4 words, style + sync).
@@ -578,6 +655,20 @@ Son asked for "cinematic sounds: whoosh, rise, hits, don't overdo it", then for 
 
 - Overlapping sounds go on separate tracks, or the check warns. Two videos with sound in different
   sections also need different `data-track-index` values (`duplicate_audio_track`).
+
+**Check the sounds with earshot (newest, 29 October 2026).** Son: "add SFX, use earshot to check your
+sounds." When the earshot tools are connected:
+1. Make each cue from earshot's bank with `sfx_render` (free, no models): set `dur`, and `apex` for
+   whooshes so the loudest moment lands on the picture; it reports the peak time, so
+   `data-start = moment − peak`. Save into `assets/sfx/`. Reuse one file for repeated cues.
+2. Run `realness` on the folder. Replace anything that reads as code-synthesized (the plain `ui_pop` and
+   `mallet` takes did): `fit/pop/mouth_plop`, `fit/bell/small_bell` and `fit/hit/bamboo_tok` read as real.
+   Good picks so far: `whoosh_fast/sleeve` (logo whip), `swipe/paper` (panels), `swipe/glide` (phones),
+   `whoosh_big/swell` (an object flying off), `pro_typing_run/soft` (typing), `pro_impact/air` (title land).
+3. Mix the voice and the effects into a scratch WAV with ffmpeg (`adelay` + `volume` per cue, `amix`
+   with `normalize=0`), then run `sheet` with the visual moments as `cues` (aim for 85%+ within 100 ms)
+   and `critique` (`fast: true`). Fix cues that land late or have no audible hit.
+4. Report what earshot measured, and say the levels were set by measurement, not by ear.
 
 **Music: ask first**
 - On the free-gift reel Son **took the music out before the final render**. Don't add music by default;
