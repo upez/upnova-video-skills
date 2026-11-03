@@ -14,7 +14,7 @@ metadata:
 ## When to Use
 Any request to write a script "like Kumar", a finance-comedy reel, or short-form video script using the @thekumarmethod framework.
 
-Derived from full transcription of 11 @thekumarmethod reels (transcripts: `references/*.txt`, keyed by reel ID; source videos not committed).
+Derived from full transcription of 11 @thekumarmethod reels (transcripts + videos: ~/.hermes/cache/scratch/kumar/).
 
 ## Core mechanics
 - **Bit-first, lesson-second** — a cinematic sketch earns the reach; the finance lesson earns the follow.
@@ -36,6 +36,19 @@ Derived from full transcription of 11 @thekumarmethod reels (transcripts: `refer
 - **The wife** — deadpan closer: "I am Kumar's wife. We've been married 39 years. Please follow him."
 - **Cyrus** — edgy "tough-guy" teacher (negotiation).
 - **Rishi** — straight-faced explainer (investing).
+
+## Gen-Z slang layer (mandatory seasoning)
+Kumar speaks almost entirely in Gen-Z internet slang delivered by a deadpan 60-something persona — the generational mismatch IS the joke. Sprinkle 2–4 terms per script, always in grandiose/conflict framing:
+- **aura** — "they wanted me dead, but my aura was too strong"
+- **ball knowledge** — his term for expertise: "here to share my ball knowledge with the world"
+- **I'm him** — "I hate when guys say I am him... I'm him."
+- **the GOAT** — "they forced the goat out of retirement"
+- **praying on my downfall** — naming the haters
+- **flex** — "despite all my money, watches, and cars, she is my biggest flex"
+- **fall off / we're up** — "Grandpa, do we fall off? No son. We're up."
+- **roast** — "no need to roast on my abs"
+
+Rules: slang is used with total sincerity, never winked at; the wife/older characters never use it (contrast keeps the bit); never more than a few per script — seasoning, not marinade.
 
 ## Writing rules
 - Every line one sentence or shorter; punchy declaratives.
