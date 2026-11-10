@@ -1,6 +1,6 @@
 ---
 name: upnova-reels-video
-description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold white or black only, no serif or italic emphasis, very tight, hard cuts), reel layout (hook banner, talking-head positions with and without on-screen assets), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
+description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold white or black only, no serif or italic emphasis, very tight, hard cuts), reel layout (hook banner, talking-head positions with and without on-screen assets), no fades (hard cuts everywhere), no music or SFX by default, caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
 ---
 
 # Upnova Reels video style
@@ -35,7 +35,11 @@ Collected from Son's feedback on:
    https://app.paper.design/file/01M709E087SSPHSY86RBK5SHAD/p-1-0, 10 November 2026): reference
    stills from other creators' reels with boxes and comments on the hook banner, where the talking
    head sits and where on-screen assets go. Collected in §0f below, together with the new caption
-   rule (Inter Bold white or black only). **The newest: it overrides everything above.**
+   rule (Inter Bold white or black only).
+9. The "Price Preview" reel redone with AI talking-head takes (HyperFrames project "Paper",
+   10 November 2026, 50s): seven generated takes back to back, the Stantt cards and store pages from
+   the 23 October reel reused, the §0f layout. Its feedback is collected in §0g below. **The newest:
+   it overrides everything above.**
 
 **Dollar amounts in this file are written as "USD 6", "USD 60M+".** The skill loader swaps a dollar
 sign followed by a digit for the words the person typed after the skill's name, so the real form
@@ -312,6 +316,60 @@ notes, `get_children` for the boxes, `get_screenshot` for the stills. The boxes 
    screen recordings, founder clips, full-screen motion-design scenes that move). A horizontal video
    is not vertical: it goes in the card. A brand with no video, shown by a lifestyle photo (§6b), goes
    in the card too.
+
+## 0g. No fades, real pictures, calm framing (newest, 10 November 2026, Price Preview redo)
+
+Son flagged each of these on the redo. Build them this way from the start:
+
+1. **No fades anywhere.** Son: "let's not use fade animation anymore. everywhere." Cards, logos,
+   screenshots, the hook banner and the Upnova logo word in the captions all **hard-cut in** on
+   their word (`tl.set`, or just the clip's `data-start`), like the captions. No opacity tweens, no
+   blur-and-rise entrances, no fade-outs. The only motion left is a slow linear drift (scale 1 →
+   1.05) on a still screenshot. This overrides the rise-ins in §0b, §0c, §6b and §8; when a template
+   from this skill or `upnova-illustrations` still fades something in, turn that into a hard cut.
+2. **Show the client's logo where the client is first referred to, then stop.** Son: "when the
+   person say 'their conversion', show stantt logo", and then "don't overdo it: if the brand and the
+   logo were used early in the video, we don't need to repeatedly show the logo again when the brand
+   is mentioned." A pronoun counts ("**their** conversion" in the hook). Show it once in the hook (under
+   the banner, black on a light sweater, white on dark footage, §0d.6) and once at the brand intro
+   (next point), and not again on later mentions. The logo under the result figures (§0c.3) is part
+   of that card, not an extra.
+3. **Introduce the client with its logo and its desktop home page** (§0d.1), every time a reel tells
+   a client's story: on "this brand", the logo cuts in at the top, then the real desktop home page in
+   a browser-window card (grey bar with three dots, rounded corners, slow drift) below it, with the
+   speaker in the small framing under it. Put it in the first plan; Son had to ask for it again.
+4. **Screenshots fill their card edge to edge.** Son: "I don't like these white gaps." Crop the
+   picture to the card's own shape (the top card, 1010x650, is about 1.55 : 1) and show it with
+   `object-fit: cover`, no padding. Only a designed card whose own background is white (a figure
+   card) may sit inside a white card with `contain`.
+5. **No tag pills or eyebrow labels on evidence cards.** Son on "STANTT'S ORDER VOLUME DEAL" above the
+   offer: "no need for this." Crop them off reused cards; show the content only.
+6. **The client's real UI beats a designed graphic.** Son replaced the drawn "1 item away" progress
+   card with "the picture that shows the progress bar in the cart in Stantt store". When the same
+   page already appeared with drawn arrows and boxes, use the clean screenshot the second time.
+7. **No end card.** Son removed the Upnova "Try it today." card ("no need for this"). End on the
+   speaker saying the call to action, with the caption.
+8. **Move the speaker only on a take cut, and hold each framing.** Son: "the talking head changes
+   its position way too fast." Don't switch framing twice within ~2s. When a card comes in within
+   ~1.5s of a take cut, switch to the small framing at the cut and hold it until the card arrives
+   (the top area shows the wall meanwhile), rather than a big shot for a second and then a jump.
+9. **No music and no sound effects by default.** Son: "no music & no sfx become the default." Offer
+   them in the plan only if the brief asks for sound; this overrides §9.
+
+**Build notes from the redo (mistakes not to repeat)**
+- **Mount the captions section at 0s** (`data-start="0"`, the film's full length) and write its
+  `GROUPS` times in film seconds. Mounted at 5s, every caption ran 5s late: a section's own timeline
+  counts from its `data-start`.
+- **Hook banner text: one line per row.** At ~780px wide, 70px Inter Bold uppercase with
+  `white-space: nowrap` fits "+34% CONVERSION"; 82px wrapped to three lines.
+- **Two speaker framings for 720x1280 talking-head takes** (one wrapper around every take,
+  `transform-origin: 0 0`, set with `tl.set` at each change): big, no card, `scale 1.8, x −414,
+  y −838` (head top ~170px); small under a top card, `scale 1.1, x −43, y 229` (head top ~845px).
+  Fill the strip above the small framing with the wall colour (`#bcb6b2` here) and fade the
+  wrapper's top 110px into it with a mask. Over a big card, keep the big framing and dim it (~0.6).
+- **Caption position follows the framing:** chest (top ~1110) in the big framing, under the head
+  (top ~1390) in the small one, under the big card (top ~1676) over a store page. Switch the
+  framing at a caption phrase's start so they never disagree.
 
 ## Templates
 
@@ -663,11 +721,15 @@ Emil Kowalski's design-engineering rules, in short:
   cubic-bezier(0.77, 0, 0.175, 1) for on-screen moves, line draws and fills. Each template guards for
   a missing CustomEase and falls back to expo.out / expo.inOut.
 - **Never** `back.out`, elastic, overshoot, scale yoyo pulses, "breathing" numbers, shakes or wiggles.
-- Pop-ins start at scale 0.9–0.95 with opacity 0, never from 0 (nothing appears from nothing).
+- No fades or rise-ins on reels any more (§0g.1): elements hard-cut in. The easing rules apply to
+  the moves that are left (drifts, line draws, 3D pushes).
 - Linear (`none`) only for slow backdrop drifts and progress segments.
 - Captions are the exception: they don't animate at all (hard cuts, §3).
 
 ## 9. Sound
+
+**Default since 10 November 2026: no music and no sound effects (§0g.9).** Use this section only when
+Son asks for sound.
 
 Son asked for "cinematic sounds: whoosh, rise, hits, don't overdo it", then for more in the hook:
 "ambient, fillers, maybe music, something to grab attention, but don't go over the top."
