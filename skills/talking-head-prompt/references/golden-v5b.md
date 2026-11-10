@@ -29,6 +29,22 @@
 - Image 2 = Plate A: home-office room with gold-framed painting, bookshelf, plant, laptop, mic and La Croix can; dark walnut desk with a solid front panel so legs never show.
 - Audio 1 = 5s of Son's voiceover (3.72s to 8.72s of the Oct 26 `part1.wav`), used as a **voice reference only** in this take.
 
+## Measured speech timing (duration calibration)
+
+Measured with `silencedetect` on the output (5.04s clip, 15 words, 2 marked pauses):
+
+| Segment | Time | Words | Rate |
+|---|---|---|---|
+| Lead-in silence | 0.00 to 0.11s | | |
+| "Most stores aren't losing sales on ads." | 0.11 to 2.20s | 7 | 3.4 words/s |
+| Pause | 2.20 to 2.49s (0.29s) | | |
+| "They're losing them at checkout." | 2.49 to 3.71s | 5 | 4.1 words/s |
+| Pause | 3.71 to 3.99s (0.28s) | | |
+| "And nobody's looking." (slower, lower) | 3.99 to 4.89s | 3 | 3.3 words/s |
+| Tail silence | 4.89 to 5.04s | | |
+
+Overall: about 3.5 words/s while talking, about 3.1 words/s including the pauses. SKILL.md Step 5.8 turns this into the duration formula.
+
 ## Prompt, block by block
 
 `[FIXED]` blocks are copied word for word. `[SCRIPT]` blocks are rewritten for each new script (SKILL.md, Step 5). `{…}` marks the slots.

@@ -1,6 +1,6 @@
 ---
 name: talking-head-prompt
-description: Build and check prompts for AI talking-head videos of a person speaking, across fal (Wan 3.0 Prime reference-to-video), Higgsfield Seedance, and other engines. Use before any talking-head render call, or when reviewing a prompt that needs camera, pose, emotion, or sound details. Every new prompt starts from a reference fal request ID (an approved earlier generation): it inherits that request's settings and references, keeps its fixed blocks, and rewrites every script-bound line (spoken words, pacing, word-tied gestures, face cues, sound hits) for the new script. Enforces eight required items: camera settings, camera movement, camera position and environment, character, pose, position, emotional delivery, and sound effects yes or no.
+description: Build and check prompts for AI talking-head videos of a person speaking, across fal (Wan 3.0 Prime reference-to-video), Higgsfield Seedance, and other engines. Use before any talking-head render call, or when reviewing a prompt that needs camera, pose, emotion, or sound details. Requires the talking script and a reference fal request ID (an approved earlier generation); it inherits that request's settings and references, keeps its fixed blocks, estimates the clip duration from the script, and rewrites every script-bound line (spoken words, pacing, word-tied gestures, face cues, sound hits) for the new script. Enforces eight required items: camera settings, camera movement, camera position and environment, character, pose, position, emotional delivery, and sound effects yes or no.
 version: 1.0
 author: Son Chu
 license: private
@@ -21,10 +21,12 @@ metadata:
 
 Every new talking-head prompt is built from a reference generation. Never write one from scratch.
 
-### Step 1: Get the reference request ID
+### Step 1: Get the two required inputs
 
-- Ask for a **fal request ID** if the user didn't give one. Offer the golden reference above as the default.
-- If they give only a video URL or describe a take, find the ID with `search_request_history` before going further.
+Do not build a prompt until you have both.
+
+1. **The talking script (required).** The exact words the person will say. Ask for it if it's missing, and stop until you have it. Never invent one, unless the user explicitly asks you to write it (then write it, show it, and get a yes before using it). The script is needed in both modes: in lip-sync mode it still drives the beats, gestures and duration.
+2. **A reference fal request ID.** Ask for one if the user didn't give one. Offer the golden reference above as the default. If they give only a video URL or describe a take, find the ID with `search_request_history` before going further.
 
 ### Step 2: Pull the exact recipe
 
@@ -89,10 +91,14 @@ Read the whole reference prompt and tag every sentence:
 5. **Face cues.** Keep the baseline face block word for word. Add at most one head move per line, tied to meaning: a slow head shake on a negation, a single firm nod on an affirmation. Never add eyebrow raises, brow furrows, or "urgent" wording (they read as worried).
 6. **Sound hits.** One light impact on the key claim's main word. Keep the ambience/no-music line.
 7. **Emotion polarity.** If the new script's news flips tone (the reference is serious bad-news and the new one is a win, or the reverse), say so to the user and propose the emotional delivery line before rendering.
-8. **Duration.**
-   - Lip-sync mode: audio length rounded up to the next whole second.
-   - Script mode: about 2.5 spoken words per second at this pacing, plus 0.5s per marked pause, rounded up. Test renders are 5s; trim the script to fit, or tell the user it won't.
-   - Reference audio may total 15s at most; output duration may go to 30s.
+8. **Duration (required; estimate it before showing the prompt).** Wan fits the speech to whatever duration you give it: too short and it rushes or drops the last words, too long and it adds dead air or stretched pauses.
+   - **Calibration (golden take):** 15 words with 2 marked pauses spoke from 0.11s to 4.89s of a 5s clip. About 3.5 words per second while talking (the slower closing line about 3.3), about 0.3s per marked pause, about 0.1s lead-in and 0.15s tail.
+   - **Script mode formula:** `seconds = words / 3.5 + 0.3 x marked pauses + 0.25`. Round to the nearest whole second, rounding up when the decimal is .3 or more. Golden check: 15 / 3.5 = 4.29, + 0.6, + 0.25 = 5.14, so 5s.
+   - Count words as spoken: numbers and symbols as said (`$1.2M` = "one point two million", 4 words; `30%` = "thirty percent", 2 words), a contraction as one word.
+   - Show the estimate with its math in the Step 6 summary.
+   - **Lip-sync mode:** the voiceover's measured length (`ffprobe`) rounded up to the next whole second.
+   - **Limits:** output 2 to 30s; reference audio 15s total at most. Test renders are 5s: about 14 to 15 words with two pauses. If the script won't fit the length the user wants, say so and offer a trim.
+   - **After the render**, measure the speech with `silencedetect`: it should end 0.1 to 0.4s before the clip ends. If it ends earlier (dead air) or runs to the last frame (cut off), change the duration by 1s for the next take and note the actual words-per-second here.
 
 ### Step 6: Present, get approval, render
 
@@ -119,7 +125,7 @@ Plus the **hands rule** (Son: "never, never"): `Both of his hands are visible on
 
 **CONFIRMATION GATE: before EVERY video generation, present the full prompt + settings (engine, model, resolution, aspect ratio, duration, seed, references, prompt expansion) to the user and get explicit approval first. No rendering without a confirmed "yes" from the user.** This applies to every render, including re-renders and variations.
 
-- Built from a reference request ID; settings inherited per Step 3.
+- Built from the user's talking script and a reference request ID; settings inherited per Step 3.
 - No leftover words from the old script (Step 4 search).
 - Every beat has its own gesture; one-hand gestures say where the other hand is.
 - All eight items present, plus the hands rule.
@@ -128,7 +134,7 @@ Plus the **hands rule** (Son: "never, never"): `Both of his hands are visible on
 - Camera opening line present; no "toward the lens" lean wording; `enable_prompt_expansion: false`.
 - Resolution 720p unless the brief says otherwise; never 1080p (bad output quality).
 - `audio: true`.
-- Duration matches audio (lip-sync) or script length (script mode).
+- Duration estimated per Step 5.8 (formula and math shown), or the measured audio length in lip-sync mode.
 
 ## Checks after rendering
 
