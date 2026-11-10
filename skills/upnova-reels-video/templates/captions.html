@@ -9,7 +9,6 @@
         @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Regular.otf"); font-weight: 400; font-style: normal; }
         @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Medium.otf"); font-weight: 500; font-style: normal; }
         @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Bold.otf"); font-weight: 700; font-style: normal; }
-        @font-face { font-family: "Apple Garamond"; src: url("assets/fonts/AppleGaramond-Bold.ttf"); font-weight: 700; font-style: normal; }
         [data-composition-id="captions"] {
           position: absolute;
           inset: 0;
@@ -26,7 +25,7 @@
           flex-wrap: wrap;
           justify-content: center;
           align-content: center;
-          align-items: baseline; /* Inter and Apple Garamond words share one baseline (Son, 2026-10-19) */
+          align-items: baseline;
           column-gap: 0.22em;
           row-gap: 0.06em;
           font-family: "Inter", sans-serif;
@@ -45,24 +44,10 @@
           white-space: nowrap;
           text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 28px rgba(0, 0, 0, 0.45);
         }
-        /* emphasis: glossy glass-green Apple Garamond Bold */
-        [data-composition-id="captions"] .w.hi,
-        [data-composition-id="captions"] .w.mark {
-          font-family: "Apple Garamond", serif;
-          font-weight: 700;
-          font-size: 1.2em;
-          letter-spacing: -0.06em;
-          background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%),
-            linear-gradient(180deg, #effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%);
-          background-size: 260% 100%, 100% 100%;
-          background-position: 130% 0, 0 0;
-          background-repeat: no-repeat;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          -webkit-text-fill-color: transparent;
+        /* emphasis words stay plain Inter Bold, same colour as the phrase: no serif, no italic, no glass gradient (Son, 2026-11-10) */
+        [data-composition-id="captions"] .cg.ink .w {
+          color: #0c110d; /* black captions over light scenes */
           text-shadow: none;
-          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
         }
         [data-composition-id="captions"] .w.offer {
           color: #0b0d0a;
@@ -116,8 +101,8 @@
 
       <script>
         (function () {
-          // Spoken phrases of 3-4 words shown together: {s: start, e: end, w: [[text, style]]}. Style is "", "hi" (brand green),
-          // "mark" (green, slightly larger), "offer" (an offer name shown as one green pill, never split) or
+          // Spoken phrases of 3-4 words shown together: {s: start, e: end, w: [[text, style]]}. Style is "", "hi" / "mark" (kept for
+          // grouping, shown as plain Inter Bold like the rest), "offer" (an offer name shown as one green pill, never split) or
           // "logo" (the white Upnova wordmark in place of the word; optional third item = the second it rises in).
           var GROUPS = [{"s":0.04,"e":0.87,"w":[["I",""],["found",""],["the",""],["biggest",""]]},{"s":0.87,"e":1.82,"w":[["cheat","mark"],["code","mark"],["to",""],["boost",""]]},{"s":1.82,"e":2.79,"w":[["your",""],["Average","hi"],["Order","hi"],["Value.","hi"]]},{"s":2.79,"e":3.6,"w":[["And",""],["it",""],["takes",""],["only",""]]},{"s":3.6,"e":4.6,"w":[["one","mark"],["minute.","mark"]]},{"s":5.85,"e":7.9,"w":[["Let",""],["me",""],["show",""],["you.",""]]},{"s":7.9,"e":8.38,"w":[["So",""],["first",""],["you",""],["want",""]]},{"s":8.38,"e":9.91,"w":[["to",""],["install",""],["Upnova.","hi"]]},{"s":9.91,"e":10.78,"w":[["Upnova","hi"],["will",""],["analyze",""]]},{"s":10.78,"e":11.62,"w":[["your",""],["store","hi"],["data","hi"]]},{"s":11.62,"e":12.26,"w":[["and",""],["give",""],["you",""]]},{"s":12.26,"e":13.11,"w":[["insights",""],["about",""],["your",""]]},{"s":13.11,"e":14.43,"w":[["customer",""],["shopping",""],["behavior.",""]]},{"s":14.43,"e":14.85,"w":[["But",""],["you",""],["want",""],["to",""]]},{"s":14.85,"e":15.41,"w":[["take",""],["a",""],["look",""],["at",""]]},{"s":15.41,"e":16.1,"w":[["this",""],["sales",""],["by",""]]},{"s":16.1,"e":17.25,"w":[["order",""],["price",""],["range.",""]]},{"s":17.25,"e":18.09,"w":[["You",""],["see",""],["this",""]]},{"s":18.09,"e":18.64,"w":[["drop",""],["here?",""]]},{"s":18.64,"e":19.51,"w":[["This",""],["is",""],["where",""],["you",""]]},{"s":19.51,"e":20.79,"w":[["make",""],["more",""],["money.","hi"]]},{"s":20.79,"e":21.88,"w":[["This",""],["is",""],["an",""],["opportunity","hi"]]},{"s":21.88,"e":22.69,"w":[["for",""],["us",""],["to",""],["create",""]]},{"s":22.69,"e":24.15,"w":[["a",""],["free gift with purchase","offer"]]},{"s":24.15,"e":24.72,"w":[["offer",""],["with",""],["the",""]]},{"s":24.72,"e":25.91,"w":[["required",""],["purchase",""]]},{"s":25.91,"e":26.92,"w":[["around",""],["this",""],["range.",""]]},{"s":26.92,"e":27.34,"w":[["Why?","hi"]]},{"s":27.34,"e":28.14,"w":[["Because",""],["most",""],["of",""]]},{"s":28.14,"e":29.27,"w":[["your",""],["customers",""],["will",""]]},{"s":29.27,"e":29.96,"w":[["be",""],["very",""],["close",""]]},{"s":29.96,"e":31.11,"w":[["to",""],["unlocking","hi"],["it.",""]]},{"s":31.11,"e":31.63,"w":[["You",""],["see",""],["I'm",""]]},{"s":31.63,"e":32.71,"w":[["six","mark"],["dollars","mark"],["away",""]]},{"s":32.71,"e":33.5,"w":[["from",""],["getting",""]]},{"s":33.5,"e":34.7,"w":[["the",""],["free","hi"],["serum","hi"],["here",""]]},{"s":34.7,"e":35.86,"w":[["and",""],["I",""],["can",""],["select",""]]},{"s":35.86,"e":36.72,"w":[["among",""],["these",""],["options.",""]]},{"s":36.72,"e":37.53,"w":[["Click",""],["here",""]]},{"s":37.53,"e":38.61,"w":[["but",""],["you",""],["can",""],["see",""]]},{"s":38.61,"e":39.78,"w":[["I'm",""],["a",""],["little",""],["bit",""]]},{"s":39.78,"e":40.79,"w":[["away",""],["and",""],["now",""]]},{"s":40.79,"e":41.79,"w":[["right",""],["beneath",""],["it",""]]},{"s":41.79,"e":43.08,"w":[["very",""],["conveniently",""]]},{"s":43.08,"e":43.8,"w":[["I",""],["can",""],["just",""],["add",""]]},{"s":43.8,"e":45.29,"w":[["more",""],["products",""],["from",""],["here",""]]},{"s":45.29,"e":46.02,"w":[["and",""],["now",""],["I",""],["can",""]]},{"s":46.02,"e":46.98,"w":[["get",""],["the",""],["gift.",""]]},{"s":46.98,"e":47.95,"w":[["Claim.","hi"],["Done.","hi"]]},{"s":48.16,"e":49.57,"w":[["This",""],["can",""],["easily",""]]}];
           var root = document.querySelector('[data-composition-id="captions"]');
@@ -126,7 +111,7 @@
 
           GROUPS.forEach(function (g, gi) {
             var el = document.createElement("div");
-            el.className = "cg";
+            el.className = "cg" + (g.ink ? " ink" : ""); // ink: true = black captions over a light scene
             el.id = "captions-cg-" + gi;
             g.w.forEach(function (w, wi) {
               var span = document.createElement("span");
@@ -170,10 +155,6 @@
             // hard cuts: no fade, slide, scale or blur between phrases (Son, 2026-10-19)
             tl.set(el, { opacity: 1, visibility: "visible" }, g.s);
             tl.set(el, { opacity: 0, visibility: "hidden" }, g.e);
-            // the glass emphasis words get one light sheen sweep when the phrase appears
-            el.querySelectorAll(".w.hi, .w.mark").forEach(function (h) {
-              tl.fromTo(h, { backgroundPosition: "130% 0, 0 0" }, { backgroundPosition: "-30% 0, 0 0", duration: 0.9, ease: "power2.inOut" }, g.s + 0.05);
-            });
           });
 
           // the Upnova logo word rises in on the spoken name; the rest of the phrase is already on screen

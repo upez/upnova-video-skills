@@ -1,6 +1,6 @@
 ---
 name: upnova-reels-video
-description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
+description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold white or black only, no serif or italic emphasis, very tight, hard cuts), reel layout (hook banner, talking-head positions with and without on-screen assets), caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
 ---
 
 # Upnova Reels video style
@@ -29,8 +29,13 @@ Collected from Son's feedback on:
    collected in §0d below.
 7. "Audience Segment" feature launch film (HyperFrames project "New video 2", 29 October 2026, 16:9,
    50s): Son on camera, with illustrated cutaways for a new feature, real offers converted from the
-   Upnova Figma, 3D phones, sound effects checked with earshot, and captions. Its feedback is the
-   **newest** and is collected in §0e below; the Figma method is in `references/figma-to-html.md`.
+   Upnova Figma, 3D phones, sound effects checked with earshot, and captions. Its feedback is
+   collected in §0e below; the Figma method is in `references/figma-to-html.md`.
+8. Son's layout notes in Paper ("Price Preview reel stills",
+   https://app.paper.design/file/01M709E087SSPHSY86RBK5SHAD/p-1-0, 10 November 2026): reference
+   stills from other creators' reels with boxes and comments on the hook banner, where the talking
+   head sits and where on-screen assets go. Collected in §0f below, together with the new caption
+   rule (Inter Bold white or black only). **The newest: it overrides everything above.**
 
 **Dollar amounts in this file are written as "USD 6", "USD 60M+".** The skill loader swaps a dollar
 sign followed by a digit for the words the person typed after the skill's name, so the real form
@@ -92,9 +97,9 @@ Put every one of these in the first plan and build it without waiting to be aske
    trailing commas/periods on the emphasised term**. Applies to every number word ("ten percent" →
    "10%", "three minutes" → "3 MINUTES", "six dollars" → "USD 6" shown with the dollar sign). The values still match what was said
    (§4); only the form changes.
-3. **Mixed fonts sit on one baseline.** Any row or caption phrase that mixes Inter and the Apple
-   Garamond emphasis needs `align-items: baseline` on its flex box (`captions.html` has it now);
-   inline-blocks get `vertical-align: baseline`. Son: "the text with the 2 fonts are not aligned on the
+3. **Mixed fonts sit on one baseline.** Any row that mixes fonts (a claim figure and its label)
+   needs `align-items: baseline` on its flex box; inline-blocks get `vertical-align: baseline`.
+   Captions no longer mix fonts (§0f.1). Son: "the text with the 2 fonts are not aligned on the
    baseline."
 4. **When Son says "Upnova" as the brand intro** ("I'm Son Chu, founder of Upnova"), the caption shows
    the **real white Upnova wordmark** in place of the word, rising in on the spoken name (caption word
@@ -270,6 +275,44 @@ them apply to reels too.
     or converted in HyperFrames.
 16. A message with only picked elements and no instruction: ask what to change, change nothing.
 
+## 0f. Hook banner, speaker position, asset areas, plain captions (newest, 10 November 2026)
+
+Son drew these on reference stills in Paper (link in the source list above). Read the Paper file
+again with the Paper MCP when Son says he updated it: `list_comment_threads` (status `all`) for the
+notes, `get_children` for the boxes, `get_screenshot` for the stills. The boxes are drawn on
+~720px-wide stills; the numbers below are scaled to the 1080x1920 canvas.
+
+1. **Captions: Inter Bold only, white or black. No Apple Garamond, no italic, no serif, no glass
+   gradient or sheen.** Son: "no more [slanted] italic font, stick with the bold white/black Inter
+   font." White with the soft shadow over footage and dark scenes; black `#0C110D`, no shadow, over
+   light scenes (`ink: true` on the group in `captions.html`). `hi` / `mark` words keep their tags
+   for grouping but look like every other word. The offer pill (§3) stays. This overrides the
+   glass-green Apple Garamond emphasis in §3.
+2. **Every hook has a banner.** Son: "Hook always have a banner like this." The reference: one solid
+   rounded block (radius ~16px) with the hook line in heavy **upright** Inter Bold/Black, uppercase,
+   white, two lines, tight tracking, centred horizontally and sitting in the **lower-middle** of the
+   frame (the block about 1200 to 1440px from the top, ~780px wide, over the chest). It stays for the
+   whole hook. The reference block is red; in Upnova reels use the brand (green `#C5EEA8` block with
+   ink `#0C110D` text, or a dark block with white text) and **ask Son for the colour in the plan**.
+   No captions under it while it shows; captions start with the line after the hook. Never italic
+   (§0f.1), even though the reference is.
+3. **No assets on screen: the talking head is big.** The head and neck fill a box about
+   **x 290–850, y 150–950** (head top ~150px from the top, face ~560px wide, centred). Captions sit
+   on the chest below (§3). Zoom or crop the footage to get there.
+4. **Evidential assets on screen (a screenshot, a result, a clip that proves the point): split the
+   frame.** The asset goes in the **top area, about x 35–1045, y 150–800** (nearly full width,
+   ~1010x650), and the speaker moves **down and smaller**: the head in about **x 360–685,
+   y 845–1360** (~325px wide, centred under the asset). Scale and move the footage itself (scale
+   ~0.6) so the head lands there; never cover the face. Captions go below the head.
+5. **Big assets that need full attention:** a large rounded card in about **x 100–985, y 220–1660**
+   (~885x1440), over the speaker footage (dimmed or blurred behind it), with the caption under it.
+   **Still images never take the full screen** (Son): screenshots, photos, logos on a still, static
+   graphics and stills with a slow push-in all go in this card area with a margin of the speaker's
+   footage around it. **Vertical video assets may take the full screen** (brand B-roll in §6b, phone
+   screen recordings, founder clips, full-screen motion-design scenes that move). A horizontal video
+   is not vertical: it goes in the card. A brand with no video, shown by a lifestyle photo (§6b), goes
+   in the card too.
+
 ## Templates
 
 Working files are in `templates/`. Copy them into the new project's `compositions/`, run
@@ -278,7 +321,7 @@ timings and the GROUPS data:
 
 | File | What it is |
 | ---- | ---------- |
-| `templates/captions.html` | Captions in the current style: 3–4 words per phrase, Inter Bold, very tight, glass-green Apple Garamond emphasis, hard cuts (id `captions`) |
+| `templates/captions.html` | Captions in the current style: 3–4 words per phrase, Inter Bold white (or black with `ink: true`), no serif emphasis, very tight, hard cuts (id `captions`, §0f.1) |
 | `templates/claims.html` | Proof claims in the lower half with count-ups (id `proof`) |
 | `templates/closing-claims.html` | Closing claims and call to action, lower half (id `closing`) |
 | `templates/ai-build.html` | Full-screen motion section: AI builds the five offers (id `ai-build`) |
@@ -372,17 +415,12 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
 - **No text anywhere in the video below 56px** (Son's rule), except text inside an app mock-up or a
   guide's interface; mention it to Son.
 
-**Emphasis words: glossy glass-green Apple Garamond**
-- **Apple Garamond Bold** at **1.2em**, letter spacing **−0.06em**.
-- **Shiny glass green**, a little more saturated than the brand green but not neon:
-  `background-clip: text` with a vertical gradient `#effbe6 0%, #b3e891 34%, #74c84b 50%, #8fd86a 72%, #dcf7c9 100%`
-  plus a white diagonal sheen layer
-  (`linear-gradient(105deg, transparent 38%, rgba(255,255,255,.9) 50%, transparent 62%)`, size 260%)
-  that sweeps across once (~0.9s) when the phrase appears; soft drop-shadow `filter`, no stroke.
-- Use it for the `hi` and `mark` words (below). The same style is used for big result figures
-  (+34%, +30%) in testimonials and claims.
-- When a phrase mixes plain and emphasis words inside a flex box, wrap the spans in one block element,
-  or the space between them disappears ("tobuy more").
+**Emphasis words: none in the type (newest, 2026-11-10, §0f.1)**
+- Captions are **Inter Bold only, white or black**. The old glass-green Apple Garamond emphasis
+  (serif, gradient, sheen) is **gone from captions**: Son called it the italic font and asked for it
+  to be removed. Black `#0C110D` with no shadow over light scenes.
+- The glass-green Apple Garamond is still in the claim and testimonial templates for big result
+  figures; ask Son before using it there, since he may want those plain too.
 
 **Placement: below the middle of the frame** (over full-screen graphic scenes: at the bottom, §0c.1)
 - Son: "Usually captions on social media are below the middle line of the video." That is about
@@ -403,7 +441,7 @@ Before you edit, read the HyperFrames core skill. Work only in the project's `in
 - `hi`: AI agent, Upnova, Average Order Value, upsell, premium, launch, go live,
   "Not at all", "takes off", "Claim. Done.", "buy more".
 - `mark`: numbers and claims: 15%, 20%, 34%, five, six dollars, cheat code, one minute, AOV, guarantee.
-- Both render in the glass-green Apple Garamond style above.
+- Both render as plain Inter Bold, like the rest of the phrase (§0f.1); the tags only keep terms together.
 - `offer`: see the next rule.
 
 **Offer and product names are ONE unit.** Never split, never broken up. Each shows as a single green
@@ -490,8 +528,9 @@ Apple would do. These are claims, and claims need to show very clearly."
 
 **Type**
 - Headline words: Inter Bold, 132–168px, tracking around −0.045em.
-- **Big result figures (percentages, multipliers): the glossy glass-green Apple Garamond** from §3,
-  tracking −0.06em, with one sheen sweep while they count. Put the figure and its label in one flex
+- **Big result figures (percentages, multipliers): the glossy glass-green Apple Garamond** as built
+  in `templates/claims.html` (ask Son first: he dropped it from captions, §0f.1), tracking −0.06em,
+  with one sheen sweep while they count. Put the figure and its label in one flex
   row with `align-items: baseline` so the label sits on the number's baseline.
 - Small lines above and below the headline: Inter 400, **56px**, line-height 66px. They may wrap.
 - Put any `background-clip:text` gradient on the **element that animates**, not its parent, or the
