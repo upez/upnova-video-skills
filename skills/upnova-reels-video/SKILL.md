@@ -38,8 +38,11 @@ Collected from Son's feedback on:
    rule (Inter Bold white or black only).
 9. The "Price Preview" reel redone with AI talking-head takes (HyperFrames project "Paper",
    10 November 2026, 50s): seven generated takes back to back, the Stantt cards and store pages from
-   the 23 October reel reused, the §0f layout. Its feedback is collected in §0g below. **The newest:
-   it overrides everything above.**
+   the 23 October reel reused, the §0f layout. Its feedback is collected in §0g below.
+10. "Rendezvous Black Friday" reel (HyperFrames project "Talking-head-prompt", 10 November 2026, 47s):
+   eight AI talking-head takes, the client's real cart drawer filmed by Son as phone screen
+   recordings, a shot list shown as placeholders until the footage arrived. Its feedback is collected
+   in §0h below. **The newest: it overrides everything above.**
 
 **Dollar amounts in this file are written as "USD 6", "USD 60M+".** The skill loader swaps a dollar
 sign followed by a digit for the words the person typed after the skill's name, so the real form
@@ -146,6 +149,8 @@ Son flagged each of these on the second round of the 1019 reel. Build them this 
    - Shots under ~1s: **no push-in**. Hold each shot **already zoomed in, with the feature in the
      middle of the screen** (Son: "the focus area should always in the middle of the screen"). Scale
      the stage with `transformOrigin: "0px 0px"`, `x = 540 − S·fx`, `y = 880 − S·fy`. Zoom 1.25–1.75.
+   - Over the speaker, not over a backdrop (§0h.2): no dark screen, slats, glow or caption band
+     behind the phone.
    - Keep the feature sharp and blur the rest (blurred copy with a radial mask centred on the
      feature). Ask which part is the feature if unsure: on the order-volume cart it was the discount
      tiers, on free gift the progress bar, on cross-sells the product row.
@@ -295,7 +300,8 @@ notes, `get_children` for the boxes, `get_screenshot` for the stills. The boxes 
 2. **Every hook has a banner.** Son: "Hook always have a banner like this." The reference: one solid
    rounded block (radius ~16px) with the hook line in heavy **upright** Inter Bold/Black, uppercase,
    white, two lines, tight tracking, centred horizontally and sitting in the **lower-middle** of the
-   frame (the block about 1200 to 1440px from the top, ~780px wide, over the chest). It stays for the
+   frame (the block about 1200 to 1440px from the top, ~780px wide, over the chest; with a hook
+   picture on the top half the speaker is small and the block moves to ~1420 to 1670, §0h.1). It stays for the
    whole hook. The reference block is red; in Upnova reels use the brand (green `#C5EEA8` block with
    ink `#0C110D` text, or a dark block with white text) and **ask Son for the colour in the plan**.
    No captions under it while it shows; captions start with the line after the hook. Never italic
@@ -309,7 +315,8 @@ notes, `get_children` for the boxes, `get_screenshot` for the stills. The boxes 
    y 845–1360** (~325px wide, centred under the asset). Scale and move the footage itself (scale
    ~0.6) so the head lands there; never cover the face. Captions go below the head.
 5. **Big assets that need full attention:** a large rounded card in about **x 100–985, y 220–1660**
-   (~885x1440), over the speaker footage (dimmed or blurred behind it), with the caption under it.
+   (~885x1440), over the speaker footage (stills and landscape videos: dimmed or blurred behind it;
+   vertical videos: nothing behind them but the plain speaker footage, §0h.2), with the caption under it.
    **Still images never take the full screen** (Son): screenshots, photos, logos on a still, static
    graphics and stills with a slow push-in all go in this card area with a margin of the speaker's
    footage around it. **Vertical video assets may take the full screen** (brand B-roll in §6b, phone
@@ -330,8 +337,8 @@ Son flagged each of these on the redo. Build them this way from the start:
 2. **Show the client's logo where the client is first referred to, then stop.** Son: "when the
    person say 'their conversion', show stantt logo", and then "don't overdo it: if the brand and the
    logo were used early in the video, we don't need to repeatedly show the logo again when the brand
-   is mentioned." A pronoun counts ("**their** conversion" in the hook). Show it once in the hook (under
-   the banner, black on a light sweater, white on dark footage, §0d.6) and once at the brand intro
+   is mentioned." A pronoun counts ("**their** conversion" in the hook). Show it once in the hook (through
+   the client's home page card on the top half, §0h.1; before 10 November: a logo under the banner) and once at the brand intro
    (next point), and not again on later mentions. The logo under the result figures (§0c.3) is part
    of that card, not an extra.
 3. **Introduce the client with its logo and its desktop home page** (§0d.1), every time a reel tells
@@ -371,6 +378,66 @@ Son flagged each of these on the redo. Build them this way from the start:
   (top ~1390) in the small one, under the big card (top ~1676) over a store page. Switch the
   framing at a caption phrase's start so they never disagree.
 
+## 0h. Hook picture, video over the speaker, point at what is said (newest, 10 November 2026, Rendezvous Black Friday reel)
+
+Son flagged each of these on the Rendezvous reel. Build them this way from the start:
+
+1. **The hook shows the client big on the top half, with the speaker small under it.** Son: "it's
+   better to show this bigger, in horizontal shape, and on the top half, while the talking head is
+   smaller", then "use the homepage screenshot". Use the §0f.4 split for the whole hook: the
+   client's **desktop home page** in the browser-window card (grey bar with three dots, 1010x650 at
+   x 35, y 150, screenshot edge to edge), the speaker in the small framing, and the hook banner over
+   the chest under the head (~1420 to 1670px), clear of the face. Switch to the big framing on the
+   take cut after the hook. No square lifestyle photo and no big logo laid over a screenshot: the
+   home page's own menu bar carries the brand. This replaces the logo under the banner (§0g.2).
+2. **Vertical video goes straight over the speaker: no backdrop.** Son: "for this type of overlay
+   where the asset is video, vertical and big, don't use a backdrop, have the talking head in the
+   background." Phone screen recordings and other big vertical clips sit on the plain speaker
+   footage in the big framing: no dark screen, no slats, no glow, no dimming or blur behind them, no
+   dark caption band. Captions stay `low` on the chest. Stills and landscape videos keep the §0f.5
+   card with the dimmed speaker. A zoomed, cropped recording (next point) can cover the mouth and
+   chin; keep it as low as the captions allow and tell Son.
+3. **Hold the zoom on the part the voice is about.** When Son circled a part of a recording ("we
+   want people to look at here": the tier bar, the tier bar with the first cart line), the fix was
+   the §0c.5 hold: the recording scaled 1.5 to 1.55x with that part in the middle and the rest
+   cropped off above the captions (`clip-path: inset(...)`), for the whole shot. Do it on the first
+   build for every recording whose line names one part of the screen.
+4. **Point at the exact thing the script names.** Son: "the script is talking about the price, so
+   have arrow to point it out." When a line names something small on screen (a price, a badge, a
+   button), add an arrow: a curved stroke in brand green `#C5EEA8` with a dark `#0C110D` outline and
+   a soft drop shadow, coming from the free space beside the recording (outside the phone, over the
+   speaker) with its tip just touching the thing. It hard-cuts in on the word ("price") and out at
+   the end of the phrase. Read the target's spot from a full-size still (`hyperframes snapshot`,
+   then crop the frame with a grid), not from the contact sheet.
+5. **Use the footage you have before asking for more.** Son: "still let people look at the progress
+   here. we don't need new footage for this." Before marking a beat "to film", look through every
+   recording already in the project (a strip of ffmpeg frames each ~0.5s): here the tier bar filling
+   up was already in another recording, so that recording just started earlier and ran on.
+6. **Too short? Hold the last frame.** Son: "you can also freeze the video to drag longer." Play the
+   recording through, then show its last frame as a still in the same box until the line ends. The
+   picture track can end before the file does: take the frame with
+   `ffmpeg -i in.mp4 -vf reverse -frames:v 1 last.png` (`-sseof` and `-ss` near the end gave empty
+   files), and start the still at the picture's own length
+   (`ffprobe -select_streams v:0 -show_entries stream=duration`). Say how long the hold is: over ~2s
+   reads as frozen.
+7. **Placeholders for footage still to film.** When the client's real UI cannot be captured (the
+   store blocked headless browsers), build the section with a dashed phone outline, a "To film: cart
+   screen recording" pill and a label per beat ("Shot 3 of 16", what to film, the seconds it covers),
+   switched with `tl.set` on the voice. It doubled as the filming list. Show the outline and pill
+   **only where footage is still missing**, and remove each beat as real footage lands.
+8. **Check recordings before placing them.** Don't play a recording faster than ~1.2x when it has
+   its own zoom or scroll: at 1.4x the screen recorder's zoom turned into a smear and Son asked if we
+   had added it. Flag a jump in the screen's state between two recordings (the tier bar dropping
+   from 30% back to 10%) before Son finds it.
+
+**Build notes from this reel (mistakes not to repeat)**
+- Studio adds `data-hf-id="..."` to every element, so scripted edits must match tags loosely (a regex
+  on the `id`), never an exact tag string.
+- The picture on a comment card can be caught mid-load (the speaker full screen with the cart
+  shoved into a corner). Take a fresh `hyperframes snapshot` at that second before acting on it.
+- A nested section's media `data-start` counts from the section's own start: write the times as
+  film seconds minus the section's start.
+
 ## Templates
 
 Working files are in `templates/`. Copy them into the new project's `compositions/`, run
@@ -387,7 +454,7 @@ timings and the GROUPS data:
 | `templates/offer-claim.html` | The opening offer building up line by line into one big lower-half claim (id `offer-claim`, §0b.1) |
 | `templates/brand-broll.html` | Brand lifestyle B-roll with the brand's logo centred, hard cut on each name (id `brand-broll`, §6b) |
 | `templates/three-steps.html` | "3 steps" list: pixelated card reveal, then step 1 glides onto the next section's tag (id `three-steps`, §0c.7–8) |
-| `templates/phone-features.html` | Phone feature shots: phone sized to each recording, held zoomed with the feature centred, lens blur around it, hard cuts (id `upsell-wall`, §0c.5) |
+| `templates/phone-features.html` | Phone feature shots: phone sized to each recording, held zoomed with the feature centred, lens blur around it, hard cuts, no backdrop so the speaker shows behind (id `upsell-wall`, §0c.5, §0h.2) |
 | `templates/testimonial-narrow.html` | Founder testimonial for a low-res vertical clip: narrow 540x960 card, captions under it (id `testimonial-cannanda`, §7) |
 | `templates/index-example.html` | How the sections, the cut-out clip and the sound cues were wired in the root |
 | `scripts/build_groups.py` | Transcript to caption groups (offer names and terms kept whole, brand spelling fixed) |
