@@ -53,7 +53,9 @@ Overall: about 3.5 words/s while talking, about 3.1 words/s including the pauses
 > Single continuous static tripod shot. The frame never changes: no camera movement of any kind for the full clip.
 
 **[FIXED] Character, room, pose**
-> The man from the character sheet in Image 1 (same face, round glasses, short black hair, cream half-zip sweater over blue gingham shirt) is seated in the chair behind the table in the room from Image 2, centered in the frame, seated facing the camera, speaking directly to the viewer. He is sitting down throughout, not standing, not rising, not walking.
+> The man from the character sheet in Image 1 (same face, round glasses, short black hair, cream half-zip sweater over blue gingham shirt) is seated in the chair behind the table in the room from Image 2, centered in the frame, seated facing the camera, speaking directly to the viewer. The chair is low and completely hidden behind his body: no part of the chair back is visible above or beside his shoulders at any point. Behind his shoulders only the painted wall panels, bookshelf and plant from Image 2 are visible. He is sitting down throughout, not standing, not rising, not walking.
+
+(The chair sentences were added on Nov 10, 2026 after the golden take, to stop a chair back appearing in some takes; they are part of the fixed block from now on. Approved on the Price Preview reel's re-rendered result and call-to-action takes.)
 
 **[SCRIPT] Voice and spoken line** (script mode; the first two sentences are fixed)
 > Voice: Audio 1 is a voice reference only. Use the same voice, accent and timbre as Audio 1, but do not repeat or lip-sync the words in Audio 1. He says exactly this line, in English, lip-synced: "{SCRIPT}"
