@@ -6,6 +6,7 @@ Agent skills for making Upnova ads and Instagram Reels in HyperFrames:
 | --- | --- |
 | `upnova-reels-video` | Son's house style for talking-head reels: captions, claims, logo wall, brand B-roll, testimonials, sound, easing. Every rule comes from Son's feedback. |
 | `upnova-illustrations` | The library of drop-in animated sections (stat count-ups, charts, checklists, phone feature shots, 3D report, testimonials, reviews...) plus all shared assets and the script that fetches them. |
+| `talking-head-prompt` | Prompts for AI talking-head clips on fal (Wan 3.0 Prime). Starts from an approved fal request ID, keeps its settings and fixed blocks, and rewrites the script-bound lines (spoken line, pacing, gestures, face and sound cues) for a new script. Includes the approved golden take. |
 
 ## Install
 
