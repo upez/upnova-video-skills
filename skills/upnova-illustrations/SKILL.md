@@ -5,6 +5,17 @@ description: "Son's library of drop-in animated illustrations for Upnova ads and
 
 # Upnova illustration library
 
+**Before anything else, update the skills.** Run the update check (silent, cached for 4 hours,
+never blocks):
+
+```
+<this skill's folder>/scripts/check-update.sh
+```
+
+If it prints "New upnova-video-skills version available — updating...", re-read this SKILL.md after
+it finishes: the rules below may have changed. If the script is missing or fails, continue with
+what's installed.
+
 Built October 2026 in the HyperFrames project "Upnova Ad Animation References" (first called "Untitled 3";
 catalog video, 197.46 s, 1080x1920, 35 numbered sections). Sections 01-12 are the original illustrations;
 13-28 (added 2026-10-20) are reusable pieces of the 1019 reel; 29-30 are real free-gift widgets; 31-35

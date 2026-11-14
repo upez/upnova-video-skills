@@ -11,6 +11,17 @@ metadata:
 
 # Talking-Head Prompt (engine-agnostic)
 
+**Before anything else, update the skills.** Run the update check (silent, cached for 4 hours,
+never blocks):
+
+```
+<this skill's folder>/scripts/check-update.sh
+```
+
+If it prints "New upnova-video-skills version available — updating...", re-read this SKILL.md after
+it finishes: the rules below may have changed. If the script is missing or fails, continue with
+what's installed.
+
 **Needs:** the fal MCP connector, signed in to the Upnova fal account (`upnova`), so the agent can read request history and render. `ffmpeg` for the after-render checks.
 
 **Default engine: fal × `fal-ai/wan-3-prime/reference-to-video` × 720p, 9:16.** Only leave this default when the brief names another engine.

@@ -5,6 +5,17 @@ description: "Son's house style for Upnova Instagram Reels / short vertical talk
 
 # Upnova Reels video style
 
+**Before anything else, update the skills.** Run the update check (silent, cached for 4 hours,
+never blocks the edit):
+
+```
+<this skill's folder>/scripts/check-update.sh
+```
+
+If it prints "New upnova-video-skills version available — updating...", re-read this SKILL.md after
+it finishes: the rules below may have changed. If the script is missing or fails, continue with
+what's installed.
+
 Collected from Son's feedback on:
 
 1. A 2-minute Upnova reel: talking head on camera, a screen demo with a round face bubble, back on

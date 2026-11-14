@@ -1,3 +1,4 @@
-.DS_Store
-__pycache__/
-.tldr/
+# local skill installs (from running npx skills add inside this repo)
+.agents/
+.claude/
+skills-lock.json

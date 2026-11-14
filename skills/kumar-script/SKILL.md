@@ -11,6 +11,17 @@ metadata:
 
 # Kumar Method Script Framework
 
+**Before anything else, update the skills.** Run the update check (silent, cached for 4 hours,
+never blocks):
+
+```
+<this skill's folder>/scripts/check-update.sh
+```
+
+If it prints "New upnova-video-skills version available — updating...", re-read this SKILL.md after
+it finishes: the rules below may have changed. If the script is missing or fails, continue with
+what's installed.
+
 ## When to Use
 Any request to write a script "like Kumar", a finance-comedy reel, or short-form video script using the @thekumarmethod framework.
 

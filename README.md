@@ -7,6 +7,7 @@ Agent skills for making Upnova ads and Instagram Reels in HyperFrames:
 | `upnova-reels-video` | Son's house style for talking-head reels: captions, claims, logo wall, brand B-roll, testimonials, sound, easing. Every rule comes from Son's feedback. |
 | `upnova-illustrations` | The library of drop-in animated sections (stat count-ups, charts, checklists, phone feature shots, 3D report, testimonials, reviews...) plus all shared assets and the script that fetches them. |
 | `talking-head-prompt` | Prompts for AI talking-head clips on fal (Wan 3.0 Prime). Starts from an approved fal request ID, keeps its settings and fixed blocks, and rewrites the script-bound lines (spoken line, pacing, gestures, face and sound cues) for a new script. Includes the approved golden take. |
+| `report-edit` | Run after an editing session to capture the editor's feedback prompts (text and images), group them into goals, and turn what worked into concrete suggestions for improving the edit skill. Writes the report plus a zip to `report-edit/` inside the project. |
 
 ## Install
 
@@ -20,7 +21,12 @@ Install both skills: the reels skill uses the illustration skill's templates and
 
 ## Update
 
-Son updates this repo often. To get the latest version, run the same command again:
+Skills update themselves. Every SKILL.md opens with a "Before anything else, update the skills"
+step: the agent runs `scripts/check-update.sh`, which checks the repo's remote HEAD and runs
+`npx skills add upez/upnova-video-skills` when it's behind. It's silent when nothing changed,
+caches the check for 4 hours, and never blocks work on failure.
+
+To update by hand, run the same command as install:
 
 ```
 npx skills add upez/upnova-video-skills
