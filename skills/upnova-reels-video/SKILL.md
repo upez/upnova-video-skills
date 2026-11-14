@@ -1,6 +1,6 @@
 ---
 name: upnova-reels-video
-description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold white or black only, no serif or italic emphasis, very tight, hard cuts), reel layout (hook banner, talking-head positions with and without on-screen assets), no fades (hard cuts everywhere), no music or SFX by default, caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
+description: "Son's house style for Upnova Instagram Reels / short vertical talking-head + screen-demo videos in HyperFrames. Use when editing an Upnova (or Son's) reel, including when asked to \"use the video reels edit skill\", \"edit this reel\", \"caption this reel\", \"make the hook pop\", \"add sounds\", add proof claims, an offer claim, a logo wall behind the speaker, brand B-roll on customer name-drops, a motion-design section, founder testimonials at the end, a feature highlight on a screenshot, a client's real store and cart in 3D, a feature launch film with illustrated cutaways, taking the real widget designs from Son's Paper file (Paper to assets) or turning an Upnova Figma frame into a video scene (Figma to HTML), or checking sound effects with earshot, or to reuse the style from earlier reels. Encodes every piece of feedback Son has given: font, brand color, caption style (Inter Bold white or black only, no serif or italic emphasis, very tight, hard cuts), reel layout (hook banner, talking-head positions with and without on-screen assets), no fades (hard cuts everywhere), no music or SFX by default, caption placement, grouping and sync, offer-name phrases, claim sections, real logos, client stores and brand colours, widgets, Emil Kowalski easing (no bounce), the Upnova Figma look, cinematic SFX and music taste."
 ---
 
 # Upnova Reels video style
@@ -30,7 +30,7 @@ Collected from Son's feedback on:
 7. "Audience Segment" feature launch film (HyperFrames project "New video 2", 29 October 2026, 16:9,
    50s): Son on camera, with illustrated cutaways for a new feature, real offers converted from the
    Upnova Figma, 3D phones, sound effects checked with earshot, and captions. Its feedback is
-   collected in §0e below; the Figma method is in `references/figma-to-html.md`.
+   collected in §0e below; the Figma method is in `references/figma-to-html.md` (superseded 13 November 2026 by the Paper method, §0e).
 8. Son's layout notes in Paper ("Price Preview reel stills",
    https://app.paper.design/file/01M709E087SSPHSY86RBK5SHAD/p-1-0, 10 November 2026): reference
    stills from other creators' reels with boxes and comments on the hook banner, where the talking
@@ -235,15 +235,25 @@ Son flagged each of these on a reel that tells one client's story. Build them th
 Son flagged each of these on a 16:9 feature launch (talking head plus illustrated cutaways). Most of
 them apply to reels too.
 
-**Figma to HTML (the biggest lesson)**
-1. **Convert Figma frames, never redraw them by eye.** Son: "why the design so hard for you to match?
-   isn't there a figma to html tool?" Follow `references/figma-to-html.md` and run
-   `scripts/figma-to-html/figma2html.py`: it turns the frame's own code into a scoped HTML fragment with
-   its real images, icons and font, then lets you swap only numbers and copy.
-2. **Show Upnova's real offers, never a random mock-up.** They are on the "Upnova upsells" canvas
-   (`1850:356`) of the Upnova-website file (https://www.figma.com/design/XkRTHbJxUbfjmYEJ8lZMiJ/Upnova-website?node-id=1850-356&p=f); Son names the frames. Keep the client products that are in
-   the Figma (Zipster, Leelo Active); change only the numbers the film needs.
-3. **Re-read the Figma when Son says he updated it.** Node ids and frames change; list the canvas again.
+**Paper to assets (newest, 13 November 2026 — replaces Figma-to-HTML for widget and offer designs)**
+1. **Take the real widget designs from Paper, never redraw them by eye.** Son: "why the design so hard
+   for you to match? isn't there a figma to html tool?" (29 October 2026), then "for the assets, instead
+   of using Figma, use Paper MCP" (13 November 2026). The real Upnova widgets and offers live in the
+   Paper file "Upnova upsell widgets"
+   (https://app.paper.design/file/01M707RRJW9T96VDJ7T56KZQDV/p-1-0); Son names the node when he wants a
+   specific design (examples from the AOV reel: `/p-1-0/QR-0` an upsell page, `/p-1-0/60J-0` the plain
+   cross-sell widget). Follow `references/paper-to-assets.md`: read the file with the Paper MCP
+   (`get_guide`, then `get_basic_info` / `get_children`, `get_screenshot` for the picture), save the PNG
+   into `assets/paper/`, and place it on a held card with red marker scribbles drawn on the part being
+   talked about. Keep the client products the design shows; change only the numbers the film needs.
+2. **Never crop a Paper widget image unless the spoken line names one specific widget or small detail**
+   in the picture (Son, twice on the AOV reel: "NEVER crop them UNLESS we're talking about a specific
+   widget or small detail in the picture", then "again, don't crop, check the other images too"). Show
+   the whole frame and scribble the part instead.
+3. **Re-read the Paper file when Son says he updated it.** Node ids and frames change; list the canvas
+   again with the Paper MCP. The older Figma canvas (`1850:356` of the Upnova-website file) is where
+   these designs used to come from; `references/figma-to-html.md` and `scripts/figma-to-html/` stay for
+   the films already built with them.
 
 **What the illustrations show**
 4. **The exclusive offer must look visibly stronger** than the public one. Bundle builder, public:
@@ -265,7 +275,7 @@ them apply to reels too.
    the edge, whole, and the person icon fits inside the circle.
 10. **Phones in 3D, whole and clean.** Show the whole phone turning in 3D (GSAP `rotationY` inside a
     `perspective: 1600px` stage), no notch, and no gap at the top: the screen fills the phone and starts
-    at its top edge. Phone screens are images or converted Figma HTML, not videos.
+    at its top edge. Phone screens are images or converted frame HTML (from Figma or the Paper file), not videos.
 11. **Show the page and the cart together** when the voice describes the experience (the bundle builder
     page next to its cart), and give long talking stretches B-roll or illustrations (Son flagged a
     10-second stretch with none).
@@ -319,8 +329,13 @@ notes, `get_children` for the boxes, `get_screenshot` for the stills. The boxes 
    vertical videos: nothing behind them but the plain speaker footage, §0h.2), with the caption under it.
    **Still images never take the full screen** (Son): screenshots, photos, logos on a still, static
    graphics and stills with a slow push-in all go in this card area with a margin of the speaker's
-   footage around it. **Vertical video assets may take the full screen** (brand B-roll in §6b, phone
-   screen recordings, founder clips, full-screen motion-design scenes that move). A horizontal video
+   footage around it. **Vertical assets sit bigger, centred, taking most of the screen — but not full
+   screen** (newest, 13 November 2026, AOV reel: "vertical asset should be bigger, center and take most
+   of the screen (not full screen though)" — this tightens the older "may take the full screen"): a
+   vertical clip or card fills most of the frame, centred, with a margin of the speaker around it, kept
+   as low as the captions allow (§0h.2). The full-screen exception stays only for the moving scenes it
+   used to cover: brand B-roll in §6b, founder clips, and full-screen motion-design sections that move.
+   A horizontal video
    is not vertical: it goes in the card. A brand with no video, shown by a lifestyle photo (§6b), goes
    in the card too.
 
@@ -458,8 +473,8 @@ timings and the GROUPS data:
 | `templates/testimonial-narrow.html` | Founder testimonial for a low-res vertical clip: narrow 540x960 card, captions under it (id `testimonial-cannanda`, §7) |
 | `templates/index-example.html` | How the sections, the cut-out clip and the sound cues were wired in the root |
 | `scripts/build_groups.py` | Transcript to caption groups (offer names and terms kept whole, brand spelling fixed) |
-| `scripts/figma-to-html/figma2html.py` | Converts a Figma frame's code (from `get_design_context`) into a scoped HTML fragment with its real assets and font; see `references/figma-to-html.md` (§0e) |
-| `references/figma-to-html.md` | Where Upnova's Figma offers live, the 7 steps from Figma frame to video scene, and the pitfalls |
+| `references/paper-to-assets.md` | Taking the real Upnova widgets from Son's Paper file into a reel: the Paper MCP steps, the never-crop rule, the card placement and scribbles (§0e) |
+| `scripts/figma-to-html/figma2html.py` + `references/figma-to-html.md` | The older Figma-to-HTML method, superseded 13 November 2026 by the Paper method (§0e); kept for the films already built with it |
 | `templates/older/` | First reel's versions Son later rejected (top-of-frame claims, word-by-word captions). Reference only. |
 
 **More sections live in the `upnova-illustrations` skill** (its `templates/` folder, installed next to this one):

@@ -1,5 +1,9 @@
 # Figma design to video illustration (Figma to HTML)
 
+> **Superseded 13 November 2026 for widget and offer assets:** Son moved the real Upnova widget
+> designs to Paper — use `paper-to-assets.md` and §0e instead. This file stays for the films already
+> built with the Figma method, and for any screen Son still hands over as a Figma link.
+
 Learned on the Audience Segment launch film (HyperFrames project "New video 2", 29 October 2026).
 Son: "too squeezed here. Why is the design so hard for you to match? Isn't there a Figma to HTML
 tool?" Redrawing a Figma screen by eye from a screenshot drifted every time (wrong spacing, wrong
